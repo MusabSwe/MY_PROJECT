@@ -1,0 +1,260 @@
+body,
+ul,
+li,
+h1,
+h2,
+a {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+header {
+    background-color: #F63232;
+    padding: 20px;
+    text-align: center;
+    position: fixed;
+    width: 100%;
+    z-index: 1;
+    top: 0;
+    left: 0;
+}
+
+header h1 {
+    color: white;
+    border: 3px solid white;
+    border-radius: 36px;
+    padding: 5px;
+    display: inline-block;
+}
+
+.banner {
+    position: relative;
+}
+
+.banner img {
+    /* means will not going out of the page */
+    max-width: 100%;
+}
+
+.banner .welcome {
+    background-color: #FEB624;
+    color: white;
+    padding: 30px;
+    position: absolute;
+    left: 0;
+    top: 30%;
+}
+
+.banner h2 {
+    font-size: 74px;
+}
+
+.banner h2 span {
+    font-size: 1.3em;
+}
+
+nav {
+    background-color: #f4f4f4;
+    padding: 20px;
+    position: sticky;
+    top: 85px;
+}
+
+nav ul {
+    /* make all li in one line */
+    white-space: nowrap;
+    max-width: 1200px;
+    /* margin: Top Right Bottom Left; */
+    /* You can set the margin property to auto to horizontally 
+    center the element within its container.
+    The element will then take up the specified width, and the remaining 
+    space will be split equally between the left and right margins
+    */
+    margin: 0 auto;
+}
+
+nav li {
+    /* width each item */
+    width: 25%;
+    /* use it to create navbar */
+    display: inline-block;
+    font-size: 24px;
+}
+
+nav li a {
+    text-decoration: none;
+    color: #4B4B4B;
+}
+
+nav li a.join {
+    color: #F63232;
+}
+
+main {
+    max-width: 100%;
+    width: 1200px;
+    /* ??? */
+    margin: 80px auto;
+    padding: 0px 40px;
+    box-sizing: border-box;
+}
+
+article h2 {
+    color: #F63232;
+    font-size: 48px;
+}
+
+article p {
+    line-height: 2em;
+    color: #4b4b4b;
+}
+
+.images {
+    text-align: center;
+    margin: 80px 0;
+    white-space: nowrap;
+}
+
+.images li {
+    display: inline-block;
+    width: 40%;
+    margin: 20px 5%;
+}
+
+.images li img {
+    max-width: 100%;
+}
+
+section.join {
+    background: #f4f4f4;
+    text-align: center;
+    padding: 60px 20px;
+    color: #4b4b4b;
+}
+
+.join h2 {
+    font-size: 36px;
+}
+
+form input {
+    /* margin: Top Right Bottom Left; */
+    margin: 20px 0;
+    padding: 10px 20px;
+    font-size: 24px;
+    border-radius: 28px;
+    border: 1px solid white;
+}
+
+footer {
+    background: #F63232;
+    color: white;
+    padding: 10px;
+    text-align: center;
+}
+
+/* pseudo classes */
+
+nav li a:hover {
+    text-decoration: underline;
+}
+
+/* animate image up when point to them */
+.images li:hover {
+    position: relative;
+    top: -4px;
+}
+
+/* while writing */
+form input:focus {
+
+    border: 2px dashed #4b4b4b;
+    outline: none;
+}
+
+form input:valid {
+    border: 4px solid #71d300;
+}
+
+/* to add style only for the first line in the article */
+article p::first-line {
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+section.join p::first-letter {
+    font-weight: bold;
+    font-size: 1.5em;
+}
+
+/* this when we want to copy text and highlight 
+then background color will be red instead of blue
+*/
+p::selection {
+    background-color: #F63232;
+    color: white;
+}
+
+p::after{
+    content: "....";
+}
+
+/* Responsiven styles */
+
+@media screen and (max-width: 1400px) {
+    .banner .welcome h2{
+        font-size: 60px;
+    }
+    /* NavBar font become smaller */
+    nav li {
+        /* width each item */
+        font-size: 18px;
+    }
+}
+
+@media screen and (max-width: 960px) {
+    .banner .welcome h2{
+        font-size: 40px;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .banner .welcome{
+        position: relative;
+        top: -4px;
+    }
+    .banner .welcome br{
+        display: none;
+    }
+    .banner .welcome h2{
+        font-size: 25px;
+        text-align: center;
+    }
+    .banner h2 span {
+        font-size: 1em;
+    }
+    nav li {
+        /* width each item */
+        width: 25%;
+        /* use it to create navbar */
+        display: block;
+        padding: 10px;
+        font-size: 24px;
+        /* used to center Bolck in the center */
+        margin: auto;
+    }
+    header{
+        position: relative;
+    }
+    
+    .images li {
+        display: block;
+        width: 70%;
+        /* auto to set image in the center and 2 rem to make space between 2 images*/
+        margin: 2rem auto;
+    }
+    nav {
+        position: relative;
+        top: -2px;
+    }
+}

@@ -1,0 +1,53 @@
+<!-- <!DOCTYPE html> means this is html 5 -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>HTML Forms</title>
+</head>
+<!-- <em></em> -->
+
+<body>
+    <h1>HTML Forms</h1>
+    <form style="margin-left: 2.4rem;">
+        <!-- For used to connect with id -->
+        <label for="username">Enter username: </label>
+        <!-- id should be unique to get its data by Backend-->
+        <input type="text" id="username" placeholder="username" required>
+        <br><br>
+        <label for="email">Enter email: </label>
+        <input type="email" id="email" placeholder="email" required>
+        <br><br>
+        <label for="password">Password</label>
+        <!-- name is important when we work with grouping 
+            such as radio button  
+        -->
+        <input type="password" id="password" name="password"  placeholder="password" required>
+
+        <p>Select your age:</p>
+        <input type="radio" name="age" value="0-25" id="opt1">
+        <label for="opt1">0-25</label>
+        <input type="radio" name="age" value="26-49" id="opt2">
+        <label for="opt2">26-49</label>
+        <input type="radio" name="age" value="50+" id="opt3">
+        <label for="opt3">50+</label>
+        <br><br>
+        <label for="question">Security question</label>
+        <select name="question" id="question">
+            <option value="q1">What color are your favorite?</option>
+            <option value="q2">What is your best team?</option>
+            <option value="q3">what is the name of your Primary School?</option>
+        </select>
+        <br><br>
+        <label for="answer">Security question answer: </label>
+        <input type="text" id="answer" name="answer">
+        <br><br>
+        <label for="bio">Your bio:</label><br>
+        <textarea name="bio" id="bio" cols="30" rows="10" placeholder="abou you">
+        </textarea>
+        <br><br>
+        <input type="submit" value="Submit the form">
+    </form>
+</body>
+
+</html>

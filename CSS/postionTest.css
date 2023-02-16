@@ -1,0 +1,38 @@
+.parent{
+    background-color: yellow;
+    width: 500px;
+    height: 500px;
+    position: relative;
+    /* overfolw make the div scrollable */
+    overflow: auto; 
+}
+
+.red{
+    width: 100px;
+    height: 100px;
+    background-color: red;
+    position: absolute;
+    top: 50px;
+    left: 50px;
+    z-index: 5;
+}
+
+.blue{
+    width: 100px;
+    height: 100px;
+    background-color: blue;
+    position: absolute;
+    top: 100px;
+    left: 100px;
+    z-index: 2;
+}
+
+.green{
+    width: 100px;
+    height: 100px;
+    background-color: green;
+    position: absolute;
+    top: 150px;
+    left: 150px;
+    z-index: 10;
+}

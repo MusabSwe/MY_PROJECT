@@ -1,0 +1,51 @@
+h1 {
+    color: orange;
+    background-color: slategray;
+    font-size: 20px;
+    text-decoration: underline;
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+p {
+    color: slategray;
+    text-align: right;
+    /* the height between lines */
+    line-height: 20px;
+    /* space between letters */
+    letter-spacing: 1px;
+    /* divide p into columens 
+    instead of being one block 
+    become 3 blocks 
+     */
+    column-count: 3;
+    /* gaps between each column */
+    column-gap: 4rem;
+}
+
+ul {
+    /* border-width: 1px;
+    border-style: solid;
+    border-color: aqua; */
+    /* or */
+    /* border: 1px solid aqua; */
+    border-bottom: 1px solid red;
+}
+
+li {
+    list-style-type: none;
+    text-shadow: 2px 2px #e9e9e9;
+}
+
+span {
+    border: 1px solid red;
+    margin: 20px;
+    padding: 20px;
+}
+
+div {
+    /* display: inline; */
+    border: 1px solid red;
+    margin: 20px;
+    padding: 20px;
+}

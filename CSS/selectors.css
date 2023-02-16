@@ -1,0 +1,82 @@
+/* means tag p that has only error class */
+/*
+p.error{
+    color: red;
+}
+
+p.success{
+    color: greenyellow;
+}
+
+/* means tag p that has both success and feedback classes */
+/*
+p.success.feedback{
+    color: greenyellow;
+    border: 1px dashed greenyellow;
+}
+
+#content{
+    background-color: #ebebeb;
+    padding: 20px;
+}
+*/
+
+/* Inheratnce in CSS Examples */
+
+/* div parent, p child */
+/* div p{
+    color: purple;
+}
+
+div .error{
+    color: yellow;
+} */
+
+/*syntax tag_name[attribute_Name] this will select the element*/
+
+/* a[href] {
+    background-color: green;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+a[href = "https://google.com"] {
+    background-color: green;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+/* * symbol means include this word  */
+
+/* a[href*= "Youtube"] {
+    background-color: red;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+/* $ means ends with this word*/
+/* Example improve user experiance use $ when to select all PDF file to download */
+/* a[href$= ".com"] {
+    background-color: red;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    text-transform: uppercase;
+} */
+
+/* p inherits style of div since p under div in HTML file */
+div {
+    color: lightcoral;
+    border: 1px solid gray;
+    margin: 40px;
+    font-weight: bold;
+}
+p{
+    border: inherit;
+    margin: inherit;
+}
