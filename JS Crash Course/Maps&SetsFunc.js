@@ -19,7 +19,9 @@ const currenciesIsUnique = new Set(['USD', 'GBP', 'USD', 'EUR', 'EUR']);
 console.log(currenciesIsUnique); // output: Set(3) { 'USD', 'GBP', 'EUR' }
 
 // Note in the set there is no index so index give us the value repated
-currenciesIsUnique.forEach((v, i, arr) => {
+// (v, _ , arr) underscore (_) means throw away variable not neccessary
+// and if I put variable it will print the  value twice 
+currenciesIsUnique.forEach((v, _ , arr) => {
     console.log(`Set: ${v} : ${i}`);
 });
 
