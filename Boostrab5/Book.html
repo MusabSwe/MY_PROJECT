@@ -64,11 +64,18 @@
                         officia amet. Odit beatae officiis ipsum iste.</p>
 
                     <a href="#pricing" class="btn btn-secondary btn-lg">Buy Now</a>
+                    <br>
+                    <!-- open sidebar / offcanvas -->
+                    <a href="#sidebar" class="d-block mt-2 text-decoration-none" data-bs-toggle="offcanvas"
+                        role="button" aria-controls="sidebar">
+                        Explore other books
+                    </a>
                 </div>
                 <div class="col-md-5 text-center d-none d-md-block">
                     <!-- Tooltip to enable we need to import Javascript library found in the tooltip page in bootsrtab site-->
-                    <span class="CustomTooltip" data-bs-placement="bottom" title="Deep learning Revolution"><img
-                            class="img-fluid rounded-3" src="./img/ebook-code.jfif" alt="e-book cover"></span>
+                    <span class="CustomTooltip" data-bs-placement="bottom" title="Deep learning Revolution">
+                        <img class="img-fluid rounded-3" src="./img/ebook-code.jfif" alt="e-book cover">
+                    </span>
                 </div>
             </div>
         </div>
@@ -402,8 +409,18 @@
             <div class="text-center">
                 <h2>Stay in the loop</h2>
                 <p class="lead">Get the latest updates as they happen...</p>
+                <div class="text-center">
+                    <p class="text-muted my-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti
+                        obcaecati
+                        ducimus autem iure ipsa, perferendis ullam perspiciatis est nostrum quam molestias beatae sint.
+                        Vel
+                        sit debitis corporis voluptatibus cupiditate nobis.
+                    </p>
+                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#reg-modal">Register for
+                        updates</button>
+                </div>
             </div>
-            <div class="row justify-content-center"></div>
+            <!-- <div class="row justify-content-center"></div>
             <div class="col-md-8 text-center">
                 <p class="text-muted my-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti obcaecati
                     ducimus autem iure ipsa, perferendis ullam perspiciatis est nostrum quam molestias beatae sint. Vel
@@ -411,7 +428,7 @@
                 </p>
                 <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#reg-modal">Register for
                     updates</button>
-            </div>
+            </div> -->
         </div>
     </section>
 
@@ -435,6 +452,21 @@
                     <button class="btn btn-primary">Submit</button>
                 </div>
             </div>
+        </div>
+    </div>
+
+    <!-- Offcanvas -->
+    <!-- offcanvas-start -> appear from left sidebar -->
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="sidebar" aria-labelledby="sidebar-label">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="sidebar-label">My Other Books</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem eligendi quam provident necessitatibus
+                rem quaerat non. Placeat, doloribus a vel reiciendis voluptates consequatur, soluta dolor, unde ratione
+                ipsum aperiam aliquid.</p>
+
         </div>
     </div>
 
