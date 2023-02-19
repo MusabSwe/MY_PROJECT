@@ -466,7 +466,17 @@
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem eligendi quam provident necessitatibus
                 rem quaerat non. Placeat, doloribus a vel reiciendis voluptates consequatur, soluta dolor, unde ratione
                 ipsum aperiam aliquid.</p>
-
+            <!-- dropdown -->
+            <div class="dropdown mt-3">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="book-dropdown"
+                    data-bs-toggle="dropdown">Choose a book title
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="book-dropdown">
+                    <li><a href="#" class="dropdown-item">Become a React super Superhero</a></li>
+                    <li><a href="#" class="dropdown-item">Learn Laravel Framework</a></li>
+                    <li><a href="#" class="dropdown-item">Design Responsive web application</a></li>
+                </ul>
+            </div>
         </div>
     </div>
 
@@ -474,7 +484,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
-    <!-- To activate Tooltip and to link each CustomTooltip class with boostrap Tooltip -->
+    <!-- To activate all Tooltip and to link each CustomTooltip class with boostrap Tooltip -->
     <script>
         const tooltips = document.querySelectorAll('.CustomTooltip')
         tooltips.forEach(t => {
