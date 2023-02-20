@@ -113,7 +113,7 @@ const currencies = new Map([
 // We want to convert EUR to USD
 // using Map function
 
-// const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 // const eurToUsd = 1.1;
 
@@ -124,3 +124,27 @@ const currencies = new Map([
 //     return mov * eurToUsd;
 // });
 // console.log(dollars2);
+
+const deposits = movements.filter((mov) => {
+    return mov > 0;
+});
+console.log(deposits);
+
+const depositFor = [];
+
+for (const mov of movements) {
+    if (mov > 0)
+        depositFor.push(mov);
+}
+
+const withdrawals = movements.filter((mov) => {
+    return mov < 0;
+});
+console.log(withdrawals);
+
+const withdrawalFor = [];
+
+for (const mov of movements) {
+    if (mov < 0)
+         withdrawalFor.push(mov);
+}
