@@ -207,3 +207,18 @@ console.log(balance);
 // pipeline
 const deposits = movements.filter(mov => mov > 0).map(mov => mov * 1.1).reduce((total, val) => { return total + val }, 0);
 console.log(deposits);
+
+// Find Method to retrieve one element over an array
+// return single vlue
+const firstWithdrawl = movements.find(x => x < 0);
+console.log(firstWithdrawl);
+const account = accounts.find(ac => ac.owner = "Jessica Davis");
+console.log(account);
+
+/* 
+There are some difference between filter and find
+    1. In filter method return an array that satisify the condition
+    while find return the first element that satisify the condition
+
+    2. filter returns new array, while find return single element
+*/
