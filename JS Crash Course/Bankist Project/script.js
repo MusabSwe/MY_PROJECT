@@ -181,3 +181,21 @@ for (const i of movements) {
     sum += i;
 }
 console.log(sum);
+// Find max value using reduce
+// notes 
+// acc point to the first element 
+// while mov point to the second element
+// seoncd param = movements[0] because it is the starting point
+// and acc point always to the starting point which is the 2nd param
+// so we compare acc with current
+const max = movements.reduce((acc, mov) => {
+    if (acc < mov) {
+        console.log("mov", mov);
+        return mov;
+    } else {
+        console.log("acc", acc);
+        return acc;
+    }
+}, movements[0]);
+
+console.log(max);
