@@ -169,11 +169,11 @@ console.log(movements);
 // and the 2nd is the initial value 
 // we use reducer to combine array values
 // to a single value
-// const balance = movements.reduce((acc, cur, i, arr) => {
-//     console.log(`Iteration ${i} = ${acc}`);
-//     return acc + cur; // --> acc += cur
-// }, 0);
-// console.log(balance);
+const balance = movements.reduce((acc, cur, i, arr) => {
+    console.log(`Iteration ${i} = ${acc}`);
+    return acc + cur; // --> acc += cur
+}, 0);
+console.log(balance);
 
 // // or by for loop
 // var sum = 0;
@@ -182,12 +182,12 @@ console.log(movements);
 // }
 // console.log(sum);
 // // Find max value using reduce
-// notes 
-// acc point to the first element 
-// while mov point to the second element
-// seoncd param = movements[0] because it is the starting point
-// and acc point always to the starting point which is the 2nd param
-// so we compare acc with current
+// // notes 
+// // acc point to the first element 
+// // while mov point to the second element
+// // seoncd param = movements[0] because it is the starting point
+// // and acc point always to the starting point which is the 2nd param
+// // so we compare acc with current
 // const max = movements.reduce((acc, mov) => {
 //     if (acc < mov) {
 //         console.log("mov", mov);
