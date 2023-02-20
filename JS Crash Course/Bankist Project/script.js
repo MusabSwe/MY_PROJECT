@@ -91,13 +91,23 @@ displayMovements(account1.movements);
 //     return usernames;
 // });
 
+const calcPrintBalance = ((movements) => {
+    const balance = movements.reduce((acc, cur) => {
+        return acc + cur;
+    }, 0);
+    labelBalance.textContent = `${balance} EUR`;
+});
+calcPrintBalance(account1.movements);
+
+
 const createUsernames = ((accs) => {
     accs.forEach((acc) => {
         acc.username = acc.owner.toLowerCase().split(" ").map((x) => x[0]).join("");
     })
 });
 createUsernames(accounts);
-console.log(accounts);
+
+
 
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
@@ -150,10 +160,24 @@ const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 // }
 
 console.log(movements);
+// --------- Reduce ----------
 // curr --> current element in the array
 // acc  --> accumulator 
 //  i --> index
 //  arr --> entire array
+// reduce has 2 params 1ts (acc, cur, i, arr) 
+// and the 2nd is the initial value 
+// we use reducer to combine array values
+// to a single value
 const balance = movements.reduce((acc, cur, i, arr) => {
-    return acc + cur; 
+    console.log(`Iteration ${i} = ${acc}`);
+    return acc + cur; // --> acc += cur
 }, 0);
+console.log(balance);
+
+// or by for loop
+var sum = 0;
+for (const i of movements) {
+    sum += i;
+}
+console.log(sum);
