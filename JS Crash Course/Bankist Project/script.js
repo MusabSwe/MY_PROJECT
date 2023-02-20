@@ -64,6 +64,9 @@ const inputClosePin = document.querySelector('.form__input--pin');
 
 // Add bar in the page for each movement for each account
 const displayMovements = function (movements) {
+    // to remove the static content in the current balance
+    // in the rows not related to the account
+    containerMovements.innerHTML = '';
     movements.forEach((mov, i) => {
         const type = (mov > 0) ? "deposit" : "withdrawal";
         const mov_row = `<div class="movements__row">
@@ -71,11 +74,14 @@ const displayMovements = function (movements) {
         <div class="movements__date">3 days ago</div>
         <div class="movements__value">${mov}</div>
     </div>`;
-        containerMovements.insertAdjacentHTML('afterbegin', mov_row);
+    // beforeend --> display data in order, while
+    // afterbegin --> display data in reverrse
+        containerMovements.insertAdjacentHTML('beforeend', mov_row);
     });
 
 };
 displayMovements(account1.movements)
+console.log(containerMovements)
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
