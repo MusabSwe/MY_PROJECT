@@ -125,26 +125,35 @@ const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 // });
 // console.log(dollars2);
 
-const deposits = movements.filter((mov) => {
-    return mov > 0;
-});
-console.log(deposits);
+// const deposits = movements.filter((mov) => {
+//     return mov > 0;
+// });
+// console.log(deposits);
 
-const depositFor = [];
+// const depositFor = [];
 
-for (const mov of movements) {
-    if (mov > 0)
-        depositFor.push(mov);
-}
+// for (const mov of movements) {
+//     if (mov > 0)
+//         depositFor.push(mov);
+// }
 
-const withdrawals = movements.filter((mov) => {
-    return mov < 0;
-});
-console.log(withdrawals);
+// const withdrawals = movements.filter((mov) => {
+//     return mov < 0;
+// });
+// console.log(withdrawals);
 
-const withdrawalFor = [];
+// const withdrawalFor = [];
 
-for (const mov of movements) {
-    if (mov < 0)
-         withdrawalFor.push(mov);
-}
+// for (const mov of movements) {
+//     if (mov < 0)
+//          withdrawalFor.push(mov);
+// }
+
+console.log(movements);
+// curr --> current element in the array
+// acc  --> accumulator 
+//  i --> index
+//  arr --> entire array
+const balance = movements.reduce((acc, cur, i, arr) => {
+    return acc + cur; 
+}, 0);
