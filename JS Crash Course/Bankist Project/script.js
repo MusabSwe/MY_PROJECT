@@ -74,14 +74,31 @@ const displayMovements = function (movements) {
         <div class="movements__date">3 days ago</div>
         <div class="movements__value">${mov}</div>
     </div>`;
-    // beforeend --> display data in order, while
-    // afterbegin --> display data in reverrse
+        // beforeend --> display data in order, while
+        // afterbegin --> display data in reverrse
         containerMovements.insertAdjacentHTML('beforeend', mov_row);
     });
 
 };
-displayMovements(account1.movements)
-console.log(containerMovements)
+displayMovements(account1.movements);
+
+// create user names for all accounts
+// const createUsernames = (() => {
+//     const usernames = [];
+//     accounts.forEach((account,i) => {
+//         usernames[i] = account.owner.split(" ").map((x) => x.charAt(0)).join("").toLowerCase();
+//     });
+//     return usernames;
+// });
+
+const createUsernames = ((accs) => {
+    accs.forEach((acc) => {
+        acc.username = acc.owner.toLowerCase().split(" ").map((x) => x[0]).join("");
+    })
+});
+createUsernames(accounts);
+console.log(accounts);
+
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
@@ -92,4 +109,18 @@ const currencies = new Map([
     ['GBP', 'Pound sterling'],
 ]);
 
-const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+
+// We want to convert EUR to USD
+// using Map function
+
+// const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+
+// const eurToUsd = 1.1;
+
+// const dollars = movements.map(val => val * eurToUsd);
+// console.log(dollars);
+// // or
+// const dollars2 = movements.map(function (mov) {
+//     return mov * eurToUsd;
+// });
+// console.log(dollars2);
