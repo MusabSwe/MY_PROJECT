@@ -82,14 +82,6 @@ const displayMovements = function (movements) {
 };
 displayMovements(account1.movements);
 
-// create user names for all accounts
-// const createUsernames = (() => {
-//     const usernames = [];
-//     accounts.forEach((account,i) => {
-//         usernames[i] = account.owner.split(" ").map((x) => x.charAt(0)).join("").toLowerCase();
-//     });
-//     return usernames;
-// });
 
 const calcPrintBalance = ((movements) => {
     const balance = movements.reduce((acc, cur) => {
@@ -105,8 +97,35 @@ const createUsernames = ((accs) => {
         acc.username = acc.owner.toLowerCase().split(" ").map((x) => x[0]).join("");
     })
 });
+
 createUsernames(accounts);
 
+// Event handler
+let currentAccount;
+btnLogin.addEventListener('click', (e) => {
+    // prevent from from submitting 
+    e.preventDefault();
+    // console.log("login event handler")
+    currentAccount = accounts.find(ac => ac.username === inputLoginUsername.value)
+    // console.log(currentAccount);
+    
+    if(currentAccount?.pin === Number(inputLoginPin.value)){
+        // display UI and message
+        labelWelcome.textContent = `Welcome back, ${currentAccount.owner.split(" ")[0]}`;
+        containerApp.style.opacity = 100;
+        // Clear input fields
+        inputLoginUsername.value = "";
+        inputLoginPin.value = "";
+        // To remove pointer from the input 
+        // after we login
+        inputLoginPin.blur();
+        // display movement
+        displayMovements(currentAccount.movements);
+        // Display balance
+        calcPrintBalance(currentAccount.movements);
+        // Display summary
+    }
+});
 
 
 /////////////////////////////////////////////////
@@ -159,21 +178,21 @@ const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 //          withdrawalFor.push(mov);
 // }
 
-console.log(movements);
+// console.log(movements);
 // --------- Reduce ----------
 // curr --> current element in the array
-// acc  --> accumulator 
+// acc  --> accumulator
 //  i --> index
 //  arr --> entire array
-// reduce has 2 params 1ts (acc, cur, i, arr) 
-// and the 2nd is the initial value 
+// reduce has 2 params 1ts (acc, cur, i, arr)
+// and the 2nd is the initial value
 // we use reducer to combine array values
 // to a single value
-const balance = movements.reduce((acc, cur, i, arr) => {
-    console.log(`Iteration ${i} = ${acc}`);
-    return acc + cur; // --> acc += cur
-}, 0);
-console.log(balance);
+// const balance = movements.reduce((acc, cur, i, arr) => {
+//     console.log(`Iteration ${i} = ${acc}`);
+//     return acc + cur; // --> acc += cur
+// }, 0);
+// console.log(balance);
 
 // // or by for loop
 // var sum = 0;
@@ -182,8 +201,8 @@ console.log(balance);
 // }
 // console.log(sum);
 // // Find max value using reduce
-// // notes 
-// // acc point to the first element 
+// // notes
+// // acc point to the first element
 // // while mov point to the second element
 // // seoncd param = movements[0] because it is the starting point
 // // and acc point always to the starting point which is the 2nd param
@@ -201,19 +220,19 @@ console.log(balance);
 // console.log(max);
 
 
-// Chaining method combine multiple methods to achieve a task 
+// Chaining method combine multiple methods to achieve a task
 // Instead of write 3 functions to get the answer
 // 1st find the deposits value, 2nd convert to EUR, 3rd find total balance
 // pipeline
-const deposits = movements.filter(mov => mov > 0).map(mov => mov * 1.1).reduce((total, val) => { return total + val }, 0);
-console.log(deposits);
+// const deposits = movements.filter(mov => mov > 0).map(mov => mov * 1.1).reduce((total, val) => { return total + val }, 0);
+// console.log(deposits);
 
 // Find Method to retrieve one element over an array
 // return single vlue
-const firstWithdrawl = movements.find(x => x < 0);
-console.log(firstWithdrawl);
-const account = accounts.find(ac => ac.owner = "Jessica Davis");
-console.log(account);
+// const firstWithdrawl = movements.find(x => x < 0);
+// console.log(firstWithdrawl);
+// const account = accounts.find(ac => ac.owner = "Jessica Davis");
+// console.log(account);
 
 /* 
 There are some difference between filter and find
