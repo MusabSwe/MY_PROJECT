@@ -1,4 +1,3 @@
-import './App.css';
 // no need of js extension
 import Navbar from './Components/Navbar';
 import Home from './Components/Home';
