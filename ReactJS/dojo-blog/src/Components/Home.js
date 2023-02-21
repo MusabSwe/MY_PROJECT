@@ -1,18 +1,22 @@
+// Hook
+import { useState } from "react";
+
 const Home = () => {
-    // e --> event object
-    const handleClick = (e) => {
-        console.log('Hello ninjas', e);
-    };
-    // to invoke this methid we should 
-    // implement anonymous function to invoke 
-    const handleClickAgain = (name, e) => {
-        console.log('Hello ' + name, e.target);
-    }
+    const [blogs, setBlogs] = useState([
+        { title: 'My new website', body: 'lorem ipsum...', author: 'mario', id: 1 },
+        { title: 'Welcome party!', body: 'lorem ipsum...', author: 'Yoshi', id: 2 },
+        { title: 'Web dev top tips', body: 'lorem ipsum...', author: 'mario', id: 3 }
+    ]);
     return (
         <div className="home">
-            <h1>Home Page</h1>
-            <button onClick={handleClick}>Test</button>
-            <button onClick={(e) => handleClickAgain("MUSAB", e)}>Test</button>
+            <ul>
+                {blogs.map((blog) => (
+                    <div className="blog-preview" key={blog.id}>
+                        <h2>{blog.title}</h2>
+                        <p>Written byt {blog.author}</p>
+                    </div>
+                ))}
+            </ul>
         </div>
     );
 }
