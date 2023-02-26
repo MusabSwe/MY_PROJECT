@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useHistory } from "react-router-dom";
 
 const Create = () => {
     const [title, setTitle] = useState('');
@@ -6,6 +7,8 @@ const Create = () => {
     // default value mario in select input
     const [author, setauthor] = useState('mario');
     const [isLoading, setIsLoading] = useState(false);
+    const history = useHistory();
+
     const handleSubmit = (e) => {
         e.preventDefault();
         // store written data in the form 
@@ -22,6 +25,9 @@ const Create = () => {
                 setIsLoading(false);
             })
         }, 1000);
+        //To redirect you to the home 
+        // after submit form 
+        history.push('/');
     }
     return (
         <div className="create">

@@ -13,40 +13,10 @@
       "id": 2
     },
     {
-      "title": "qq",
-      "body": "bb",
-      "author": "mario",
+      "title": "Science",
+      "body": "Science of Software Engineering \nTalks about the life cycle from Gathering requiremnts until deployment ",
+      "author": "Yoshi",
       "id": 3
-    },
-    {
-      "title": "ab",
-      "body": "b",
-      "author": "mario",
-      "id": 4
-    },
-    {
-      "title": "a",
-      "body": "b",
-      "author": "mario",
-      "id": 5
-    },
-    {
-      "title": "a",
-      "body": "b",
-      "author": "mario",
-      "id": 6
-    },
-    {
-      "title": "a",
-      "body": "b",
-      "author": "mario",
-      "id": 7
-    },
-    {
-      "title": "a",
-      "body": "b",
-      "author": "mario",
-      "id": 8
     }
   ]
 }
