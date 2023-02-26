@@ -17,11 +17,22 @@ class App extends Component {
       { name: 'Ahmed', age: 48 }
     ]
   }
+  // Methods unlike const handler in the function
+  switchNameHandler = () => {
+    console.log('Was clicked!');
+  }
+
   render() {
     return (
       // JSX
       <div className='App'>
         <h1>Hi, I'm a react App</h1>
+        {/* 
+          Do not add pranthesis switchNameHandler() --> as a result, 
+          the method will invoke when we run the app only
+          only add the refernce switchNameHandler
+        */}
+        <button onClick={this.switchNameHandler}>Switch Name</button>
         <Person name={this.state.people[0].name} age={this.state.people[0].age} />
         <Person name={this.state.people[1].name} age={this.state.people[1].age}><strong>My Hobbies: Racing</strong></Person>
       </div>
