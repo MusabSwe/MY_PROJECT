@@ -10,6 +10,7 @@ import Person from './Person/Person';
 // }
 
 class App extends Component {
+  // state & this setState are from Component class
   state = {
     people: [
       { name: 'Jaber', age: 28 },
@@ -19,7 +20,14 @@ class App extends Component {
   }
   // Methods unlike const handler in the function
   switchNameHandler = () => {
-    console.log('Was clicked!');
+    // console.log('Was clicked!');
+    this.setState({
+      people: [
+        { name: 'Musab', age: 28 },
+        { name: 'Ali', age: 50 },
+        { name: 'Ahmed', age: 50 }
+      ]
+    })
   }
 
   render() {
