@@ -5,13 +5,23 @@ const Create = () => {
     const [body, setBody] = useState('');
     // default value mario in select input
     const [author, setauthor] = useState('mario');
-
+    const [isLoading, setIsLoading] = useState(false);
     const handleSubmit = (e) => {
         e.preventDefault();
         // store written data in the form 
         // after we submit
         const blog = { title, body, author };
-        console.log(blog);
+        setIsLoading(true)
+        setTimeout(() => {
+            fetch('http://localhost:8000/blogs', {
+                method: 'POST',
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(blog)
+            }).then(() => {
+                console.log("New Blog added");
+                setIsLoading(false);
+            })
+        }, 1000);
     }
     return (
         <div className="create">
@@ -34,12 +44,13 @@ const Create = () => {
                     <option value="mario">Mario</option>
                     <option value="Yoshi">Yoshi</option>
                 </select>
-                <button>Add Blog</button>
-                {/* For Testing to see if it is work */}
-                <p>{title}</p>
-                <p>{body}</p>
-                <p>{author}</p>
-
+                {/*
+                 To display Add blog since the default isLoading = true and when we click disappear
+                and the disabled button appears
+                */}
+                {!isLoading && <button>Add Blog</button>}
+                {/* we process with your POST request */}
+                {isLoading && <button disabled>Adding Blog...</button>}
             </form>
         </div>
     );
