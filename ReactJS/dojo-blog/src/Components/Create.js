@@ -27,6 +27,7 @@ const Create = () => {
                     <option value="Yoshi">Yoshi</option>
                 </select>
                 <button>Add Blog</button>
+                {/* For Testing to see if it is work */}
                 <p>{title}</p>
                 <p>{body}</p>
                 <p>{author}</p>
