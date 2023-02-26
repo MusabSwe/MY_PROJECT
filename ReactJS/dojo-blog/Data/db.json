@@ -2,13 +2,13 @@
     "blogs": [
         {
             "title": "My new website",
-            "body": "lorem ipsum...",
+            "body": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt deleniti nihil, pariatur maiores optio cum mollitia aliquid, similique iste minima eveniet accusantium corporis voluptas placeat omnis aliquam tenetur culpa ipsam.",
             "author": "mario",
             "id": 1
         },
         {
             "title": "Welcome party!",
-            "body": "lorem ipsum...",
+            "body": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt deleniti nihil, pariatur maiores optio cum mollitia aliquid, similique iste minima eveniet accusantium corporis voluptas placeat omnis aliquam tenetur culpa ipsam.",
             "author": "Yoshi",
             "id": 2
         }
