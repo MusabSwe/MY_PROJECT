@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import Person from './Person/Person';
+import Radium from 'radium';
 // function App() {
 //   return (
 //     <div className="App">
@@ -84,12 +85,17 @@ class App extends Component {
 
   render() {
     const style = {
-      background: 'green ',
+      backgroundColor: 'green',
       color: 'white',
       font: 'sans-serif',
       border: '1px solid blue',
       padding: '8px',
-      cursor: "pointer"
+      cursor: "pointer",
+      // Radium 
+      ':hover': {
+        backgroundColor: 'lightgreen',
+        color: 'black'
+      }
     };
     // Steps to display & hide contents
     // 1. set value null
@@ -113,16 +119,21 @@ class App extends Component {
           })}
         </div>
       );
-      style.background = "red ";
+      style.backgroundColor = "red ";
+      style[':hover'] = {
+        backgroundColor: 'salmon',
+        color: 'black'
+
+      }
     }
 
     // To display dynamic style and red and bord 
     // are css style in the App.css
     let classes = [];
-    if(this.state.people.length <= 2){
+    if (this.state.people.length <= 2) {
       classes.push('red');
     }
-    if(this.state.people.length <= 1){
+    if (this.state.people.length <= 1) {
       classes.push('bold');
     }
     return (
@@ -145,5 +156,5 @@ class App extends Component {
     );
   }
 }
-
-export default App;
+// Radium(App) called higher order component 
+export default Radium(App);
