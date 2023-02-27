@@ -67,7 +67,11 @@ class App extends Component {
   }
 
   deleteHandler = (personIndex) => {
-    const people = this.state.people;
+    // Immutable Way
+    // 1. using Slice which will not change the original array
+    // const people = this.state.people.slice();
+    // 2. Using spread operator which will not change the original array
+    const people = [...this.state.people];
     // remove the personIndex
     people.splice(personIndex, 1);
     this.setState({ people: people });
