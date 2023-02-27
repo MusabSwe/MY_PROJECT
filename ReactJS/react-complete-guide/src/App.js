@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+import person from './Person/Person';
 import Person from './Person/Person';
 // function App() {
 //   return (
@@ -65,6 +66,13 @@ class App extends Component {
     this.setState({ showPeople: !doesShow });
   }
 
+  deleteHandler = (personIndex) => {
+    const people = this.state.people;
+    // remove the personIndex
+    people.splice(personIndex, 1);
+    this.setState({ people: people });
+  }
+
   render() {
     const style = {
       background: 'white',
@@ -80,14 +88,15 @@ class App extends Component {
     // 4. state value with the condition statement
 
     let people = null;
-    if (this.state.showPeople === true) {
+    if (this.state.showPeople) {
       people = (
         // JSX
         <div>
-          {this.state.people.map(person => {
+          {this.state.people.map((person, index) => {
             return <Person
               name={person.name}
               age={person.age}
+              click={() => this.deleteHandler(index)}
             />
           })}
         </div>
