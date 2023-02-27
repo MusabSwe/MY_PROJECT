@@ -59,6 +59,13 @@ class App extends Component {
   // }
 
   render() {
+    const style = {
+      background: 'white',
+      font: 'sans-serif',
+      border: '1px solid blue',
+      padding: '8px',
+      cursor: "pointer"
+    };
     return (
       // JSX
       <div className='App'>
@@ -69,7 +76,7 @@ class App extends Component {
           only add the refernce switchNameHandler
         */}
         {/* <button onClick={this.switchNameHandler.bind(this, 'Maximilian')}>Switch Name</button> */}
-        <button onClick={() => this.switchNameHandler('Maximilian')}>Switch Name</button>
+        <button style={style} onClick={() => this.switchNameHandler('Maximilian')}>Switch Name</button>
         <Person
           name={this.state.people[0].name}
           age={this.state.people[0].age}
