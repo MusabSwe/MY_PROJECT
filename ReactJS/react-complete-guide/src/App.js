@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import Person from './Person/Person';
-import Radium from 'radium';
+import Radium, { StyleRoot } from 'radium';
 // function App() {
 //   return (
 //     <div className="App">
@@ -137,22 +137,24 @@ class App extends Component {
       classes.push('bold');
     }
     return (
-      // JSX
-      <div className='App'>
-        <h1>Hi, I'm a react App</h1>
-        <p className={classes.join(' ')}>This is really working!</p>
+      <StyleRoot>
+        {/* JSX */}
+        <div className='App'>
+          <h1>Hi, I'm a react App</h1>
+          <p className={classes.join(' ')}>This is really working!</p>
 
-        {/* 
+          {/* 
           Do not add pranthesis switchNameHandler() --> as a result, 
           the method will invoke when we run the app only
           only add the refernce switchNameHandler
         */}
-        {/* <button onClick={this.switchNameHandler.bind(this, 'Maximilian')}>Switch Name</button> */}
-        <button
-          style={style}
-          onClick={this.togglePeopleHandler}>Toggle People</button>
-        {people}
-      </div>
+          {/* <button onClick={this.switchNameHandler.bind(this, 'Maximilian')}>Switch Name</button> */}
+          <button
+            style={style}
+            onClick={this.togglePeopleHandler}>Toggle People</button>
+          {people}
+        </div>
+      </StyleRoot>
     );
   }
 }
