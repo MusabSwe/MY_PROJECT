@@ -36,6 +36,15 @@ class App extends Component {
     })
   }
 
+  nameChangeHandler = (e) => {
+    this.setState({
+      people: [
+        { name: e.target.value, age: 50 },
+        { name: 'Ali', age: 50 },
+        { name: 'Ahmed', age: 50 }
+      ]
+    })
+  }
   // const switchNameHandler = () => {
   //   // when we use setPeople and remove 
   //   // an oject this will remove totally 
@@ -65,6 +74,7 @@ class App extends Component {
           name={this.state.people[0].name}
           age={this.state.people[0].age}
           click={this.switchNameHandler}
+          txtInput={this.nameChangeHandler}
         />
         <Person
           name={this.state.people[1].name}
