@@ -85,7 +85,7 @@ class App extends Component {
   render() {
     const style = {
       background: 'green ',
-      color: 'white' ,
+      color: 'white',
       font: 'sans-serif',
       border: '1px solid blue',
       padding: '8px',
@@ -116,10 +116,21 @@ class App extends Component {
       style.background = "red ";
     }
 
+    // To display dynamic style and red and bord 
+    // are css style in the App.css
+    let classes = [];
+    if(this.state.people.length <= 2){
+      classes.push('red');
+    }
+    if(this.state.people.length <= 1){
+      classes.push('bold');
+    }
     return (
       // JSX
       <div className='App'>
         <h1>Hi, I'm a react App</h1>
+        <p className={classes.join(' ')}>This is really working!</p>
+
         {/* 
           Do not add pranthesis switchNameHandler() --> as a result, 
           the method will invoke when we run the app only
