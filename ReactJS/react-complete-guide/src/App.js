@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
 import Person from './Person/Person';
-import Radium, { StyleRoot } from 'radium';
 // function App() {
 //   return (
 //     <div className="App">
@@ -91,11 +90,6 @@ class App extends Component {
       border: '1px solid blue',
       padding: '8px',
       cursor: "pointer",
-      // Radium 
-      ':hover': {
-        backgroundColor: 'lightgreen',
-        color: 'black'
-      }
     };
     // Steps to display & hide contents
     // 1. set value null
@@ -120,11 +114,7 @@ class App extends Component {
         </div>
       );
       style.backgroundColor = "red ";
-      style[':hover'] = {
-        backgroundColor: 'salmon',
-        color: 'black'
-
-      }
+    
     }
 
     // To display dynamic style and red and bord 
@@ -137,8 +127,6 @@ class App extends Component {
       classes.push('bold');
     }
     return (
-      <StyleRoot>
-        {/* JSX */}
         <div className='App'>
           <h1>Hi, I'm a react App</h1>
           <p className={classes.join(' ')}>This is really working!</p>
@@ -154,9 +142,9 @@ class App extends Component {
             onClick={this.togglePeopleHandler}>Toggle People</button>
           {people}
         </div>
-      </StyleRoot>
+      
     );
   }
 }
 // Radium(App) called higher order component 
-export default Radium(App);
+export default App;
