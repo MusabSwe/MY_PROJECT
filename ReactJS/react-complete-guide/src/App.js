@@ -20,9 +20,9 @@ class App extends Component {
 
   state = {
     people: [
-      {id:1, name: 'Jaber', age: 28 },
-      {id:2, name: 'Ali', age: 18 },
-      {id:3, name: 'Ahmed', age: 48 }
+      { id: 1, name: 'Jaber', age: 28 },
+      { id: 2, name: 'Ali', age: 18 },
+      { id: 3, name: 'Ahmed', age: 48 }
     ],
     showPeople: false
   }
@@ -38,14 +38,20 @@ class App extends Component {
     })
   }
 
-  nameChangeHandler = (e) => {
-    this.setState({
-      people: [
-        { name: e.target.value, age: 50 },
-        { name: 'Ali', age: 50 },
-        { name: 'Ahmed', age: 50 }
-      ]
-    })
+  // To see which element change
+  nameChangeHandler = (e, id) => {
+    const perosnIndex = this.state.people.findIndex(p => { return p.id === id });
+    // It is good practice to do not change state directly
+    // so we will use spread operator
+    const person = { ...this.state.people[perosnIndex] };
+    // To update each name alone
+    // and assign each text Input
+    // for its component 
+    person.name = e.target.value;
+    const persons = [...this.state.people];
+    persons[perosnIndex] = person;
+
+    this.setState({ people: persons });
   }
 
   // const switchNameHandler = () => {
@@ -102,6 +108,7 @@ class App extends Component {
               age={person.age}
               click={() => this.deleteHandler(index)}
               key={person.id}
+              txtInput={(e) => this.nameChangeHandler(e, person.id)}
             />
           })}
         </div>
