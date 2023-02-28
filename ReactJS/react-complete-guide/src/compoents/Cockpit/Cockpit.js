@@ -4,11 +4,12 @@ import './Cockpit.css';
 const Cockpit = (props) => {
     useEffect(() => {
         console.log("[Cockpit.js] useeffect")
-        setTimeout(() => {
-            alert('Saved data to cloud!');
+        const timer = setTimeout(() => {
+             alert('Saved data to cloud!');
         }, 1000);
         // CleanUp in UseEffect
         return () => {
+            clearTimeout(timer);
             console.log('[cockpit.js] cleanup work in useEffect')
         }
     }, []);
@@ -18,7 +19,7 @@ const Cockpit = (props) => {
         return () => {
             console.log('[cockpit.js] cleanup work in 2nd useEffect')
         }
-    }, []);
+    });
 
     // To display dynamic style and red and bord 
     // are css style in the App.css
