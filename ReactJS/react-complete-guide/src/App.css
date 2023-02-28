@@ -4,8 +4,30 @@
 
 .red {
   color: red;
-  }
+}
 
-.bold{
+.bold {
   font-weight: bold;
+}
+
+.button {
+  background-color: green;
+  color: white;
+  font: sans-serif;
+  border: 1px solid blue;
+  padding: 8px;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: lightgreen;
+  color: black;
+}
+
+.button.Red {
+  background-color: Red;
+}
+
+.button.Red:hover {
+  background-color: salmon;
 }

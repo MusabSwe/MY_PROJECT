@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import styled from 'styled-components';
+// import styled from 'styled-components';
 import Person from './Person/Person';
 // function App() {
 //   return (
@@ -9,21 +9,21 @@ import Person from './Person/Person';
 //     </div>
 //   );
 // }
-const StyledButton = styled.button`
-      // Regular CSS
-      background-color: ${props => props.dyn ? "red": "green"};
-      color: white;
-      font: sans-serif;
-      border: 1px solid blue;
-      padding: 8px;
-      cursor: pointer;
+// const StyledButton = styled.button`
+//       // Regular CSS
+//       background-color: ${props => props.dyn ? "red": "green"};
+//       color: white;
+//       font: sans-serif;
+//       border: 1px solid blue;
+//       padding: 8px;
+//       cursor: pointer;
 
-      // we add & to tell style this hover belong to the button 
-      &:hover {
-        background-color: ${props => props.dyn ? "salmon": "lightgreen"};
-        color: black;
-      }
-`;
+//       // we add & to tell style this hover belong to the button 
+//       &:hover {
+//         background-color: ${props => props.dyn ? "salmon": "lightgreen"};
+//         color: black;
+//       }
+// `;
 
 class App extends Component {
   // state & this setState are from Component class
@@ -153,7 +153,7 @@ class App extends Component {
           only add the refernce switchNameHandler
         */}
         {/* <button onClick={this.switchNameHandler.bind(this, 'Maximilian')}>Switch Name</button> */}
-        <StyledButton dyn={this.state.showPeople} onClick={this.togglePeopleHandler}>Toggle People</StyledButton>
+        <button className='button' onClick={this.togglePeopleHandler}>Toggle People</button>
         {people}
       </div>
 
