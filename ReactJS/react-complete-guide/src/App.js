@@ -11,7 +11,7 @@ import Person from './Person/Person';
 // }
 const StyledButton = styled.button`
       // Regular CSS
-      background-color: green;
+      background-color: ${props => props.dyn ? "red": "green"};
       color: white;
       font: sans-serif;
       border: 1px solid blue;
@@ -20,7 +20,7 @@ const StyledButton = styled.button`
 
       // we add & to tell style this hover belong to the button 
       &:hover {
-        background-color: lightgreen;
+        background-color: ${props => props.dyn ? "salmon": "lightgreen"};
         color: black;
       }
 `;
@@ -153,7 +153,7 @@ class App extends Component {
           only add the refernce switchNameHandler
         */}
         {/* <button onClick={this.switchNameHandler.bind(this, 'Maximilian')}>Switch Name</button> */}
-        <StyledButton onClick={this.togglePeopleHandler}>Toggle People</StyledButton>
+        <StyledButton dyn={this.state.showPeople} onClick={this.togglePeopleHandler}>Toggle People</StyledButton>
         {people}
       </div>
 
