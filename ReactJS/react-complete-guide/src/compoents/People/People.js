@@ -1,21 +1,43 @@
-import React from "react"
+import React, { Component } from "react"
 import Person from "./Person/Person"
 
 // Note if the function will return JSX
 // make sure put Parentheses () not curly brackets {}
-const people = (props) => {
-    console.log('[People.js] render');
-    return props.people.map((person, index) => {
-        return (
-            <Person
-            name={person.name}
-            age={person.age}
-            click={() => props.clicked(index)}
-            txtInput={(e) => props.changed(e, person.id)}
-            key={person.id}
-        />
-        );
-    });
+class people extends Component {
+    // static getDerivedStateFromProps(props, state) {
+    //     console.log('[People.js] getDerivedStateFromProps');
+    //     return state;
+    // }
+
+    shouldComponentUpdate(nextProps, nextState) {
+        console.log('[People.js] shouldComponentUpdate')
+        return true;
+    }
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        console.log('[People.js] componentDidUpdate')
+        console.log(snapshot);
+
+    }
+    getSnapshotBeforeUpdate(prevProps, prevState) {
+
+        console.log('[People.js] getSnapshotBeforeUpdate');
+        return { message: "snapshot!" };
+    }
+
+    render() {
+        console.log('[People.js] render');
+        return this.props.people.map((person, index) => {
+            return (
+                <Person
+                    name={person.name}
+                    age={person.age}
+                    click={() => this.props.clicked(index)}
+                    txtInput={(e) => this.props.changed(e, person.id)}
+                    key={person.id}
+                />
+            );
+        });
+    }
 }
 
 export default people
