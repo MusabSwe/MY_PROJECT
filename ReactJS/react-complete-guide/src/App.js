@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+import styled from 'styled-components';
 import Person from './Person/Person';
 // function App() {
 //   return (
@@ -8,6 +9,21 @@ import Person from './Person/Person';
 //     </div>
 //   );
 // }
+const StyledButton = styled.button`
+      // Regular CSS
+      background-color: green;
+      color: white;
+      font: sans-serif;
+      border: 1px solid blue;
+      padding: 8px;
+      cursor: pointer;
+
+      // we add & to tell style this hover belong to the button 
+      &:hover {
+        background-color: lightgreen;
+        color: black;
+      }
+`;
 
 class App extends Component {
   // state & this setState are from Component class
@@ -114,7 +130,7 @@ class App extends Component {
         </div>
       );
       style.backgroundColor = "red ";
-    
+
     }
 
     // To display dynamic style and red and bord 
@@ -127,22 +143,20 @@ class App extends Component {
       classes.push('bold');
     }
     return (
-        <div className='App'>
-          <h1>Hi, I'm a react App</h1>
-          <p className={classes.join(' ')}>This is really working!</p>
+      <div className='App'>
+        <h1>Hi, I'm a react App</h1>
+        <p className={classes.join(' ')}>This is really working!</p>
 
-          {/* 
+        {/* 
           Do not add pranthesis switchNameHandler() --> as a result, 
           the method will invoke when we run the app only
           only add the refernce switchNameHandler
         */}
-          {/* <button onClick={this.switchNameHandler.bind(this, 'Maximilian')}>Switch Name</button> */}
-          <button
-            style={style}
-            onClick={this.togglePeopleHandler}>Toggle People</button>
-          {people}
-        </div>
-      
+        {/* <button onClick={this.switchNameHandler.bind(this, 'Maximilian')}>Switch Name</button> */}
+        <StyledButton onClick={this.togglePeopleHandler}>Toggle People</StyledButton>
+        {people}
+      </div>
+
     );
   }
 }
