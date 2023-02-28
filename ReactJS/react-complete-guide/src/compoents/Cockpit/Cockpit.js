@@ -1,7 +1,24 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './Cockpit.css';
 
-const cockpit = (props) => {
+const Cockpit = (props) => {
+    useEffect(() => {
+        console.log("[Cockpit.js] useeffect")
+        setTimeout(() => {
+            alert('Saved data to cloud!');
+        }, 1000);
+        // CleanUp in UseEffect
+        return () => {
+            console.log('[cockpit.js] cleanup work in useEffect')
+        }
+    }, []);
+
+    useEffect(() => {
+        console.log("[Cockpit.js] 2nd useeffect")
+        return () => {
+            console.log('[cockpit.js] cleanup work in 2nd useEffect')
+        }
+    }, []);
 
     // To display dynamic style and red and bord 
     // are css style in the App.css
@@ -21,4 +38,4 @@ const cockpit = (props) => {
         </div>
     )
 }
-export default cockpit;
+export default Cockpit;

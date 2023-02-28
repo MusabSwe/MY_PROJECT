@@ -16,7 +16,8 @@ class App extends Component {
       { id: 2, name: 'Ali', age: 18 },
       { id: 3, name: 'Ahmed', age: 48 }
     ],
-    showPeople: false
+    showPeople: false,
+    showCockpit: true
   }
   // Methods unlike const handler in the function
   switchNameHandler = (newName) => {
@@ -96,11 +97,13 @@ class App extends Component {
 
     return (
       <div className='App'>
-        <Cockpit
+        <button onClick={(e) => { this.setState({ showCockpit: false }) }}>Remove Cockpit</button>
+        {this.state.showCockpit ? <Cockpit
           title={this.props.appTitle}
           people={this.state.people}
           clicked={this.togglePeopleHandler}
-        />
+        /> : null
+        }
         {people}
       </div>
     );
