@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 // import styled from 'styled-components';
-import Person from './Person/Person';
-import ErrorBoundary from './ErrorBoundary/ErrorBoundary';
+import Person from '../compoents/Pearsons/Person/Person';
 
 // function App() {
 //   return (
@@ -121,13 +120,13 @@ class App extends Component {
         // JSX
         <div>
           {this.state.people.map((person, index) => {
-            return <ErrorBoundary key={person.id}> <Person
+            return <Person
               name={person.name}
               age={person.age}
               click={() => this.deleteHandler(index)}
               txtInput={(e) => this.nameChangeHandler(e, person.id)}
+              key={person.id}
             />
-            </ErrorBoundary>
           })}
         </div>
       );
