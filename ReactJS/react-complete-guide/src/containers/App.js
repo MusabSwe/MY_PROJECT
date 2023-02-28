@@ -5,8 +5,6 @@ import Cockpit from '../compoents/Cockpit/Cockpit';
 
 
 class App extends Component {
-
-
   state = {
     people: [
       { id: 1, name: 'Jaber', age: 28 },
@@ -82,7 +80,11 @@ class App extends Component {
 
     return (
       <div className='App'>
-        <Cockpit people={this.state.people} clicked={() => this.togglePeopleHandler()} />
+        <Cockpit
+          title={this.props.appTitle}
+          people={this.state.people}
+          clicked={this.togglePeopleHandler}
+        />
         {people}
       </div>
     );
