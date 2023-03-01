@@ -60,17 +60,16 @@ class App extends Component {
 
     this.setState((prevstate, props) => {
       return {
-        people: persons, 
-        changeCounter: prevstate.changeCounter + 1
+        people: persons, changeCounter: prevstate.changeCounter + 1
       };
     });
   }
-
 
   togglePeopleHandler = () => {
     const doesShow = this.state.showPeople;
     this.setState({ showPeople: !doesShow });
   }
+
 
   deleteHandler = (personIndex) => {
     // Immutable Way
@@ -106,7 +105,7 @@ class App extends Component {
     }
 
     return (
-      <Auxilry >
+      <Auxilry>
         <button onClick={(e) => { this.setState({ showCockpit: false }) }}>Remove Cockpit</button>
         {this.state.showCockpit ? <Cockpit
           title={this.props.appTitle}
