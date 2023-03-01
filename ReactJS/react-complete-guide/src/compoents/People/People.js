@@ -9,12 +9,16 @@ class people extends Component {
     //     return state;
     // }
 
+    // used for performance improvement
+    // when we run shouldComponentUpdate 
+    // only run the props have changed not refresing all DOM
+    // as a result will have a higher performance
     shouldComponentUpdate(nextProps, nextState) {
         console.log('[People.js] shouldComponentUpdate')
-        if (nextProps.people !== this.props.people) {
-            return true;
-        } else {
-            return false;
+        if(nextProps.people !== this.props.people) {
+            return true ;
+        } else{
+            return  false;
         }
 
     }
