@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import appStyle from './App.module.css';
 import People from '../compoents/People/People';
 import Cockpit from '../compoents/Cockpit/Cockpit';
-
+import WithClass from '../HOC/WithClass';
 
 class App extends Component {
 
@@ -93,11 +93,11 @@ class App extends Component {
           />
         </div>
       );
-      
+
     }
 
     return (
-      <div className={appStyle.App}>
+      <WithClass styles={appStyle.App}>
         <button onClick={(e) => { this.setState({ showCockpit: false }) }}>Remove Cockpit</button>
         {this.state.showCockpit ? <Cockpit
           title={this.props.appTitle}
@@ -107,7 +107,7 @@ class App extends Component {
         /> : null
         }
         {people}
-      </div>
+      </WithClass>
     );
   }
 }

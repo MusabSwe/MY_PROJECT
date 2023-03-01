@@ -12,13 +12,13 @@ class person extends Component {
         // and separate each element by comma and assign for each elemnt a key
 
         return (
-            // <div className={style.Person} >
-            <Auxilry>
+            <div className={style.Person} >
+                {/* // <Auxilry> */}
                 <p key="l1" onClick={this.props.click}> I'm {this.props.name}, and I'm {this.props.age} years old</p>
                 <p key="l2" >{this.props.children}</p>
                 <input key="l3" type="text" onChange={this.props.txtInput} />
-            </Auxilry>
-            // </div 
+                {/* </Auxilry> */}
+            </div>
         )
     }
 }
