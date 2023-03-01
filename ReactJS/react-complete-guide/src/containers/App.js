@@ -2,7 +2,10 @@ import React, { Component } from 'react';
 import appStyle from './App.module.css';
 import People from '../compoents/People/People';
 import Cockpit from '../compoents/Cockpit/Cockpit';
-import WithClass from '../HOC/WithClass';
+// import WithClass from '../HOC/WithClass';
+import wrapper from '../HOC/wrapper';
+import Auxilry from '../HOC/Auxilry';
+
 
 class App extends Component {
 
@@ -97,7 +100,7 @@ class App extends Component {
     }
 
     return (
-      <WithClass styles={appStyle.App}>
+      <Auxilry >
         <button onClick={(e) => { this.setState({ showCockpit: false }) }}>Remove Cockpit</button>
         {this.state.showCockpit ? <Cockpit
           title={this.props.appTitle}
@@ -107,9 +110,9 @@ class App extends Component {
         /> : null
         }
         {people}
-      </WithClass>
+      </Auxilry>
     );
   }
 }
 // Radium(App) called higher order component 
-export default App;
+export default wrapper(App, appStyle.App);
