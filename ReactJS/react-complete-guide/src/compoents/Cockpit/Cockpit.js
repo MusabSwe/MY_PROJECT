@@ -24,10 +24,10 @@ const Cockpit = (props) => {
     // To display dynamic style and red and bord 
     // are css style in the App.css
     const classes = [];
-    if (props.people.length <= 2) {
+    if (props.peopleLength <= 2) {
         classes.push('red');
     }
-    if (props.people.length <= 1) {
+    if (props.peopleLength <= 1) {
         classes.push('bold');
     }
 
@@ -39,4 +39,4 @@ const Cockpit = (props) => {
         </div>
     )
 }
-export default Cockpit;
+export default React.memo(Cockpit);
