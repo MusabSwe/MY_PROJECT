@@ -1,6 +1,5 @@
 import React, { PureComponent } from "react"
 import Person from "./Person/Person"
-
 // Note if the function will return JSX
 // make sure put Parentheses () not curly brackets {}
 class people extends PureComponent {
@@ -41,7 +40,7 @@ class people extends PureComponent {
 
     render() {
         console.log('[People.js] render');
-        return this.props.people.map((person, index) => {
+        return (this.props.people.map((person, index) => {
             return (
                 <Person
                     IsAuth={this.props.IsAuthenticated}
@@ -50,10 +49,10 @@ class people extends PureComponent {
                     click={() => this.props.clicked(index)}
                     txtInput={(e) => this.props.changed(e, person.id)}
                     key={person.id}
-
                 />
             );
-        });
+        })
+        );
     }
 }
 

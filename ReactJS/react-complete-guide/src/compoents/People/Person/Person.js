@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import Auxilry from "../../../HOC/Auxilry";
 import wrapper from "../../../HOC/wrapper";
 import propTypes from 'prop-types';
-
+import AuthContext from "../../../context/auth-context";
 class person extends Component {
     constructor(props) {
         super(props);
@@ -20,7 +20,9 @@ class person extends Component {
 
         return (
             <Auxilry>
-                {this.props.IsAuth ? <p>Authenticated</p> : <p>Please log in</p>}
+                <AuthContext.Consumer>
+                    {(context) => context.authenticated? <p>Authenticated</p> : <p>Please log in</p>}
+                </AuthContext.Consumer>
                 <p key="l1" onClick={this.props.click}> I'm {this.props.name}, and I'm {this.props.age} years old</p>
                 <p key="l2" >{this.props.children}</p>
                 <input

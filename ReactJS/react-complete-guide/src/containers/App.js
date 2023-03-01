@@ -5,7 +5,7 @@ import Cockpit from '../compoents/Cockpit/Cockpit';
 // import WithClass from '../HOC/WithClass';
 import wrapper from '../HOC/wrapper';
 import Auxilry from '../HOC/Auxilry';
-
+import AuthContext from '../context/auth-context';
 
 class App extends Component {
 
@@ -111,18 +111,20 @@ class App extends Component {
 
     return (
       <Auxilry>
-        
+
         <button onClick={(e) => { this.setState({ showCockpit: false }) }}>Remove Cockpit</button>
-        {this.state.showCockpit ?
-          <Cockpit
-            title={this.props.appTitle}
-            peopleLength={this.state.people.length}
-            clicked={this.togglePeopleHandler}
-            showPeople={this.state.showPeople}
-            login={this.loginHandler}
-          /> : null
-        }
-        {people}
+        <AuthContext.Provider value={{ authenticated: this.state.authenticated, login: this.loginHandler }}>
+          {this.state.showCockpit ?
+            <Cockpit
+              title={this.props.appTitle}
+              peopleLength={this.state.people.length}
+              clicked={this.togglePeopleHandler}
+              showPeople={this.state.showPeople}
+            /> : null
+          }
+
+          {people}
+        </AuthContext.Provider>
       </Auxilry>
     );
   }
