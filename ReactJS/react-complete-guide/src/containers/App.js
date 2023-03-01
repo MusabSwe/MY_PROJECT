@@ -20,7 +20,8 @@ class App extends Component {
       { id: 3, name: 'Ahmed', age: 48 }
     ],
     showPeople: false,
-    showCockpit: true
+    showCockpit: true,
+    changeCounter: 0
   }
   // Methods unlike const handler in the function
   switchNameHandler = (newName) => {
@@ -57,7 +58,12 @@ class App extends Component {
     const persons = [...this.state.people];
     persons[perosnIndex] = person;
 
-    this.setState({ people: persons });
+    this.setState((prevstate, props) => {
+      return {
+        people: persons, 
+        changeCounter: prevstate.changeCounter + 1
+      };
+    });
   }
 
 
