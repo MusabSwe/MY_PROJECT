@@ -1,9 +1,9 @@
-import React, { Component } from "react"
+import React, { PureComponent } from "react"
 import Person from "./Person/Person"
 
 // Note if the function will return JSX
 // make sure put Parentheses () not curly brackets {}
-class people extends Component {
+class people extends PureComponent {
     // static getDerivedStateFromProps(props, state) {
     //     console.log('[People.js] getDerivedStateFromProps');
     //     return state;
@@ -13,15 +13,21 @@ class people extends Component {
     // when we run shouldComponentUpdate 
     // only run the props have changed not refresing all DOM
     // as a result will have a higher performance
-    shouldComponentUpdate(nextProps, nextState) {
-        console.log('[People.js] shouldComponentUpdate')
-        if(nextProps.people !== this.props.people) {
-            return true ;
-        } else{
-            return  false;
-        }
+    // shouldComponentUpdate(nextProps, nextState) {
+    //     console.log('[People.js] shouldComponentUpdate')
+    //     // check used for optimization
+    //     // but if you return true without 
+    //     // checking all the props of will refresh
+    //     // so will result bad performance
+    //     if (nextProps.people !== this.props.people
+    //         || nextProps.changed !== this.props.changed
+    //         || nextProps.clicked !== this.props.clicked) {
+    //         return true;
+    //     } else {
+    //         return false;
+    //     }
+    // }
 
-    }
     componentDidUpdate(prevProps, prevState, snapshot) {
         console.log('[People.js] componentDidUpdate')
         console.log(snapshot);
