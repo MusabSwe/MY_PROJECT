@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './App.css';
+import appStyle from './App.module.css';
 import People from '../compoents/People/People';
 import Cockpit from '../compoents/Cockpit/Cockpit';
 
@@ -93,15 +93,17 @@ class App extends Component {
           />
         </div>
       );
+      
     }
 
     return (
-      <div className='App'>
+      <div className={appStyle.App}>
         <button onClick={(e) => { this.setState({ showCockpit: false }) }}>Remove Cockpit</button>
         {this.state.showCockpit ? <Cockpit
           title={this.props.appTitle}
           peopleLength={this.state.people.length}
           clicked={this.togglePeopleHandler}
+          showPeople={this.state.showPeople}
         /> : null
         }
         {people}

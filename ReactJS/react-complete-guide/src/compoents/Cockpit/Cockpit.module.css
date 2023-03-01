@@ -20,10 +20,16 @@
     color: black;
 }
 
-.button.Red {
+.buttonRed {
     background-color: Red;
+    color: white;
+    font: sans-serif;
+    border: 1px solid blue;
+    padding: 8px;
+    cursor: pointer;
 }
 
-.button.Red:hover {
+.buttonRed:hover {
     background-color: salmon;
+    color: black;
 }

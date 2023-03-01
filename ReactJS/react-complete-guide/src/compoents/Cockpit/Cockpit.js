@@ -1,11 +1,12 @@
-import React, { useEffect } from 'react';
-import './Cockpit.css';
+import React, { useEffect, useState } from 'react';
+import cockpitStyle from './Cockpit.module.css';
 
 const Cockpit = (props) => {
+
     useEffect(() => {
         console.log("[Cockpit.js] useeffect")
         const timer = setTimeout(() => {
-             alert('Saved data to cloud!');
+            alert('Saved data to cloud!');
         }, 1000);
         // CleanUp in UseEffect
         return () => {
@@ -30,12 +31,17 @@ const Cockpit = (props) => {
     if (props.peopleLength <= 1) {
         classes.push('bold');
     }
+    // dynmic button
+    let btnstyle = cockpitStyle.button;
 
+    if (props.showPeople) {
+        btnstyle = cockpitStyle.buttonRed;
+    }
     return (
         <div>
             <h1>{props.title}</h1>
             <p className={classes.join(' ')}>This is really working!</p>
-            <button className='button' onClick={props.clicked}>Toggle People</button>
+            <button className={btnstyle} onClick={props.clicked} >Toggle People</button>
         </div>
     )
 }
