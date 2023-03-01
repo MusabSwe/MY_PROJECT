@@ -9,10 +9,13 @@ class person extends Component {
         super(props);
         this.inputElement = React.createRef();
     }
+    static contextType = AuthContext;
+
     componentDidMount() {
         this.inputElement.current.focus();
-
+        console.log(this.context.authenticated)
     }
+
     render() {
         console.log("[Person.js] render")
         // Redndering adjacent JSX by enclose them by square brakets []
@@ -20,9 +23,7 @@ class person extends Component {
 
         return (
             <Auxilry>
-                <AuthContext.Consumer>
-                    {(context) => context.authenticated? <p>Authenticated</p> : <p>Please log in</p>}
-                </AuthContext.Consumer>
+                {this.context.authenticated ? <p>Authenticated</p> : <p>Please log in</p>}
                 <p key="l1" onClick={this.props.click}> I'm {this.props.name}, and I'm {this.props.age} years old</p>
                 <p key="l2" >{this.props.children}</p>
                 <input
