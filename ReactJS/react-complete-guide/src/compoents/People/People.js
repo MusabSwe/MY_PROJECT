@@ -44,11 +44,13 @@ class people extends PureComponent {
         return this.props.people.map((person, index) => {
             return (
                 <Person
+                    IsAuth={this.props.IsAuthenticated}
                     name={person.name}
                     age={person.age}
                     click={() => this.props.clicked(index)}
                     txtInput={(e) => this.props.changed(e, person.id)}
                     key={person.id}
+
                 />
             );
         });

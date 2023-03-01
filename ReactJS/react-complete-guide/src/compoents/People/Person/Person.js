@@ -11,7 +11,7 @@ class person extends Component {
     }
     componentDidMount() {
         this.inputElement.current.focus();
-        
+
     }
     render() {
         console.log("[Person.js] render")
@@ -20,7 +20,7 @@ class person extends Component {
 
         return (
             <Auxilry>
-                {/* // <Auxilry> */}
+                {this.props.IsAuth ? <p>Authenticated</p> : <p>Please log in</p>}
                 <p key="l1" onClick={this.props.click}> I'm {this.props.name}, and I'm {this.props.age} years old</p>
                 <p key="l2" >{this.props.children}</p>
                 <input
@@ -30,7 +30,6 @@ class person extends Component {
                     type="text"
                     onChange={this.props.txtInput}
                 />
-                {/* </Auxilry> */}
             </Auxilry>
         )
     }

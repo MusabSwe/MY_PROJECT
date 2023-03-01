@@ -21,7 +21,8 @@ class App extends Component {
     ],
     showPeople: false,
     showCockpit: true,
-    changeCounter: 0
+    changeCounter: 0,
+    authenticated: false
   }
   // Methods unlike const handler in the function
   switchNameHandler = (newName) => {
@@ -35,6 +36,10 @@ class App extends Component {
     })
   }
 
+  loginHandler = () => {
+    this.setState({ authenticated: true });
+  };
+
   static getDerivedStateFromProps(props, state) {
     console.log('[App.js] getDerivedStateFromProps', props);
     return state;
@@ -43,7 +48,6 @@ class App extends Component {
     console.log("[App.js] componentDidMount");
   }
 
-  compo
 
   // To see which element change
   nameChangeHandler = (e, id) => {
@@ -98,6 +102,7 @@ class App extends Component {
             people={this.state.people}
             clicked={this.deleteHandler}
             changed={this.nameChangeHandler}
+            IsAuthenticated={this.state.authenticated}
           />
         </div>
       );
@@ -106,13 +111,16 @@ class App extends Component {
 
     return (
       <Auxilry>
+        
         <button onClick={(e) => { this.setState({ showCockpit: false }) }}>Remove Cockpit</button>
-        {this.state.showCockpit ? <Cockpit
-          title={this.props.appTitle}
-          peopleLength={this.state.people.length}
-          clicked={this.togglePeopleHandler}
-          showPeople={this.state.showPeople}
-        /> : null
+        {this.state.showCockpit ?
+          <Cockpit
+            title={this.props.appTitle}
+            peopleLength={this.state.people.length}
+            clicked={this.togglePeopleHandler}
+            showPeople={this.state.showPeople}
+            login={this.loginHandler}
+          /> : null
         }
         {people}
       </Auxilry>
