@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import List from './List'
 import Alert from './Alert'
 
@@ -32,7 +32,7 @@ function App() {
       // 
       setName('');// remove input name from input after edit note
       setIsEditing(false); // toggle button to add note
-      setEditId(null); 
+      setEditId(null);
       showAlert(true, 'success', 'Note updated');
 
 
