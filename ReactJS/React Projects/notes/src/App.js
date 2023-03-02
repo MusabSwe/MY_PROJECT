@@ -29,9 +29,10 @@ function App() {
         }
         return n;
       }))
-      setName('');
-      setIsEditing(false);
-      setEditId(null);
+      // 
+      setName('');// remove input name from input after edit note
+      setIsEditing(false); // toggle button to add note
+      setEditId(null); 
       showAlert(true, 'success', 'Note updated');
 
 
