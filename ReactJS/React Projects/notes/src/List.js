@@ -3,7 +3,7 @@ import { FaEdit, FaTrash } from 'react-icons/fa'
 const List = (props) => {
     return (
         <div className='note-list'>
-            {props.notes.map((item) => {
+            {props.notes && props.notes?.map((item) => {
                 const { id, note } = item;
                 return <article key={id} className='note-item'>
                     <p className='title'>{note}</p>
