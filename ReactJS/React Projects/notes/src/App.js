@@ -9,14 +9,20 @@ function App() {
   const [editId, setEditId] = useState(null);
   const [alert, setAlert] = useState({
     isShow: false,
-    alertMsg: '',
-    type: '' // remove or added
+    type: '', // alert of remove or added
+    alertMsg: ''
   });
   // to display alert messages
   const handleSubmit = (e) => {
     e.preventDefault();
     if (name === '') {
       // Display alert
+      showAlert(true, 'danger', 'Please enter a note');
+      setTimeout(() => {
+        showAlert(false, '', '');
+      }, 3000)
+      
+
     } else if (name && isEditing) {
       // edit
 
@@ -28,10 +34,15 @@ function App() {
     }
 
   }
+
+  const showAlert = (isShow = false, type = '', alertMsg = "") => {
+    setAlert({ isShow, type, alertMsg })
+  }
+
   return (
     <section className='section-center'>
       <form className='note-form' onSubmit={handleSubmit}>
-        {alert.isShow && <Alert />}
+        {alert.isShow && <Alert {...alert} />}
         <h3>Notes List</h3>
         <div className='form-control'>
           <input type="text" className='note'
