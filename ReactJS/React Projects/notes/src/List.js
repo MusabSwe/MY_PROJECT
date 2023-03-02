@@ -8,7 +8,7 @@ const List = (props) => {
                 return <article key={id} className='note-item'>
                     <p className='title'>{note}</p>
                     <div className='btn-container'>
-                        <button type='button' className='edit-btn'><FaEdit /></button>
+                        <button type='button' className='edit-btn' onClick={() => props.editNote(id)}><FaEdit /></button>
                         <button type='button' className='delete-btn' onClick={() => props.removeNote(id)}><FaTrash /></button>
                     </div>
                 </article>
