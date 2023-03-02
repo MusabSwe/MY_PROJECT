@@ -33,8 +33,13 @@ function App() {
 
   }
 
+  const clearList = () => {
+    showAlert(true, 'danger', 'empty list');
+  }
+
   const showAlert = (isShow = false, type = '', alertMsg = "") => {
     setAlert({ isShow, type, alertMsg })
+    setList([]);
   }
 
   return (
@@ -53,7 +58,7 @@ function App() {
       {list.length > 0 && (
         <div className='note-container'>
           <List notes={list} />
-          <button className='clear-btn'>Clear items</button>
+          <button onClick={clearList} className='clear-btn'>Clear items</button>
         </div>
       )}
 
