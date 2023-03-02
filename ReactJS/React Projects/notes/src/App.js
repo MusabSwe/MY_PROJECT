@@ -32,20 +32,24 @@ function App() {
     }
 
   }
+  const showAlert = (isShow = false, type = '', alertMsg = "") => {
+    setAlert({ isShow, type, alertMsg })
+  }
 
   const clearList = () => {
     showAlert(true, 'danger', 'empty list');
+    setList([]);
   }
 
-  const showAlert = (isShow = false, type = '', alertMsg = "") => {
-    setAlert({ isShow, type, alertMsg })
-    setList([]);
+  const removeNote = (id) => {
+    showAlert(true, 'danger', 'Note removed');
+    setList(list.filter((n) => n.id !== id))
   }
 
   return (
     <section className='section-center'>
       <form className='note-form' onSubmit={handleSubmit}>
-        {alert.isShow && <Alert {...alert} removeAlert={showAlert} />}
+        {alert.isShow && <Alert {...alert} removeAlert={showAlert} list={list} />}
         <h3>Notes List</h3>
         <div className='form-control'>
           <input type="text" className='note'
@@ -57,7 +61,7 @@ function App() {
       </form>
       {list.length > 0 && (
         <div className='note-container'>
-          <List notes={list} />
+          <List notes={list} removeNote={removeNote} />
           <button onClick={clearList} className='clear-btn'>Clear items</button>
         </div>
       )}
