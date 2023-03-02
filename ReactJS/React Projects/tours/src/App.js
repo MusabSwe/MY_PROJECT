@@ -8,6 +8,28 @@ function App() {
   const [isLoading, setIsLoading] = useState(true);
   const [tours, setTours] = useState([]);
 
+  // fetch Tours json file
+  const fetchTours = async () => {
+
+    setIsLoading(true);
+    try {
+      const res = await fetch(url);
+      const tours = await res.json();
+      setIsLoading(false);
+      setTours(tours);
+      console.log(tours);
+    } catch (e) {
+      setIsLoading(false);
+      console.log(e)
+    }
+
+  }
+  // fetch data
+  useEffect(() => {
+    fetchTours();
+  }, [url]);
+
+  //Invoke loading during fetching Tours json file 
   if (isLoading) {
     return (
       <main>
@@ -17,7 +39,7 @@ function App() {
   }
   return (
     <main>
-      <Tours />
+      <Tours tours={tours} />
     </main>
   )
 }
