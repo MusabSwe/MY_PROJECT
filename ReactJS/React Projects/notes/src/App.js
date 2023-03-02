@@ -5,16 +5,28 @@ import Alert from './Alert'
 function App() {
   const [name, setName] = useState('');
   const [list, setList] = useState([]);
-  const [isEditing, setIsEditing] = useState(false);
+  const [isEditing, setIsEditing] = useState(false); // to switch between add a note and edit a note
   const [editId, setEditId] = useState(null);
   const [alert, setAlert] = useState({
     isShow: false,
     alertMsg: '',
     type: '' // remove or added
   });
+  // to display alert messages
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("form action!");
+    if (name === '') {
+      // Display alert
+    } else if (name && isEditing) {
+      // edit
+
+    } else {
+      // add a note
+      const newNote = { id: new Date().getTime().toString(), note: name };
+      setList([...list, newNote]);
+      setName('');
+    }
+
   }
   return (
     <section className='section-center'>
@@ -26,13 +38,16 @@ function App() {
             placeholder='e.g learn a language' value={name}
             onChange={(e) => setName(e.target.value)}
           />
-          <button type='submit' className='submit-btn'>{isEditing ? 'edit' : 'submit'}</button>
+          <button type='submit' className='submit-btn'>{isEditing ? 'edit a note' : 'add a note'}</button>
         </div>
       </form>
-      <div className='note-container'>
-        <List />
-      </div>
-      <button className='clear-btn'>Clear items</button>
+      {list.length > 0 && (
+        <div className='note-container'>
+          <List notes={list} />
+          <button className='clear-btn'>Clear items</button>
+        </div>
+      )}
+
     </section>
   )
 }

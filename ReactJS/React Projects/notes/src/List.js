@@ -1,7 +1,20 @@
 import React from 'react'
 import { FaEdit, FaTrash } from 'react-icons/fa'
-const List = () => {
-    return <h2>list component</h2>
+const List = (props) => {
+    return (
+        <div className='note-list'>
+            {props.notes.map((item) => {
+                const { id, note } = item;
+                return <article key={id} className='note-item'>
+                    <p className='title'>{note}</p>
+                    <div className='btn-container'>
+                        <button type='button' className='edit-btn'><FaEdit /></button>
+                        <button type='button' className='delete-btn'><FaTrash /></button>
+                    </div>
+                </article>
+            })}
+        </div>
+    )
 }
 
 export default List
