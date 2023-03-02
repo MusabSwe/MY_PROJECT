@@ -18,16 +18,14 @@ function App() {
     if (name === '') {
       // Display alert
       showAlert(true, 'danger', 'Please enter a note');
-      setTimeout(() => {
-        showAlert(false, '', '');
-      }, 3000)
-      
 
     } else if (name && isEditing) {
       // edit
 
+
     } else {
       // add a note
+      showAlert(true, 'success', 'Note added to the list');
       const newNote = { id: new Date().getTime().toString(), note: name };
       setList([...list, newNote]);
       setName('');
@@ -42,7 +40,7 @@ function App() {
   return (
     <section className='section-center'>
       <form className='note-form' onSubmit={handleSubmit}>
-        {alert.isShow && <Alert {...alert} />}
+        {alert.isShow && <Alert {...alert} removeAlert={showAlert} />}
         <h3>Notes List</h3>
         <div className='form-control'>
           <input type="text" className='note'
