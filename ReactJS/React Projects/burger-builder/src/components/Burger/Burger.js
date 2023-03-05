@@ -5,7 +5,7 @@ const burger = (props) => {
     // using map function since it is an objet
     // so we use Object keys to convert object to arrays
     // console.log("here", props.ingredients);
-    const trasformedIngredients = Object.keys(props.ingredients)
+    let trasformedIngredients = Object.keys(props.ingredients)
         .map(igkey => {
             // To transform string value into array
             // and for each element iterate according to the number
@@ -19,7 +19,18 @@ const burger = (props) => {
             return [...Array(props.ingredients[igkey])].map((_, index) => {
                 return <BurgerIngredient key={igkey + index} type={igkey} />;
             });
-        });
+            // arr --> prev element
+            // el --> current element
+        }).reduce((arr, el) => {
+            // To add all ingrediens in a single value and 
+            // check if burger ingredients are empty or not
+            // if it is empty display a message
+            return arr.concat(el);
+        }, []);
+    if (trasformedIngredients.length === 0) {
+        trasformedIngredients = <p>please start adding ingredients!</p>
+    }
+    console.log(trasformedIngredients);
     return (
         <div className={classes.Burger}>
             <BurgerIngredient type="bread-top" />
