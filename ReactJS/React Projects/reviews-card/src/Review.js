@@ -16,6 +16,40 @@ const Review = () => {
   //   }
   // }, [index])
 
+  // To check index at the last index and first index when
+  // we click either previoues or next
+  const checkNumber = (number) => {
+    if (number > people.length - 1) {
+      return 0;
+    }
+    if (number < 0) {
+      return people.length - 1;
+    }
+    return number;
+  }
+
+  // move to the previous person
+  const nextPerson = () => {
+    // console.log(people.length -1);
+    setIndex(() => {
+      let newIndex = index + 1;
+      return checkNumber(newIndex);
+    })
+  }
+  // move to the next person
+  const prePerson = () => {
+    setIndex(() => {
+      let newIndex = index - 1;
+      return checkNumber(newIndex);
+    })
+  }
+
+  const randomPerson = () => {
+    // Random number between 0 - 3
+    let randomIndex = Math.floor(Math.random() * 4);
+    setIndex(randomIndex);
+  }
+
   return (
     <article className='review'>
       <div className='img-container'>
@@ -26,14 +60,14 @@ const Review = () => {
       <p className='job'>{job}</p>
       <p className='info'>{text}</p>
       <div className='button-container'>
-        <button className='prev-btn' >
+        <button className='prev-btn' onClick={prePerson}>
           <FaChevronLeft />
         </button>
-        <button className='next-btn'>
+        <button className='next-btn' onClick={nextPerson}>
           <FaChevronRight />
         </button>
       </div>
-      <button className='random-btn'>suprise me</button>
+      <button className='random-btn' onClick={randomPerson}>suprise me</button>
     </article>
   )
 };
