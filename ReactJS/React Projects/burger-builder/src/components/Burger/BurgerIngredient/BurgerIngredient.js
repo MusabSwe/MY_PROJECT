@@ -1,5 +1,5 @@
 import classes from './BurgerIngredient.module.css';
-import { PropTypes } from 'prop-type';
+import { PropTypes } from 'prop-types';
 const burgerIngredient = (props) => {
     let ingredient = null;
 
@@ -34,6 +34,7 @@ const burgerIngredient = (props) => {
     return ingredient;
 }
 
+// Validation for the propsTypes
 burgerIngredient.PropTypes = {
     type: PropTypes.string.isRequired,
 };
