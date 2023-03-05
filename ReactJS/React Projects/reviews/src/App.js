@@ -8,20 +8,32 @@ function App() {
 
   // to solve when reach last reveiw 
   // we want to return back to the 1st review 
+  // we use useEffect because to update the dom
+  //  when the index change & people change
   useEffect(() => {
     const lastIndex = people.length - 1;
-    if (index < 0) {
-      setIndex(0);
+    if (index < 0) {// negative means the index go to last review
+      setIndex(lastIndex);
     }
-    if (index > lastIndex) {
+    if (index > lastIndex) { // if the index > the length of reviews means go to the first review
       setIndex(0);
     }
   }, [index, people]);
 
-  // fix setInterval
-  // useEffect(() => {
-  //   let slider = setIndex(index + 1);
-  // });
+
+  // setInterval when the review slide change
+  // and we use useEffect to set the period everytime the index (review) change 
+  useEffect(() => {
+    let slider = setInterval(() => {
+      // Every 3s review slide change
+      setIndex(index + 1)
+    }, 3000);
+    // called clean up useEffect
+    // To clear the interval when we click on the button
+    // either for the nex or prev slider 
+    return () => clearInterval(slider);
+  }, [index]);
+
   return (
     <section className='section'>
       <div className='title'>
@@ -42,6 +54,7 @@ function App() {
             position = 'lastSlide';
           }
           return (
+            // Review Content
             <article key={person.id} className={position} >
               <img src={person.image} alt={person.name} className='person-img' />
               <h4>{person.name}</h4>
