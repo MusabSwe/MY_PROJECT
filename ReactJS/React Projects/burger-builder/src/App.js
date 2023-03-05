@@ -7,8 +7,8 @@ class App extends Component {
     return (
       <div>
         <Layout>
-          {/* <BurgerBuilder /> */}
-          <Burger />
+          <BurgerBuilder />
+          {/* <Burger /> */}
         </Layout>
       </div>
     );
