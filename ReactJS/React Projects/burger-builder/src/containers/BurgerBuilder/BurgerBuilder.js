@@ -33,6 +33,8 @@ class BurgerBuilder extends Component {
     addIngredientHandler = (type) => {
         const oldCount = this.state.ingredients[type];
         const updatedCount = oldCount + 1;
+        // Update of states should be done in immutable way
+        // so we use spread operator
         const updateIngredients = {
             ...this.state.ingredients
         };
@@ -44,15 +46,40 @@ class BurgerBuilder extends Component {
     }
 
     removeIngredientHandler = (type) => {
-
+        const oldCount = this.state.ingredients[type];
+        let updatedCount;
+        if (oldCount <= 0) {
+            return;
+        }
+        updatedCount = oldCount - 1;
+        const updateIngredients = {
+            ...this.state.ingredients
+        };
+        updateIngredients[type] = updatedCount;
+        const priceSubtraction = INGREDIENT_PRICES[type];
+        const oldPrice = this.state.totalPrice;
+        const newPrice = oldPrice - priceSubtraction;
+        this.setState({ totalPrice: newPrice, ingredients: updateIngredients });
     }
 
     render() {
         // console.log("Builder", this.state.ingredients);
+        const disabledInfo = {
+            ...this.state.ingredients
+        };
+
+        for (let key in disabledInfo) {
+            disabledInfo[key] = disabledInfo[key] <= 0 // less than or equal zero
+        }
+
         return (
             <Auxiliry>
                 <Burger ingredients={this.state.ingredients} />
-                <BuildControls  ingredientAdded={this.addIngredientHandler} />
+                <BuildControls
+                    ingredientAdded={this.addIngredientHandler}
+                    ingredientRemoved={this.removeIngredientHandler}
+                    disabled={disabledInfo}
+                />
             </Auxiliry>
         );
     }
