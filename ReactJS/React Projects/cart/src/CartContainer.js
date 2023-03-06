@@ -46,4 +46,4 @@ const CartContainer = () => {
     )
 }
 
-export default CartContaine
+export default CartContainer
