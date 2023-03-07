@@ -1,7 +1,7 @@
 import React, { useState, useContext, useEffect } from 'react'
 import { useCallback } from 'react'
 
-const url = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s='
+const url = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?f='
 const AppContext = React.createContext()
 
 const AppProvider = ({ children }) => {
@@ -21,7 +21,7 @@ const AppProvider = ({ children }) => {
             const res = await fetch(`${url}${searchTerm}`);
             const data = await res.json();
             const { drinks } = data;
-            // console.log(drinks);
+            console.log(data);
             if (drinks) { //drinks not null
                 // Display a list of drinks
                 const newDrinks = drinks.map((drink) => {

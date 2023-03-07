@@ -44,6 +44,7 @@ const SingleCocktail = () => {
                         category,
                         glass,
                         instructions,
+                        ingredients,
                     }
                     setCocktail(newCocktail);
                 } else {// not exist
@@ -64,7 +65,7 @@ const SingleCocktail = () => {
         return <h2>no cocktiail to display</h2>
     }
     return (
-        <section>
+        <section className='section cocktail-section' >
             <Link to='/' className='btn btn-primary'>
                 Back Home
             </Link>
