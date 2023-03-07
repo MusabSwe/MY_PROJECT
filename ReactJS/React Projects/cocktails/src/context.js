@@ -10,7 +10,7 @@ const AppProvider = ({ children }) => {
     const [searchTerm, setSearchTerm] = useState('a');
     const [cocktails, setCocktails] = useState([]);
 
-    const fetchDrinks = async () => {
+    const fetchDrinks = useCallback(async () => {
         // during fetch
         // we put it here since we will use it multiple time 
         // when we search
@@ -51,7 +51,7 @@ const AppProvider = ({ children }) => {
             console.log(e);
             setLoading(false);
         }
-    }
+    })
 
     useEffect(() => {
 
