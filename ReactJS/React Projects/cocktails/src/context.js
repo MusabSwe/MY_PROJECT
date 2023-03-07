@@ -21,7 +21,7 @@ const AppProvider = ({ children }) => {
             const res = await fetch(`${url}${searchTerm}`);
             const data = await res.json();
             const { drinks } = data;
-            console.log(drinks);
+            // console.log(drinks);
             if (drinks) { //drinks not null
                 // Display a list of drinks
                 const newDrinks = drinks.map((drink) => {
