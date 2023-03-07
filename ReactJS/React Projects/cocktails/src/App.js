@@ -14,6 +14,7 @@ function App() {
   return (
     <div>
       <Router>
+        {/* Not inside Routes block*/}
         <Navbar />
         {/* We replace Switch by Routes in react-router-dom v6 */}
         <Routes>
