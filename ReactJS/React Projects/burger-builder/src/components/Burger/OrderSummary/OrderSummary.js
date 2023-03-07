@@ -1,5 +1,5 @@
 import Auxiliry from "../../../hoc/Auxiliry";
-
+import Button from "../../../UI/Button/Button";
 const orderSummary = (props) => {
     const ingredientSummary = Object.keys(props.ingredients)
         .map(igKey => {
@@ -19,6 +19,8 @@ const orderSummary = (props) => {
                 {ingredientSummary}
             </ul>
             <p>Continue to checkout</p>
+            <Button btnType="Danger" clicked={props.purchaceCanceled} >CANCEL</Button>
+            <Button btnType="Success" clicked={props.purchaceContinued} >CONTINUE</Button>
         </Auxiliry>
     );
 }
