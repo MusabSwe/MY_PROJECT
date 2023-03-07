@@ -16,17 +16,33 @@ const AppProvider = ({ children }) => {
         // when we search
         setLoading(true);
         try {
+
             // when we search fetch from an API 
             const res = await fetch(`${url}${searchTerm}`);
             const data = await res.json();
             const { drinks } = data;
+            console.log(drinks);
             if (drinks) { //drinks not null
                 // Display a list of drinks
                 const newDrinks = drinks.map((drink) => {
-                    const { idDrink, strDrink, strDrinkThumb, strAlcoholic, strGlass } = drink;
-                    return { id: idDrink, name: strDrink, image: strDrinkThumb, info: strAlcoholic, glass: strGlass }
+                    const
+                        {
+                            idDrink,
+                            strDrink,
+                            strDrinkThumb,
+                            strAlcoholic,
+                            strGlass
+                        } = drink;
+                    return {
+                        id: idDrink,
+                        name: strDrink,
+                        image: strDrinkThumb,
+                        info: strAlcoholic,
+                        glass: strGlass
+                    }
                 })
                 setCocktails(newDrinks)
+
             } else { // drinks = null
                 setCocktails([]);
             }
