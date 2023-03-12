@@ -9,7 +9,7 @@ import axios from 'axios';
 class Blog extends Component {
     state = {
         posts: [],
-        selectedPostId : null,
+        selectedPostId: null,
     }
     // to communicate with a server in a class component 
     componentDidMount() {
@@ -27,7 +27,7 @@ class Blog extends Component {
                 });
                 this.setState({ posts: updatePosts });
                 console.log(res);
-            });
+            }).catch(e => console.log(e));
     }
 
     postSelectedHandler = (id) => {
