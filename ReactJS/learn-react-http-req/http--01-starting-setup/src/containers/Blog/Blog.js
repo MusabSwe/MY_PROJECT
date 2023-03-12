@@ -10,6 +10,7 @@ class Blog extends Component {
     state = {
         posts: [],
         selectedPostId: null,
+        error: false,
     }
     // to communicate with a server in a class component 
     componentDidMount() {
@@ -27,7 +28,10 @@ class Blog extends Component {
                 });
                 this.setState({ posts: updatePosts });
                 console.log(res);
-            }).catch(e => console.log(e));
+            }).catch(e => {
+                console.log(e);
+                this.setState({ error: true })
+            });
     }
 
     postSelectedHandler = (id) => {
@@ -51,8 +55,9 @@ class Blog extends Component {
         })
         return (
             <div>
+
                 <section className="Posts">
-                    {posts}
+                    {this.state.error ? <p>something went wrong</p> :  posts}
                 </section>
                 <section>
                     {/* To pass the selected id in the FullPost component */}
