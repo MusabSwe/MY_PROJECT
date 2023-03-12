@@ -7,7 +7,14 @@ import './Blog.css';
 import axios from 'axios';
 
 class Blog extends Component {
+    // to communicate with a server in a class component 
+    componentDidMount() {
 
+        axios.get('https://jsonplaceholder.typicode.com/posts')
+            .then(res => {
+                console.log(res);
+            });
+    }
     render() {
         return (
             <div>
