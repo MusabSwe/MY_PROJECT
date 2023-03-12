@@ -37,10 +37,14 @@ class Blog extends Component {
     render() {
         const posts = this.state.posts.map(post => {
             return (
+                // Square posts
                 <Post
                     key={post.id}
                     title={post.title}
                     author={post.author}
+                    // when we click on the post
+                    // event listener invoke & receive id 
+                    // and assign it to the state to use it in the differnt location
                     clicked={() => this.postSelectedHandler(post.id)}
                 />
             );
@@ -51,6 +55,7 @@ class Blog extends Component {
                     {posts}
                 </section>
                 <section>
+                    {/* To pass the selected id in the FullPost component */}
                     <FullPost id={this.state.selectedPostId} />
                 </section>
                 <section>
