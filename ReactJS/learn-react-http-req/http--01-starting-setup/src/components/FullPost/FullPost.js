@@ -13,7 +13,7 @@ class FullPost extends Component {
         if (this.props.id) {
             // To avoid infine loop in network section dev tools
             if (!this.state.loadedPost || (this.state.loadedPost && this.props.id !== this.state.loadedPost.id)) {
-                axios.get(`https://jsonplaceholder.typicode.com/posts/` + this.props.id)
+                axios.get(`/posts/` + this.props.id)
                     .then(res => {
                         // console.log(res);
                         this.setState({ loadedPost: res.data })
@@ -23,7 +23,7 @@ class FullPost extends Component {
     }
 
     deleteHandler = () => {
-        axios.delete(`https://jsonplaceholder.typicode.com/posts/` + this.props.id)
+        axios.delete(`/posts/` + this.props.id)
             .then(res => {
                 console.log(res);
             })

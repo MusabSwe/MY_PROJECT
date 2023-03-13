@@ -14,7 +14,7 @@ class Blog extends Component {
     }
     // to communicate with a server in a class component 
     componentDidMount() {
-        axios.get('https://jsonplaceholder.typicode.com/posts')
+        axios.get('/posts')
             .then(res => {
                 // to fetch the first 3 posts since it has huge data and make the 
                 // faster by using pagination 
