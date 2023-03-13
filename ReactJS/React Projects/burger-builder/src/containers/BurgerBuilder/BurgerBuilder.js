@@ -7,6 +7,7 @@ import Modal from '../../UI/Modal/Modal';
 // axios configuration for order not globally defined
 import axios from "../../axios-orders";
 import Spinner from "../../UI/spinner/spinner";
+import WithErrorHandler from "../../withErrorHandler/withErrorHandler";
 
 const INGREDIENT_PRICES = {
     salad: 0.5,
@@ -158,4 +159,4 @@ class BurgerBuilder extends Component {
     }
 }
 
-export default BurgerBuilder;
+export default WithErrorHandler(BurgerBuilder, axios);
