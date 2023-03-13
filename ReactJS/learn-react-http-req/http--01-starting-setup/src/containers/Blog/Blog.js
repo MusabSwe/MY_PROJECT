@@ -55,10 +55,17 @@ class Blog extends Component {
             );
         })
         return (
-            <div>
-
+            <div className='Blog'>
+                <header>
+                    <nav>
+                        <ul>
+                            <li><a href='/'>Home</a></li>
+                            <li><a href='/new-post'>New Post</a></li>
+                        </ul>
+                    </nav>
+                </header>
                 <section className="Posts">
-                    {this.state.error ? <p>something went wrong</p> :  posts}
+                    {this.state.error ? <p>something went wrong</p> : posts}
                 </section>
                 <section>
                     {/* To pass the selected id in the FullPost component */}
