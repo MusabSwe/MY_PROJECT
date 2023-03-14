@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { Component } from 'react';
 import './NewPost.css';
-import { Routes, Route, Navigate } from 'react-router';
+import { Navigate } from 'react-router';
 class NewPost extends Component {
     state = {
         title: '',
@@ -28,8 +28,9 @@ class NewPost extends Component {
     render() {
         return (
             <div className="NewPost">
+                <Navigate to='/posts' replace={true} />
                 {/* Instead of <Redirect to='/'/> */}
-                {this.state.submitted && <Navigate to='/' />}
+                {this.state.submitted && <Navigate to='/' replace={true} />}
                 <h1>Add a Post</h1>
                 <label>Title</label>
                 <input type="text" required value={this.state.title} onChange={(event) => this.setState({ title: event.target.value })} />

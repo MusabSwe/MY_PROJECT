@@ -4,11 +4,12 @@ import Posts from './Posts/Posts';
 import { Routes, Route, NavLink, Navigate } from 'react-router-dom'
 import NewPost from './NewPost/NewPost'
 // import FullPost from './FullPost/FullPost';
-import { withRouter2 } from '../../withRouter2';
 import FullPost from './FullPost/FullPost';
 
 class Blog extends Component {
-
+    state = {
+        auth: false,
+    }
     // to communicate with a server in a class component 
     render() {
         return (
@@ -28,14 +29,14 @@ class Blog extends Component {
                     </nav>
                 </header>
                 <Routes>
-                    <Route path='/posts/:id' element={<FullPost />} />
-                    <Route path='/' element={<Posts />} />
-                    <Route path='/new-post'  element={<NewPost />} />
-                    {/* <Route path='/posts/1' element={<Navigate to='/new-post' />} /> */}
+                    {/* <Route path='/posts/:id' element={<FullPost />} /> */}
+                    {this.state.auth ? <Route path='/new-post' element={<NewPost />} /> : null}
+                    <Route path='/posts' element={<Posts />} />
+                    <Route path='/' element={<Navigate to='/posts' />} />
                 </Routes>
             </div>
         );
     }
 }
 
-export default withRouter2(Blog);
+export default Blog;
