@@ -29,7 +29,7 @@ class Blog extends Component {
                 <Routes>
                     <Route path='/' element={<Posts />} />
                     <Route path='/new-post' element={<NewPost />} />
-                    <Route path='/post/:id' element={<FullPost />} />
+                    <Route path='/posts/:id' element={<FullPost />} />
                 </Routes>
                 {/* <Posts /> */}
             </div>

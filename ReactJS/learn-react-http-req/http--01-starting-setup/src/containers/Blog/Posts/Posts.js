@@ -2,17 +2,16 @@ import axios from "../../../axios";
 import Post from '../../../components/Post/Post'
 import './Posts.css'
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router";
+
+// import { Link } from "react-router-dom";
 const Posts = (props) => {
 
-    // state = {
-    //     posts: [],
-    //     selectedPostId: null,
-    //     error: false,
-    // }
     const [posts, setPosts] = useState([]);
     const [selectedPostId, setSelectedPostId] = useState(null);
     const [error, setError] = useState(false);
+
+    const Navigate = useNavigate();
 
     useEffect(() => {
         axios.get('/posts')
@@ -35,8 +34,10 @@ const Posts = (props) => {
             });
     }, []);
 
+    // listener handler
     const postSelectedHandler = (id) => {
-        setSelectedPostId(id);
+        // setSelectedPostId(id);
+        Navigate('/posts/' + id)
     }
 
     let posts2 = <p style={{ textAlign: 'center' }}>Something went wrong</p>;
@@ -45,16 +46,17 @@ const Posts = (props) => {
         posts2 = posts.map(post => {
             return (
                 // Square posts
-                <Link className="post-card" key={post.id} to={`/post/${post.id}`}>
-                    <Post
-                        title={post.title}
-                        author={post.author}
-                        // when we click on the post
-                        // event listener invoke & receive id 
-                        // and assign it to the state to use it in the differnt location
-                        clicked={() => postSelectedHandler(post.id)}
-                    />
-                </Link>
+                // <Link className="post-card" key={post.id} to={`/post/${post.id}`}>
+                <Post
+                    key={post.id}
+                    title={post.title}
+                    author={post.author}
+                    // when we click on the post
+                    // event listener invoke & receive id 
+                    // and assign it to the state to use it in the differnt location
+                    clicked={() => postSelectedHandler(post.id)}
+                />
+                //{/* </Link> */}
             );
         })
     return (
