@@ -1,4 +1,3 @@
-
 .Blog ul {
     list-style: none;
     margin: 0;
@@ -7,15 +6,23 @@
     display: flex;
     justify-content: center;
 }
+
 .Blog li {
     display: inline-block;
     margin: 20px;
 }
-.Blog a{
-    text-decoration: none;
-    color: black;
-}
 
-.Blog a:hover, .Blog a:active{
+.Blog a:hover,
+.Blog a:active {
     color: #fa923f;
 }
+
+.active {
+    text-decoration: none;
+    color: #fa923f;
+}
+
+.link {
+    text-decoration: none;
+    color: black;
+  }
