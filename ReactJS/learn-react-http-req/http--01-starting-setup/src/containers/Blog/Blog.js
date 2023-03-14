@@ -29,10 +29,11 @@ class Blog extends Component {
                     </nav>
                 </header>
                 <Routes>
-                    {/* <Route path='/posts/:id' element={<FullPost />} /> */}
+                    <Route path='/posts/:id' element={<FullPost />} />
                     {this.state.auth ? <Route path='/new-post' element={<NewPost />} /> : null}
                     <Route path='/posts' element={<Posts />} />
                     <Route path='/' element={<Navigate to='/posts' />} />
+                    <Route path='/*' element={<h4>Not Found</h4>}/>
                 </Routes>
             </div>
         );
