@@ -30,8 +30,8 @@ class Blog extends Component {
                 <Routes>
                     <Route path='/posts/:id' element={<FullPost />} />
                     <Route path='/' element={<Posts />} />
-                    <Route path='/new-post' element={<NewPost />} />
-                    <Route path='/posts/1' element={<Navigate to='/new-post' />} />
+                    <Route path='/new-post'  element={<NewPost />} />
+                    {/* <Route path='/posts/1' element={<Navigate to='/new-post' />} /> */}
                 </Routes>
             </div>
         );
