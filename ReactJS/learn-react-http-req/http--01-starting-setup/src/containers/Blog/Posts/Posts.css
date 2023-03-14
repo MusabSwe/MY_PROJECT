@@ -5,3 +5,12 @@
     width: 80%;
     margin: auto;
 }
+
+.post-card {
+    text-decoration: none;
+     color: black;
+}
+
+.post-card:hover {
+     color: #fa923f;
+}

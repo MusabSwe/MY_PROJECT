@@ -1,7 +1,8 @@
 import axios from "../../../axios";
 import Post from '../../../components/Post/Post'
 import './Posts.css'
-import React ,{ Component } from "react";
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
 class Posts extends Component {
     state = {
         posts: [],
@@ -42,15 +43,16 @@ class Posts extends Component {
             posts = this.state.posts.map(post => {
                 return (
                     // Square posts
-                    <Post
-                        key={post.id}
-                        title={post.title}
-                        author={post.author}
-                        // when we click on the post
-                        // event listener invoke & receive id 
-                        // and assign it to the state to use it in the differnt location
-                        clicked={() => this.postSelectedHandler(post.id)}
-                    />
+                    <Link className="post-card" key={post.id} to={`/post/${post.id}`}>
+                        <Post
+                            title={post.title}
+                            author={post.author}
+                            // when we click on the post
+                            // event listener invoke & receive id 
+                            // and assign it to the state to use it in the differnt location
+                            clicked={() => this.postSelectedHandler(post.id)}
+                        />
+                    </Link>
                 );
             })
         return (

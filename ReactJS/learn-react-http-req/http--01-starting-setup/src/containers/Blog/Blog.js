@@ -3,6 +3,7 @@ import './Blog.css';
 import Posts from './Posts/Posts';
 import { Routes, Route, NavLink } from 'react-router-dom'
 import NewPost from './NewPost/NewPost'
+import FullPost from './FullPost/FullPost';
 
 class Blog extends Component {
 
@@ -19,7 +20,7 @@ class Blog extends Component {
                                 hash: '#submit',
                                 search: '?quick-submit=true'
                             }}
-                            className={navData => (navData.isActive ? 'active' : 'link')}
+                                className={navData => (navData.isActive ? 'active' : 'link')}
                             > New Post</NavLink></li>
                         </ul>
                     </nav>
@@ -27,6 +28,7 @@ class Blog extends Component {
                 <Routes>
                     <Route path='/' element={<Posts />} />
                     <Route path='/new-post' element={<NewPost />} />
+                    <Route path='/post/:id' element={<FullPost />} />
                 </Routes>
                 {/* <Posts /> */}
             </div>
