@@ -3,7 +3,8 @@ import Post from '../../../components/Post/Post'
 import './Posts.css'
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
-
+import { Route, Routes } from "react-router";
+import FullPost from "../FullPost/FullPost";
 // import { Link } from "react-router-dom";
 const Posts = (props) => {
 
@@ -60,9 +61,11 @@ const Posts = (props) => {
             );
         })
     return (
-        <section className="Posts">
-            {posts2}
-        </section>
+        <div>
+            <section className="Posts">
+                {posts2}
+            </section>
+        </div>
     );
 }
 
