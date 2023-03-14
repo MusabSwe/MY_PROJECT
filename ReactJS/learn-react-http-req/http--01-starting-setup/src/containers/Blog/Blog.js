@@ -18,7 +18,7 @@ class Blog extends Component {
                     </nav>
                 </header>
                 <Routes>
-                    <Route path='/' Component={() => <h1>Home</h1>} />
+                    <Route path='/' element={<Posts />} />
                 </Routes>
                 {/* <Posts /> */}
             </div>
