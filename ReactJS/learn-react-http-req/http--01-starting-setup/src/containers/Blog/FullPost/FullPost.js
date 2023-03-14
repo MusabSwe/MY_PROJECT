@@ -1,55 +1,49 @@
-import React, { Component } from 'react';
+import React, { Component, useEffect, useState } from 'react';
 import axios from 'axios';
 import './FullPost.css';
+import { useParams } from 'react-router';
 
-class FullPost extends Component {
-    state = {
-        loadedPost: null, // defualt null
-    }
+const FullPost = (props) => {
 
-    componentDidUpdate() {
-        // this.props.id is the received id when we click on the post
-        // on the home page
-        if (this.props.id) {
-            // To avoid infine loop in network section dev tools
-            if (!this.state.loadedPost || (this.state.loadedPost && this.props.id !== this.state.loadedPost.id)) {
-                axios.get(`/posts/` + this.props.id)
-                    .then(res => {
-                        // console.log(res);
-                        this.setState({ loadedPost: res.data })
-                    });
-            }
-        }
-    }
+    const [loadedPost, setLoadedPost] = useState(null);
+    const { id } = useParams();
 
-    deleteHandler = () => {
-        axios.delete(`/posts/` + this.props.id)
+    useEffect(() => {
+        // To avoid infine loop in network section dev tools
+        axios.get(`/posts/` + id)
+            .then(res => {
+                console.log(res);
+                setLoadedPost(res.data);
+            });
+    }, []);
+
+
+    const deleteHandler = () => {
+        axios.delete(`/posts/` + id)
             .then(res => {
                 console.log(res);
             })
     }
 
-    render() {
-        let post = <p style={{ textAlign: "center" }}>Please select a Post!</p>;
-        // we recieve the id, but we can not access the post 
-        // until we fetch the data
-        if (this.props.id) {
-            post = <p style={{ textAlign: "center" }}>Loading...</p>;
-        }
-        // if the data fetched then display content of the post
-        if (this.state.loadedPost) {
-            post = (
-                <div className="FullPost">
-                    <h1>{this.state.loadedPost.title}</h1>
-                    <p>{this.state.loadedPost.body}</p>
-                    <div className="Edit">
-                        <button onClick={this.deleteHandler} className="Delete">Delete</button>
-                    </div>
-                </div>
-            );
-        }
-        return post;
+    let post = <p style={{ textAlign: "center" }}>Please select a Post!</p>;
+    // we recieve the id, but we can not access the post 
+    // until we fetch the data
+    if (id) {
+        post = <p style={{ textAlign: "center" }}>Loading...</p>;
     }
+    // if the data fetched then display content of the post
+    if (loadedPost) {
+        post = (
+            <div className="FullPost">
+                <h1>{loadedPost.title}</h1>
+                <p>{loadedPost.body}</p>
+                <div className="Edit">
+                    <button onClick={deleteHandler} className="Delete">Delete</button>
+                </div>
+            </div>
+        );
+    }
+    return post;
 }
 
 export default FullPost;

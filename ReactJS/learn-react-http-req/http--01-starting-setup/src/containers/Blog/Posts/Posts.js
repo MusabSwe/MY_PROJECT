@@ -1,17 +1,20 @@
 import axios from "../../../axios";
 import Post from '../../../components/Post/Post'
 import './Posts.css'
-import React, { Component } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-class Posts extends Component {
-    state = {
-        posts: [],
-        selectedPostId: null,
-        error: false,
-    }
+const Posts = (props) => {
 
-    componentDidMount() {
-        console.log(this.props);
+    // state = {
+    //     posts: [],
+    //     selectedPostId: null,
+    //     error: false,
+    // }
+    const [posts, setPosts] = useState([]);
+    const [selectedPostId, setSelectedPostId] = useState(null);
+    const [error, setError] = useState(false);
+
+    useEffect(() => {
         axios.get('/posts')
             .then(res => {
                 // to fetch the first 3 posts since it has huge data and make the 
@@ -24,43 +27,41 @@ class Posts extends Component {
                         author: "Max"
                     }
                 });
-                this.setState({ posts: updatePosts });
+                setPosts(updatePosts);
                 console.log(res);
             }).catch(e => {
                 console.log(e);
-                this.setState({ error: true })
+                setError(true)
             });
+    }, []);
+
+    const postSelectedHandler = (id) => {
+        setSelectedPostId(id);
     }
 
-    postSelectedHandler = (id) => {
-        this.setState({ selectedPostId: id });
-    }
-
-    render() {
-        let posts = <p style={{ textAlign: 'center' }}>Something went wrong</p>;
-        // console.log(!this.state.error)
-        if (!this.state.error)
-            posts = this.state.posts.map(post => {
-                return (
-                    // Square posts
-                    <Link className="post-card" key={post.id} to={`/post/${post.id}`}>
-                        <Post
-                            title={post.title}
-                            author={post.author}
-                            // when we click on the post
-                            // event listener invoke & receive id 
-                            // and assign it to the state to use it in the differnt location
-                            clicked={() => this.postSelectedHandler(post.id)}
-                        />
-                    </Link>
-                );
-            })
-        return (
-            <section className="Posts">
-                {posts}
-            </section>
-        );
-    }
+    let posts2 = <p style={{ textAlign: 'center' }}>Something went wrong</p>;
+    // console.log(!this.state.error)
+    if (!error)
+        posts2 = posts.map(post => {
+            return (
+                // Square posts
+                <Link className="post-card" key={post.id} to={`/post/${post.id}`}>
+                    <Post
+                        title={post.title}
+                        author={post.author}
+                        // when we click on the post
+                        // event listener invoke & receive id 
+                        // and assign it to the state to use it in the differnt location
+                        clicked={() => postSelectedHandler(post.id)}
+                    />
+                </Link>
+            );
+        })
+    return (
+        <section className="Posts">
+            {posts2}
+        </section>
+    );
 }
 
 export default Posts;

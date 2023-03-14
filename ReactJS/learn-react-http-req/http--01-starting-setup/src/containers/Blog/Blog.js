@@ -4,6 +4,7 @@ import Posts from './Posts/Posts';
 import { Routes, Route, NavLink } from 'react-router-dom'
 import NewPost from './NewPost/NewPost'
 import FullPost from './FullPost/FullPost';
+import { withRouter2 } from '../../withRouter2';
 
 class Blog extends Component {
 
@@ -36,4 +37,4 @@ class Blog extends Component {
     }
 }
 
-export default Blog;
+export default withRouter2(Blog);
