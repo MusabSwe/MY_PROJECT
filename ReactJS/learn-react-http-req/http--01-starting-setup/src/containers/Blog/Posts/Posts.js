@@ -10,6 +10,7 @@ class Posts extends Component {
     }
 
     componentDidMount() {
+        console.log(this.props);
         axios.get('/posts')
             .then(res => {
                 // to fetch the first 3 posts since it has huge data and make the 
