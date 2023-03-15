@@ -28,7 +28,7 @@ class NewPost extends Component {
     render() {
         return (
             <div className="NewPost">
-                <Navigate to='/posts' replace={true} />
+                {/* <Navigate to='/posts' replace={true} /> */}
                 {/* Instead of <Redirect to='/'/> */}
                 {this.state.submitted && <Navigate to='/' replace={true} />}
                 <h1>Add a Post</h1>

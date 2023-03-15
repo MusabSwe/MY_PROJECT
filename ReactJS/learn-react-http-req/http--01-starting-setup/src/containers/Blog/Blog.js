@@ -8,7 +8,7 @@ import FullPost from './FullPost/FullPost';
 
 class Blog extends Component {
     state = {
-        auth: false,
+        auth: true,
     }
     // to communicate with a server in a class component 
     render() {
@@ -31,9 +31,9 @@ class Blog extends Component {
                 <Routes>
                     <Route path='/posts/:id' element={<FullPost />} />
                     {this.state.auth ? <Route path='/new-post' element={<NewPost />} /> : null}
-                    <Route path='/posts' element={<Posts />} />
-                    <Route path='/' element={<Navigate to='/posts' />} />
-                    <Route path='/*' element={<h4>Not Found</h4>}/>
+                    {/* <Route path='/posts' element={<Posts />} /> */}
+                    <Route path='/' element={<Posts />} />
+                    <Route path='/*' element={<h4>Not Found</h4>} />
                 </Routes>
             </div>
         );
