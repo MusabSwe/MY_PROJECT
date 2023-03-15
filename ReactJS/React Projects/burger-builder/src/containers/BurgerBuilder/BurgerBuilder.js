@@ -143,7 +143,19 @@ const BurgerBuilder = () => {
                 console.log(err);
             });
 
-        navigate('/checkout');
+        const queryParams = [];
+        for (let i in ingredients) {
+            console.log(i);
+            // used to get the ingredents from query
+            // encodeURIComponent used to make params fits with the URL
+            queryParams.push(encodeURIComponent(i) + '=' + encodeURIComponent(ingredients[i]))
+        }
+        const queryString = queryParams.join('&');
+
+        navigate({
+            pathname: '/checkout',
+            search: '?' + queryString,
+        })
     }
     const disabledInfo = {
         ...ingredients
