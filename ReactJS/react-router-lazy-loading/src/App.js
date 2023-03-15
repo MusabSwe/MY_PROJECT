@@ -9,6 +9,9 @@ const LazyAbout = React.lazy(() => import('./component/About'));
 
 function App() {
   return (
+    // we use basename when we deploy out project in the serverr
+    // to automate directly with the paths we create
+    // <Router basename="/seeker.com">
     <Router>
       <nav className="nav">
         <li><NavLink className={navData => (navData.isActive ? 'active' : 'link')} to='/'>Home</NavLink></li>
