@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
-import { useSearchParams } from "react-router-dom";
+import { Routes, Route, useSearchParams, useLocation } from "react-router-dom";
 import CheckOutSummary from "../../components/Order/CheckoutSummary/CheckoutSummary";
-
+import ContactData from "./ContactData/ContactData";
 const Checkout = (props) => {
 
     const [ingredients, setIngredients] = useState(
@@ -14,7 +14,8 @@ const Checkout = (props) => {
         }
     )
     const navigate = useNavigate();
-
+    const location = useLocation();
+    const [currentPath, setCurrentPath] = useState();
     const [searchParams, setSearchParams] = useSearchParams();
 
     useEffect(() => {
@@ -23,14 +24,17 @@ const Checkout = (props) => {
             // output: ['salad','1']
             // 0 means point to the first index which is the name of ingredient
             // 1 means the value of the ingredient
-            
+
             console.log(param);
             urlIngredients[param[0]] = +param[1]; // means at index 0 get the value at index 1
 
         }
         console.log(urlIngredients);
         setIngredients(urlIngredients)
-    }, []);
+
+        setCurrentPath(location.pathname);
+        console.log(location.pathname);
+    }, [location]);
 
 
     const checkOutCancelledHandler = () => {
@@ -38,7 +42,7 @@ const Checkout = (props) => {
     }
 
     const checkOutContinued = () => {
-        navigate('/checkout/contact-data');
+        navigate('/checkout/contact-data', { replace: true });
     }
 
     return (
@@ -48,6 +52,9 @@ const Checkout = (props) => {
                 checkOutCancelled={checkOutCancelledHandler}
                 checkOutContinued={checkOutContinued}
             />
+            <Routes>
+                <Route path={props.path + '/contact-data'} element={<ContactData />} />
+            </Routes>
         </div>
     );
 }
