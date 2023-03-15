@@ -1,0 +1,22 @@
+.nav {
+    display: flex;
+}
+
+.nav li {
+    list-style: none;
+    margin: 10px;
+}
+
+.nav a:hover, .nav a:active {
+    color: burlywood;
+}
+
+.active{
+    text-decoration: none;
+    color: burlywood;
+}
+
+.link {
+    text-decoration: none;
+    color: black;
+  }
