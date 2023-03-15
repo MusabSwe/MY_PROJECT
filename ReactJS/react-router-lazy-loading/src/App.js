@@ -1,8 +1,12 @@
+import React from "react";
 import { BrowserRouter as Router, NavLink, Routes, Route } from "react-router-dom";
 import './App.css'
 import Home from "./component/Home";
-import About from "./component/About";
+// import About from "./component/About";
 import Products from "./component/Products";
+
+const LazyAbout = React.lazy(() => import('./component/About'));
+
 function App() {
   return (
     <Router>
@@ -14,7 +18,7 @@ function App() {
 
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
+        <Route path="/about" element={<React.Suspense fallback='loading...' ><LazyAbout /></React.Suspense>} />
         <Route path="/products" element={<Products />} />
       </Routes>
     </Router>
