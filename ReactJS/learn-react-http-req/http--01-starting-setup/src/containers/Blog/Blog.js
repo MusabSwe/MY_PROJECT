@@ -2,10 +2,15 @@ import React, { Component } from 'react';
 import './Blog.css';
 import Posts from './Posts/Posts';
 import { Routes, Route, NavLink, Navigate } from 'react-router-dom'
-import NewPost from './NewPost/NewPost'
-// import FullPost from './FullPost/FullPost';
+
+import asyncComponent from '../../hoc/asyncComponent';
+// import NewPost from './NewPost/NewPost'
+
 import FullPost from './FullPost/FullPost';
 
+const AsyncNewPost = asyncComponent(() => {
+    return import('./NewPost/NewPost');
+})
 class Blog extends Component {
     state = {
         auth: true,
@@ -30,7 +35,7 @@ class Blog extends Component {
                 </header>
                 <Routes>
                     <Route path='/posts/:id' element={<FullPost />} />
-                    {this.state.auth ? <Route path='/new-post' element={<NewPost />} /> : null}
+                    {this.state.auth ? <Route path='/new-post' element={<AsyncNewPost />} /> : null}
                     {/* <Route path='/posts' element={<Posts />} /> */}
                     <Route path='/' element={<Posts />} />
                     <Route path='/*' element={<h4>Not Found</h4>} />
