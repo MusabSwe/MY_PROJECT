@@ -9,7 +9,6 @@ import { useNavigate } from "react-router";
 const ContactData = (props) => {
 
     const [orderForm, setOrderForm] = useState({
-        customer: {
             name: {
                 elementType: 'input',
                 elementConfig: {
@@ -65,8 +64,6 @@ const ContactData = (props) => {
                 },
                 value: '',
             },
-
-        },
     });
     const [loading, setLoading] = useState(false);
 
@@ -109,12 +106,26 @@ const ContactData = (props) => {
             });
     }
 
+    const formElementArray = [];
+    // key will be name.street,email
+    for (let key in orderForm) {
+        console.log(key);
+        formElementArray.push({
+            id: key,
+            config: orderForm[key]
+        });
+    }
+
     let form = (
         <form>
-            <Input elementType="" elementConfig="" value="" />
-            <Input elementType="" elementConfig="" value="" />
-            <Input elementType="" elementConfig="" value="" />
-            <Input elementType="" elementConfig="" value="" />
+            {formElementArray.map(formElement => (
+                <Input
+                    key={formElement.id}
+                    elementType={formElement.config.elementType}
+                    elementConfig={formElement.config.elementConfig}
+                    value={formElement.config.value}
+                />
+            ))}
             <Button btnType='Success' clicked={orderHandler}>ORDER</Button>
         </form>
     );
