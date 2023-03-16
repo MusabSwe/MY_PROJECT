@@ -1,6 +1,6 @@
 .navbar nav{
     display: flex;
-    justify-content: end;
+    justify-content: flex-end;
 }
 
 .navbar li {
