@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Button from "../../../UI/Button/Button";
+import Input from "../../../UI/Input/Input";
 import classes from './ContactData.module.css';
 import { useLocation } from "react-router";
 import axios from "../../../axios-orders";
@@ -65,10 +66,10 @@ const ContactData = (props) => {
 
     let form = (
         <form>
-            <input className={classes.Input} type="text" name="name" id="" placeholder="Your name" />
-            <input className={classes.Input} type="email" name="email" id="" placeholder="Your email" />
-            <input className={classes.Input} type="text" name="street" id="" placeholder="Your street" />
-            <input className={classes.Input} type="text" name="postal" id="" placeholder="Your postal code" />
+            <Input inputtype="input"  type="text" name="name" id="" placeholder="Your name" />
+            <Input inputtype="input"  type="email" name="email" id="" placeholder="Your email" />
+            <Input inputtype="input"  type="text" name="street" id="" placeholder="Your street" />
+            <Input inputtype="input"  type="text" name="postal" id="" placeholder="Your postal code" />
             <Button btnType='Success' clicked={orderHandler}>ORDER</Button>
         </form>
     );
