@@ -15,7 +15,8 @@ class App extends Component {
             <Route path='/checkout/' element={<Checkout />}>
               <Route path='contact-data' element={<ContactData />} />
             </Route>
-            
+
+
           </Routes>
         </Layout>
       </div>

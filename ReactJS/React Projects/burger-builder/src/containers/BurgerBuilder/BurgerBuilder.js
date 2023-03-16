@@ -114,42 +114,16 @@ const BurgerBuilder = () => {
 
     const purchaseContinueHandler = () => {
         // alert('you continue!');
-        setLoading(true);
-        const order = {
-            ingredients: ingredients,
-            price: totalPrice,
-            customer: {
-                name: 'Max',
-                address: {
-                    street: 'Teststreet 1',
-                    zipCode: '41351',
-                    country: 'China',
-                },
-                email: 'test@test.com',
-            },
-            deliveryMethod: 'fastest'
-        }
-
-        axios.post('/orders', order)
-            .then(res => {
-                // this.setState({ loading: false, purchasing: false });
-                setLoading(false);
-                setPurchasing(false);
-                console.log(res);
-            }).catch(err => {
-                // this.setState({ loading: false, purchasing: false });
-                setLoading(false);
-                setPurchasing(false);
-                console.log(err);
-            });
 
         const queryParams = [];
+
         for (let i in ingredients) {
             console.log(i);
             // used to get the ingredents from query
             // encodeURIComponent used to make params fits with the URL
             queryParams.push(encodeURIComponent(i) + '=' + encodeURIComponent(ingredients[i]))
         }
+        queryParams.push('price=' + totalPrice);
         const queryString = queryParams.join('&');
 
         navigate({

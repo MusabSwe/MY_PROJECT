@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
+import { useMemo, useState } from "react";
 import { useNavigate } from "react-router";
-import { Link, useSearchParams, useLocation, Outlet } from "react-router-dom";
+import { Routes, Route, useSearchParams, useLocation, Outlet } from "react-router-dom";
 import CheckOutSummary from "../../components/Order/CheckoutSummary/CheckoutSummary";
 import ContactData from "./ContactData/ContactData";
 const Checkout = (props) => {
@@ -13,25 +13,33 @@ const Checkout = (props) => {
             bacon: 1
         }
     )
+    const [price, setPrice] = useState(0);
+
     const navigate = useNavigate();
     const location = useLocation();
     const [currentPath, setCurrentPath] = useState();
     const [searchParams, setSearchParams] = useSearchParams();
 
-    useEffect(() => {
+    useMemo(() => {
         const urlIngredients = []
+        let price = 0;
         for (let param of searchParams.entries()) {
             // output: ['salad','1']
             // 0 means point to the first index which is the name of ingredient
             // 1 means the value of the ingredient
 
-            console.log(param);
-            urlIngredients[param[0]] = +param[1]; // means at index 0 get the value at index 1
+            // console.log(param);
+            if (param[0] === 'price') {
+                price = param[1];
+            } else {
+                urlIngredients[param[0]] = +param[1]; // means at index 0 get the value at index 1
+            }
+
 
         }
         console.log(urlIngredients);
         setIngredients(urlIngredients)
-
+        setPrice(price);
         setCurrentPath(location.pathname);
         console.log(location.pathname);
     }, []);
@@ -42,7 +50,7 @@ const Checkout = (props) => {
     }
 
     const checkOutContinued = () => {
-        navigate('contact-data', { replace: true });
+        navigate('contact-data', { replace: true, state: { ingredients: ingredients, price: price } });
     }
 
     return (
@@ -52,6 +60,7 @@ const Checkout = (props) => {
                 checkOutCancelled={checkOutCancelledHandler}
                 checkOutContinued={checkOutContinued}
             />
+
             <Outlet />
         </div>
     );
