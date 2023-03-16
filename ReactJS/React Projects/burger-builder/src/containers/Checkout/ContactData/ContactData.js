@@ -20,7 +20,6 @@ const ContactData = () => {
                 <input type="text" name="postal" id="" placeholder="Your postal code" />
                 <Button btnType='Success'>ORDER</Button>
             </form>
-
         </div>
     );
 }

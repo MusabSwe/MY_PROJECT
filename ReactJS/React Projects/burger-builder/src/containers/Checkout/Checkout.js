@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
-import { Routes, Route, useSearchParams, useLocation } from "react-router-dom";
+import { Link, useSearchParams, useLocation, Outlet } from "react-router-dom";
 import CheckOutSummary from "../../components/Order/CheckoutSummary/CheckoutSummary";
 import ContactData from "./ContactData/ContactData";
 const Checkout = (props) => {
@@ -42,7 +42,7 @@ const Checkout = (props) => {
     }
 
     const checkOutContinued = () => {
-        navigate('/checkout/contact-data', { replace: true });
+        navigate('contact-data', { replace: true });
     }
 
     return (
@@ -52,9 +52,7 @@ const Checkout = (props) => {
                 checkOutCancelled={checkOutCancelledHandler}
                 checkOutContinued={checkOutContinued}
             />
-            <Routes>
-                <Route path={props.path + '/contact-data'} element={<ContactData />} />
-            </Routes>
+            <Outlet />
         </div>
     );
 }
