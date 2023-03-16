@@ -1,5 +1,7 @@
 import { useState } from "react";
 import Button from "../../../UI/Button/Button";
+import classes from './ContactData.module.css';
+
 const ContactData = () => {
 
     const [name, setName] = useState('');
@@ -11,7 +13,7 @@ const ContactData = () => {
 
 
     return (
-        <div>
+        <div className={classes.ContactData}>
             <h4>Enter your Contact Data</h4>
             <form>
                 <input type="text" name="name" id="" placeholder="Your name" />

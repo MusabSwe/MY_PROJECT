@@ -34,7 +34,7 @@ const Checkout = (props) => {
 
         setCurrentPath(location.pathname);
         console.log(location.pathname);
-    }, [location]);
+    }, []);
 
 
     const checkOutCancelledHandler = () => {
