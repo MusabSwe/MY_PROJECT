@@ -8,11 +8,65 @@ import Spinner from "../../../UI/spinner/spinner";
 import { useNavigate } from "react-router";
 const ContactData = (props) => {
 
-    const [name, setName] = useState('');
-    const [email, setEmail] = useState('');
-    const [address, setAddress] = useState({
-        street: '',
-        postalCode: '',
+    const [orderForm, setOrderForm] = useState({
+        customer: {
+            name: {
+                elementType: 'input',
+                elementConfig: {
+                    type: 'text',
+                    placeholder: 'Your Name'
+                },
+                value: '',
+            },
+
+            street: {
+                elementType: 'input',
+                elementConfig: {
+                    type: 'text',
+                    placeholder: 'Street'
+                },
+                value: '',
+            },
+
+            zipCode: {
+                elementType: 'input',
+                elementConfig: {
+                    type: 'text',
+                    placeholder: 'ZIP Code'
+                },
+                value: '',
+            },
+
+            country: {
+                elementType: 'input',
+                elementConfig: {
+                    type: 'text',
+                    placeholder: 'Country'
+                },
+                value: '',
+            },
+
+            email: {
+                elementType: 'input',
+                elementConfig: {
+                    type: 'email',
+                    placeholder: 'Your E-Mail'
+                },
+                value: '',
+            },
+
+            deliveryMethod: {
+                elementType: 'select',
+                elementConfig: {
+                    options: [
+                        { value: 'fastest', displayValue: 'Fastest' },
+                        { value: 'cheapest', displayValue: 'Cheapest' }
+                    ]
+                },
+                value: '',
+            },
+
+        },
     });
     const [loading, setLoading] = useState(false);
 
@@ -36,16 +90,7 @@ const ContactData = (props) => {
         const order = {
             price: location.state.price,
             ingredients: { ...location.state.ingredients },
-            customer: {
-                name: 'Max',
-                address: {
-                    street: 'Teststreet 1',
-                    zipCode: '41351',
-                    country: 'China',
-                },
-                email: 'test@test.com',
-            },
-            deliveryMethod: 'fastest'
+
         }
 
         // in firebase you shoould add an extension of .json in the path
@@ -66,10 +111,10 @@ const ContactData = (props) => {
 
     let form = (
         <form>
-            <Input inputtype="input"  type="text" name="name" id="" placeholder="Your name" />
-            <Input inputtype="input"  type="email" name="email" id="" placeholder="Your email" />
-            <Input inputtype="input"  type="text" name="street" id="" placeholder="Your street" />
-            <Input inputtype="input"  type="text" name="postal" id="" placeholder="Your postal code" />
+            <Input elementType="" elementConfig="" value="" />
+            <Input elementType="" elementConfig="" value="" />
+            <Input elementType="" elementConfig="" value="" />
+            <Input elementType="" elementConfig="" value="" />
             <Button btnType='Success' clicked={orderHandler}>ORDER</Button>
         </form>
     );
