@@ -19,15 +19,22 @@ const ContactData = (props) => {
     const location = useLocation();
     const navigate = useNavigate();
 
+    console.log(location.state.ingredients)
+    // const ig = {
+    //     ...location.state.ingredients,
+    // }
+
+
     const orderHandler = (e) => {
         e.preventDefault();
         // To test the date come from Checkout by useNavigate
         // console.log(location.state.price);
         // console.log(location.state.ingredients)
         setLoading(true);
+
         const order = {
-            ingredients: location.state.ingredients,
             price: location.state.price,
+            ingredients: { ...location.state.ingredients },
             customer: {
                 name: 'Max',
                 address: {

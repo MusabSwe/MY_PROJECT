@@ -19,8 +19,10 @@ const Orders = () => {
                 }
                 // console.log(res.data);
                 setLoading(false);
+                console.log(fetchedOrders);
                 setOrders(fetchedOrders)
             }).catch(err => {
+                // console.log(err);
                 // console.log(err);
                 setLoading(false);
             });
@@ -29,8 +31,16 @@ const Orders = () => {
 
     return (
         <div>
-            <Order />
-            <Order />
+            {orders.map((order) => {
+                console.log(order);
+                return <Order 
+                key={order.id}
+                price={order.price}
+                ingredients={order.ingredients}
+                />;
+            })
+            }
+
         </div>
     );
 }
