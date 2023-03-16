@@ -8,8 +8,8 @@ import User from './components/User';
 import Filter from './components/Filter';
 import Contact from './components/Contact';
 import Company from './components/Company';
-
-
+import Channel from './components/Channel';
+import Other from './components/Other';
 function App() {
   return (
     <div>
@@ -22,7 +22,13 @@ function App() {
           <Route path="/*" element={<Navigate to="/" />} />
           <Route path="/filter" element={<Filter />} />
           <Route path="/contact/" element={<Contact />}>
+            {/*
+             to display its content you should go to wrapper component
+             and add <outlet/>
+            */}
             <Route path="company" element={<Company />} />
+            <Route path="channel" element={<Channel />} />
+            <Route path="other" element={<Other />} />
           </Route>
         </Routes>
       </BrowserRouter>

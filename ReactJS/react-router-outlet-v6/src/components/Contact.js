@@ -8,6 +8,8 @@ const Contact = () => {
             <Link to="company" style={{ margin: "10px", }} >Company</Link>
             <Link to="channel" style={{ margin: "10px", }} >Channel</Link>
             <Link to="other" style={{ margin: "10px", }} >Other</Link>
+            
+            {/* Should be added to the end of the div */}
             <Outlet />
         </div >
     );
