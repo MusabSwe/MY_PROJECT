@@ -91,7 +91,7 @@ const ContactData = (props) => {
                 // To config the attributes of select not options
                 // config: {}
             },
-            value: '',
+            value: 'fastest',
             validation: {},
             // always true since we do not need a vlidation for dropdown button
             valid: true,
