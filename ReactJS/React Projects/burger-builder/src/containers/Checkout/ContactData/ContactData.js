@@ -67,13 +67,14 @@ const ContactData = (props) => {
             value: '',
         },
     });
+
     const [loading, setLoading] = useState(false);
 
     // Routes
     const location = useLocation();
     const navigate = useNavigate();
 
-    console.log(location.state.ingredients)
+    // console.log(location.state.ingredients)
     // const ig = {
     //     ...location.state.ingredients,
     // }
@@ -108,10 +109,45 @@ const ContactData = (props) => {
             });
     }
 
+
+    // Implemnt OnChange Handler
+    const inputChangedHandler = (e, inputIdentifier) => {
+        // console.log(e.target.value);
+        // CLone all the inputs of the form
+        // to chane it safely with affect the orignal form 
+        
+        const updatedOrderForm = {
+            ...orderForm
+        }
+        // inputIdentifier --> point to the name street, ZIP Code,
+        // country, Email in the orderForm to access each value for each input 
+        // without intercations between other inputs
+        const updatedOrderFormElment = {
+            // we make clone for the inputIdentifer which is the single input in the form
+            //   --> which is 
+            // inputIdentifier: {
+            //     elementType: 'input',
+            //     elementConfig: {
+            //         type: 'email',
+            //         placeholder: 'Your E-Mail'
+            //     },
+            //     value: '',
+            // },
+
+            // and to change it safely
+            ...updatedOrderForm[inputIdentifier]
+        };
+
+        updatedOrderFormElment.value = e.target.value;
+        updatedOrderForm[inputIdentifier] = updatedOrderFormElment;
+        setOrderForm(updatedOrderForm);
+    }
+    
+
     const formElementArray = [];
     // key will be name.street,email
     for (let key in orderForm) {
-        console.log(key);
+        // console.log(key);
         formElementArray.push({
             id: key,
             config: orderForm[key]
@@ -126,6 +162,8 @@ const ContactData = (props) => {
                     elementType={formElement.config.elementType}
                     elementConfig={formElement.config.elementConfig}
                     value={formElement.config.value}
+                    // formElement.id will be name.street,email
+                    changed={(e) => inputChangedHandler(e, formElement.id)}
                 />
             ))}
             <Button btnType='Success' clicked={orderHandler}>ORDER</Button>
