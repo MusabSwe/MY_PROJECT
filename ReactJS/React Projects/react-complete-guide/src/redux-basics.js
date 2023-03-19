@@ -25,7 +25,7 @@ const rootReducer = (state = initialState, action) => {
         // and mutate it using spread operator
         // state.counter++;
         // return state;
-        
+
         //but do the following below
         return {
             ...state,
@@ -40,6 +40,21 @@ const rootReducer = (state = initialState, action) => {
 const store = createStore(rootReducer);
 console.log(store.getState());
 
+
+// Subscription
+store.subscribe(() => {
+    console.log('[Subscription]', store.getState());
+    /*
+    output
+    { counter: 0 } invoke by store
+    [Subscription] { counter: 1 } invoke by subscription
+    [Subscription] { counter: 11 } invoke by subscription
+    { counter: 11 } invoke by dispatche
+    so the flow reducer --> store --> subscription --> dispacth(type, action (payload))
+   */
+});
+
+
 //Dispatching action
 // implement if only added in the reducer
 store.dispatch({ type: 'INC_COUNTER' });
@@ -47,5 +62,3 @@ store.dispatch({ type: 'INC_COUNTER' });
 store.dispatch({ type: 'ADD_COUNTER', value: 10 });
 console.log(store.getState());
 
-
-// Subscription
