@@ -92,10 +92,15 @@ const ContactData = (props) => {
                 // config: {}
             },
             value: '',
+            // always true since we do not need a vlidation for dropdown button
+            valid: true,
         },
+
     });
 
     const [loading, setLoading] = useState(false);
+    // to check entire form is valid or not
+    const [formIsValid, setFormIsValid] = useState(false);
 
     // Routes
     const location = useLocation();
@@ -216,8 +221,15 @@ const ContactData = (props) => {
         updatedOrderFormElment.touched = true;
 
         updatedOrderForm[inputIdentifier] = updatedOrderFormElment;
-        console.log(updatedOrderFormElment)
+        console.log(updatedOrderFormElment);
+
+        // To check the entire form validatity
+        let formIsValid = true;
+        for (let inputIdentifer in updatedOrderForm) {
+            formIsValid = updatedOrderForm[inputIdentifer].valid && formIsValid
+        }
         setOrderForm(updatedOrderForm);
+        setFormIsValid(formIsValid);
     }
 
 
@@ -250,7 +262,7 @@ const ContactData = (props) => {
                     touched={formElement.config.touched}
                 />
             ))}
-            <Button btnType='Success'>ORDER</Button>
+            <Button btnType='Success' disabled={!formIsValid}>ORDER</Button>
         </form >
     );
 
