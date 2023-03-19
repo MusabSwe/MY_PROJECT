@@ -92,6 +92,7 @@ const ContactData = (props) => {
                 // config: {}
             },
             value: '',
+            validation: {},
             // always true since we do not need a vlidation for dropdown button
             valid: true,
         },
@@ -155,6 +156,9 @@ const ContactData = (props) => {
     // Implement validation for the form inpust such as not enter a value
     const chackValidity = (value, rules) => {
         let isValid = true;
+        if (!rules) {
+            return true;
+        }
         // rules point to the --> 
         // validation: {
         //     required: true,
