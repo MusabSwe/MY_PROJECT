@@ -216,7 +216,7 @@ const ContactData = (props) => {
         // console.log(key);
         formElementArray.push({
             id: key,
-            // config values index --> ex config = values of name : {....values element config value,}
+            // config point to the right side of property which is values of index --> ex config = values of name : {....values element config value,}
             config: orderForm[key]
         });
     }
@@ -229,6 +229,11 @@ const ContactData = (props) => {
                     elementType={formElement.config.elementType}
                     elementConfig={formElement.config.elementConfig}
                     value={formElement.config.value}
+                    // to change style if the user does not enter a value
+                    invalid={!formElement.config.valid}
+                    // to display only validation for the 
+                    // inputs has a validation property in the orderForm state
+                    shouldValidate={formElement.config.validation}
                     // formElement.id will be name.street,email
                     changed={(e) => inputChangedHandler(e, formElement.id)}
                 />
