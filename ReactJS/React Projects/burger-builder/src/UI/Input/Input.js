@@ -2,6 +2,8 @@ import classes from './Input.module.css'
 
 const Input = (props) => {
     let inputElement = null;
+    // To add error messages
+    let validationError = null;
     // to add Input css style withInvalid style using array and Join
     let inputClasses = [classes.InputElement];
 
@@ -12,6 +14,11 @@ const Input = (props) => {
     // validation property in the orderForm state 
     if (props.invalid && props.shouldValidate && props.touched) {
         inputClasses.push(classes.Invalid);
+    }
+
+    // To display Error message
+    if(props.invalid && props.touched){
+        validationError = <p className={classes.ValidationError}>Please enter a valid value!</p>
     }
 
     switch (props.elementType) {
@@ -51,7 +58,10 @@ const Input = (props) => {
     return (
         <div className={classes.Input} >
             <label className={classes.Label}>{props.label}</label>
+            {/* Inputs */}
             {inputElement}
+            {/* Validation message */}
+            {validationError}
         </div>
     );
 }
