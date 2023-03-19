@@ -9,61 +9,63 @@ import { useNavigate } from "react-router";
 const ContactData = (props) => {
 
     const [orderForm, setOrderForm] = useState({
-            name: {
-                elementType: 'input',
-                elementConfig: {
-                    type: 'text',
-                    placeholder: 'Your Name'
-                },
-                value: '',
+        name: {
+            elementType: 'input',
+            elementConfig: {
+                type: 'text',
+                placeholder: 'Your Name'
             },
+            value: '',
+        },
 
-            street: {
-                elementType: 'input',
-                elementConfig: {
-                    type: 'text',
-                    placeholder: 'Street'
-                },
-                value: '',
+        street: {
+            elementType: 'input',
+            elementConfig: {
+                type: 'text',
+                placeholder: 'Street'
             },
+            value: '',
+        },
 
-            zipCode: {
-                elementType: 'input',
-                elementConfig: {
-                    type: 'text',
-                    placeholder: 'ZIP Code'
-                },
-                value: '',
+        zipCode: {
+            elementType: 'input',
+            elementConfig: {
+                type: 'text',
+                placeholder: 'ZIP Code'
             },
+            value: '',
+        },
 
-            country: {
-                elementType: 'input',
-                elementConfig: {
-                    type: 'text',
-                    placeholder: 'Country'
-                },
-                value: '',
+        country: {
+            elementType: 'input',
+            elementConfig: {
+                type: 'text',
+                placeholder: 'Country'
             },
+            value: '',
+        },
 
-            email: {
-                elementType: 'input',
-                elementConfig: {
-                    type: 'email',
-                    placeholder: 'Your E-Mail'
-                },
-                value: '',
+        email: {
+            elementType: 'input',
+            elementConfig: {
+                type: 'email',
+                placeholder: 'Your E-Mail'
             },
+            value: '',
+        },
 
-            deliveryMethod: {
-                elementType: 'select',
-                elementConfig: {
-                    options: [
-                        { value: 'fastest', displayValue: 'Fastest' },
-                        { value: 'cheapest', displayValue: 'Cheapest' }
-                    ]
-                },
-                value: '',
+        deliveryMethod: {
+            elementType: 'select',
+            elementConfig: {
+                options: [
+                    { value: 'fastest', displayValue: 'Fastest' },
+                    { value: 'cheapest', displayValue: 'Cheapest' }
+                ],
+                // To config the attributes of select not options
+                // config: {}
             },
+            value: '',
+        },
     });
     const [loading, setLoading] = useState(false);
 
