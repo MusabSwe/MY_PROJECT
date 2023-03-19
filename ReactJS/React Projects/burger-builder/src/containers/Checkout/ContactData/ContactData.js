@@ -20,6 +20,7 @@ const ContactData = (props) => {
                 required: true,
             },
             valid: false,
+            touched: false,
         },
 
         street: {
@@ -33,6 +34,7 @@ const ContactData = (props) => {
                 required: true,
             },
             valid: false,
+            touched: false,
         },
 
         zipCode: {
@@ -48,6 +50,7 @@ const ContactData = (props) => {
                 maxLength: 5,
             },
             valid: false,
+            touched: false,
         },
 
         country: {
@@ -61,6 +64,7 @@ const ContactData = (props) => {
                 required: true,
             },
             valid: false,
+            touched: false,
         },
 
         email: {
@@ -74,6 +78,7 @@ const ContactData = (props) => {
                 required: true,
             },
             valid: false,
+            touched: false,
         },
 
         deliveryMethod: {
@@ -204,6 +209,11 @@ const ContactData = (props) => {
         // updatedOrderFormElment.value enterd value by the user,
         // updatedOrderFormElment.validation rules for the input such as required
         updatedOrderFormElment.valid = chackValidity(updatedOrderFormElment.value, updatedOrderFormElment.validation)
+        // To check the user interact with form or not 
+        // to prevent diplaying an error message before the user 
+        // interact with the form
+        updatedOrderFormElment.touched = true;
+
         updatedOrderForm[inputIdentifier] = updatedOrderFormElment;
         console.log(updatedOrderFormElment)
         setOrderForm(updatedOrderForm);
@@ -236,6 +246,7 @@ const ContactData = (props) => {
                     shouldValidate={formElement.config.validation}
                     // formElement.id will be name.street,email
                     changed={(e) => inputChangedHandler(e, formElement.id)}
+                    touched={formElement.config.touched}
                 />
             ))}
             <Button btnType='Success'>ORDER</Button>

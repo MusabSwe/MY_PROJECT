@@ -10,7 +10,7 @@ const Input = (props) => {
     // props.shouldValidate used to prevent display an error message 
     // for the inputs does not need a validation which has not
     // validation property in the orderForm state 
-    if (props.invalid && props.shouldValidate) {
+    if (props.invalid && props.shouldValidate && props.touched) {
         inputClasses.push(classes.Invalid);
     }
 
