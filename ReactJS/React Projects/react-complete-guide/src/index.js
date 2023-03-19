@@ -4,6 +4,7 @@ import './index.css';
 import App from './App';
 import { createStore } from 'redux'
 import reducer from './store/reducer';
+import { Provider } from 'react-redux';
 import registerServiceWorker from './registerServiceWorker';
 
 // take the reducer as an input
@@ -11,5 +12,7 @@ import registerServiceWorker from './registerServiceWorker';
 // to initiate the store 
 const store = createStore(reducer);
 
-ReactDOM.render(<App />, document.getElementById('root'));
+// Provider helper component used to inject or store into react components
+// has store prop
+ReactDOM.render(<Provider store={store}><App /></Provider>, document.getElementById('root'));
 registerServiceWorker();
