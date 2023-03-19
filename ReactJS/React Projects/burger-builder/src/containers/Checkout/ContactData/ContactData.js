@@ -16,6 +16,10 @@ const ContactData = (props) => {
                 placeholder: 'Your Name'
             },
             value: '',
+            validation: {
+                required: true,
+            },
+            valid: false,
         },
 
         street: {
@@ -25,6 +29,10 @@ const ContactData = (props) => {
                 placeholder: 'Street'
             },
             value: '',
+            validation: {
+                required: true,
+            },
+            valid: false,
         },
 
         zipCode: {
@@ -34,6 +42,12 @@ const ContactData = (props) => {
                 placeholder: 'ZIP Code'
             },
             value: '',
+            validation: {
+                required: true,
+                minLength: 5,
+                maxLength: 5,
+            },
+            valid: false,
         },
 
         country: {
@@ -43,6 +57,10 @@ const ContactData = (props) => {
                 placeholder: 'Country'
             },
             value: '',
+            validation: {
+                required: true,
+            },
+            valid: false,
         },
 
         email: {
@@ -52,6 +70,10 @@ const ContactData = (props) => {
                 placeholder: 'Your E-Mail'
             },
             value: '',
+            validation: {
+                required: true,
+            },
+            valid: false,
         },
 
         deliveryMethod: {
@@ -120,6 +142,29 @@ const ContactData = (props) => {
             });
     }
 
+    // Implement validation for the form inpust such as not enter a value
+    const chackValidity = (value, rules) => {
+        let isValid = false;
+        // rules point to the --> 
+        // validation: {
+        //     required: true,
+        // }, in orderForm object
+        if (rules.required) {
+            // to check if the user enter a value
+            isValid = value.trim() !== ''
+        }
+
+        if (rules.minLength) {
+            // 
+            isValid = value.length >= rules.minLength
+        }
+
+        if (rules.maxLength) {
+            isValid = value.length <= rules.maxLength
+        }
+
+        return isValid;
+    }
 
     // Implemnt OnChange Handler
     const inputChangedHandler = (e, inputIdentifier) => {
@@ -150,7 +195,11 @@ const ContactData = (props) => {
         };
 
         updatedOrderFormElment.value = e.target.value;
+        // updatedOrderFormElment.value enterd value by the user,
+        // updatedOrderFormElment.validation rules for the input such as required
+        updatedOrderFormElment.valid = chackValidity(updatedOrderFormElment.value, updatedOrderFormElment.validation)
         updatedOrderForm[inputIdentifier] = updatedOrderFormElment;
+        console.log(updatedOrderFormElment)
         setOrderForm(updatedOrderForm);
     }
 
@@ -161,6 +210,7 @@ const ContactData = (props) => {
         // console.log(key);
         formElementArray.push({
             id: key,
+            // config values index --> ex config = values of name : {....values element config value,}
             config: orderForm[key]
         });
     }
