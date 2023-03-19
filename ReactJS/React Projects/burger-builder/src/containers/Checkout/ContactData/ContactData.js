@@ -87,10 +87,21 @@ const ContactData = (props) => {
         // console.log(location.state.ingredients)
         setLoading(true);
 
+        // On submit handler 
+        // will get input values from the form 
+        const formData = {};
+        // formElementIdentifier --> name, email, country, ZIP code
+        for (let formElementIdentifier in orderForm) {
+            // formElementIdentifier = each user input has entered
+            formData[formElementIdentifier] = orderForm[formElementIdentifier].value;
+        }
+
         const order = {
             price: location.state.price,
             ingredients: { ...location.state.ingredients },
-
+            // below is the Form input values
+            // and will post in the FireBase
+            orderData: formData
         }
 
         // in firebase you shoould add an extension of .json in the path
@@ -115,7 +126,7 @@ const ContactData = (props) => {
         // console.log(e.target.value);
         // CLone all the inputs of the form
         // to chane it safely with affect the orignal form 
-        
+
         const updatedOrderForm = {
             ...orderForm
         }
@@ -142,7 +153,7 @@ const ContactData = (props) => {
         updatedOrderForm[inputIdentifier] = updatedOrderFormElment;
         setOrderForm(updatedOrderForm);
     }
-    
+
 
     const formElementArray = [];
     // key will be name.street,email
@@ -155,7 +166,7 @@ const ContactData = (props) => {
     }
 
     let form = (
-        <form>
+        <form onSubmit={orderHandler}>
             {formElementArray.map(formElement => (
                 <Input
                     key={formElement.id}
@@ -166,8 +177,8 @@ const ContactData = (props) => {
                     changed={(e) => inputChangedHandler(e, formElement.id)}
                 />
             ))}
-            <Button btnType='Success' clicked={orderHandler}>ORDER</Button>
-        </form>
+            <Button btnType='Success'>ORDER</Button>
+        </form >
     );
 
     if (loading) {
