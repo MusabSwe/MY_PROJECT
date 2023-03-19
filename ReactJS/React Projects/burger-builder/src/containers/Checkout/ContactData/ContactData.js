@@ -144,23 +144,29 @@ const ContactData = (props) => {
 
     // Implement validation for the form inpust such as not enter a value
     const chackValidity = (value, rules) => {
-        let isValid = false;
+        let isValid = true;
         // rules point to the --> 
         // validation: {
         //     required: true,
-        // }, in orderForm object
+        // }, in orderForm state
+
+        // Note:
+        // 1. we add for each if statement an && isValid to 
+        // fix the interactions of validation between other if statment 
+        // and we make the default of isValid = true
+        // since we will change at only one input
         if (rules.required) {
             // to check if the user enter a value
-            isValid = value.trim() !== ''
+            isValid = value.trim() !== '' && isValid
         }
 
         if (rules.minLength) {
             // 
-            isValid = value.length >= rules.minLength
+            isValid = value.length >= rules.minLength && isValid
         }
 
         if (rules.maxLength) {
-            isValid = value.length <= rules.maxLength
+            isValid = value.length <= rules.maxLength && isValid
         }
 
         return isValid;
