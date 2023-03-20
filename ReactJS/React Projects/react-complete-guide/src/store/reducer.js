@@ -38,12 +38,24 @@ const reducer = (state = initialState, action) => {
                 // but puch() function create array with changing the 
                 // original array
                 // concat() update array immutablly
-                results: state.results.concat({id: new Date(), value: state.counter}),
+                results: state.results.concat({ id: new Date(), value: state.counter }),
             }
-        // case "DELETE_RESULT":
-        //     return {
+        case "DELETE_RESULT":
+            // const id = 2;
+            // const newArray = [...state.results];
+            // newArray.splice(id, 1);
 
-        //     }         
+            // this remove, but it is not immutable
+            // state.results.splice(id, 1);
+
+            // filter remove from array without affecting the original array
+            // and create a new array of the filtered 
+            const updatedArray = state.results.filter(result => result.id !== action.resultEId);
+            return {
+                // JS object
+                ...state,
+                results: updatedArray,
+            }
     }
     return state;
 };

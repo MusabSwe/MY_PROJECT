@@ -9,7 +9,6 @@ class Counter extends Component {
     state = {
         counter: 0
     }
-
     counterChangedHandler = (action, value) => {
         switch (action) {
             case 'inc':
@@ -42,7 +41,7 @@ class Counter extends Component {
                         <li key={storedResult.id} onClick={this.props.onDeleteResult}>{storedResult.value}</li>
                     ))} */}
                     {this.props.storedResults.map((strResult) => (
-                        <li key={strResult.id} onClick={this.props.onDeleteResult}>{strResult.value}</li>
+                        <li key={strResult.id} onClick={() => this.props.onDeleteResult(strResult.id)}>{strResult.value}</li>
                     ))}
                 </ul>
             </div>
@@ -69,7 +68,7 @@ const mapDispatchToProps = dispatch => {
         onAddFiveCounter: () => dispatch({ type: 'ADD_FIVE', val: 5 }),
         onSubFiveCounter: () => dispatch({ type: 'SUB_FIVE', val: 5 }),
         onStoreResult: () => dispatch({ type: 'STORE_RESULT' }),
-        onDeleteResult: () => dispatch({ type: 'DELETE_RESULT' }),
+        onDeleteResult: (id) => dispatch({ type: 'DELETE_RESULT', resultEId: id }),
     };
 };
 
