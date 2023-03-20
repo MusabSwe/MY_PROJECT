@@ -1,8 +1,8 @@
 import Person from '../component/Person/Person';
 import AddPerson from '../component/AddPerson/AddPerson';
 import { useState } from 'react';
-// import { connect } from 'react-redux';
-const People = () => {
+import { connect } from 'react-redux';
+const People = (props) => {
     // will remove local state and listen handler
     // and we use Redux
     const [persons, setPersons] = useState([]);
@@ -20,7 +20,7 @@ const People = () => {
         <div>
             <AddPerson cliked={RandomPerson} />
             {
-                persons?.map((person) => (
+                props.people?.map((person) => (
                     <Person key={person.id} name={person.name} age={person.age} />
                 ))
             }
@@ -28,4 +28,12 @@ const People = () => {
     );
 }
 
-export default People;
+
+const mapStateToProps = state => {
+    return {
+        people: state.pearsons,
+
+    };
+};
+
+export default connect(mapStateToProps)(People);
