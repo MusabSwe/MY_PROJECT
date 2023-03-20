@@ -1,3 +1,5 @@
+import * as actionTypes from './actions';
+
 const initialState = {
     counter: 0,
     results: [],
@@ -8,29 +10,29 @@ const reducer = (state = initialState, action) => {
     //  in the react component
     // Note Update state immutably
     switch (action.type) {
-        case 'INCREMENT':
+        case actionTypes.INCREMENT:
             // Clone state in immutable way
             const newState = Object.assign({}, state);
             newState.counter = state.counter + 1;
             return newState;
-        case 'DECREMENT':
+        case actionTypes.DECREMENT:
             return {
                 ...state,
                 counter: state.counter - 1,
             }
-        case 'ADD_FIVE':
+        case actionTypes.ADD_FIVE:
             return {
                 // we add spread operator to keep 
                 // state.result untouched
                 ...state,
                 counter: state.counter + 5,
             }
-        case 'SUB_FIVE':
+        case actionTypes.SUB_FIVE:
             return {
                 ...state,
                 counter: state.counter - 5,
             }
-        case "STORE_RESULT":
+        case actionTypes.STORE_RESULT:
             return {
                 ...state,
                 // we use concat() to create a new array 
@@ -40,7 +42,7 @@ const reducer = (state = initialState, action) => {
                 // concat() update array immutablly
                 results: state.results.concat({ id: new Date(), value: state.counter }),
             }
-        case "DELETE_RESULT":
+        case actionTypes.DELETE_RESULT:
             // const id = 2;
             // const newArray = [...state.results];
             // newArray.splice(id, 1);
