@@ -18,8 +18,9 @@ const People = (props) => {
 
     return (
         <div>
-            <AddPerson cliked={RandomPerson} />
+            <AddPerson cliked={props.onAddPerson} />
             {
+                // 
                 props.people?.map((person) => (
                     <Person key={person.id} name={person.name} age={person.age} />
                 ))
@@ -36,4 +37,10 @@ const mapStateToProps = state => {
     };
 };
 
-export default connect(mapStateToProps)(People);
+const mapDispatchToProps = dispatch => {
+    return {
+        onAddPerson: () => dispatch({ type: 'ADD_PERSON' })
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(People);
