@@ -31,7 +31,7 @@ class Counter extends Component {
         return (
             <div>
                 <CounterOutput value={this.props.ctr} />
-                <CounterControl label="Increment" clicked={() => this.counterChangedHandler('inc')} />
+                <CounterControl label="Increment" clicked={this.props.onIncrementCounter} />
                 <CounterControl label="Decrement" clicked={() => this.counterChangedHandler('dec')} />
                 <CounterControl label="Add 5" clicked={() => this.counterChangedHandler('add', 5)} />
                 <CounterControl label="Subtract 5" clicked={() => this.counterChangedHandler('sub', 5)} />
@@ -41,13 +41,28 @@ class Counter extends Component {
 }
 
 // above export at the end of the file after return ()
+// we expext state store in the Redux
+// so each state in the component will be ignored 
+// which will have central state
 const mapStateToProps = state => {
     return {
         // ctr for counter shorcut
-        ctr: state.counter,
-
+        ctr: state.counter
     };
-}
+};
+
+const mapDispatchToProps = dispatch => {
+    return {
+        onIncrementCounter: () => dispatch({type: 'INCREMENT'}),
+        
+    };
+};
+
 // connect has 2 params 1st map passes state as props
 // 2nd wrap the componetn of the state we want to manage
-export default connect(mapStateToProps)(Counter);
+export default connect(mapStateToProps, mapDispatchToProps)(Counter);
+
+// IF you HAVE a component & only want to dispatch actions
+// make the first param as null, and 2nd the dispath actions
+
+// export default connect(mapStateToProps)(Counter);

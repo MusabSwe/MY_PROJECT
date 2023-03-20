@@ -3,7 +3,13 @@ const initialState = {
 }
 
 const reducer = (state = initialState, action) => {
+    // if statemens for each action that dispatch
+    if(action.type === 'INCREMENT'){
+        return {
+            counter: state.counter + 1,
+        }
+    }
     return state;
-}
+};
 
 export default reducer;
