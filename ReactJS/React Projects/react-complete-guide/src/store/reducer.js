@@ -5,30 +5,24 @@ const initialState = {
 const reducer = (state = initialState, action) => {
     // if statemens for each action that come from dispatch
     //  in the react component
-    if(action.type === 'INCREMENT'){
-        return {
-            counter: state.counter + 1,
-        }
+    switch (action.type) {
+        case 'INCREMENT':
+            return {
+                counter: state.counter + 1,
+            }
+        case 'DECREMENT':
+            return {
+                counter: state.counter - 1,
+            }
+        case 'ADD_FIVE':
+            return {
+                counter: state.counter + 5,
+            }
+        case 'SUB_FIVE':
+            return {
+                counter: state.counter - 5,
+            }
     }
-
-    if(action.type === 'DECREMENT'){
-        return {
-            counter: state.counter - 1,
-        }
-    }
-
-    if(action.type === 'ADD_FIVE'){
-        return {
-            counter: state.counter + 5,
-        }
-    }
-
-    if(action.type === 'SUB_FIVE'){
-        return {
-            counter: state.counter - 5,
-        }
-    }
-
     return state;
 };
 
