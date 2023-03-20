@@ -25,12 +25,12 @@ const reducer = (state = initialState, action) => {
                 // we add spread operator to keep 
                 // state.result untouched
                 ...state,
-                counter: state.counter + 5,
+                counter: state.counter + action.val,
             }
         case actionTypes.SUB_FIVE:
             return {
                 ...state,
-                counter: state.counter - 5,
+                counter: state.counter - action.val,
             }
         case actionTypes.STORE_RESULT:
             return {
