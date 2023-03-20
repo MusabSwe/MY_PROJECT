@@ -21,7 +21,7 @@ const People = (props) => {
             <AddPerson cliked={props.onAddPerson} />
             {
                 props.people?.map((person) => (
-                    <Person key={person.id} name={person.name} age={person.age} />
+                    <Person key={person.id} click={() => props.onRemovePerson(person.id)} name={person.name} age={person.age} />
                 ))
             }
         </div>
@@ -37,7 +37,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        onAddPerson: () => dispatch({ type: actionTypes.ADD_PERSON })
+        onAddPerson: () => dispatch({ type: actionTypes.ADD_PERSON }),
+        onRemovePerson: (id) => dispatch({ type: actionTypes.REMOVE_PERSON, personId: id }),
     }
 }
 
