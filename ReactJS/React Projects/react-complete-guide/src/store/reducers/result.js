@@ -1,7 +1,6 @@
-import * as actionTypes from './actions';
+import * as actionTypes from '../actions';
 
 const initialState = {
-    counter: 0,
     results: [],
 }
 
@@ -10,28 +9,6 @@ const reducer = (state = initialState, action) => {
     //  in the react component
     // Note Update state immutably
     switch (action.type) {
-        case actionTypes.INCREMENT:
-            // Clone state in immutable way
-            const newState = Object.assign({}, state);
-            newState.counter = state.counter + 1;
-            return newState;
-        case actionTypes.DECREMENT:
-            return {
-                ...state,
-                counter: state.counter - 1,
-            }
-        case actionTypes.ADD_FIVE:
-            return {
-                // we add spread operator to keep 
-                // state.result untouched
-                ...state,
-                counter: state.counter + action.val,
-            }
-        case actionTypes.SUB_FIVE:
-            return {
-                ...state,
-                counter: state.counter - action.val,
-            }
         case actionTypes.STORE_RESULT:
             return {
                 ...state,
@@ -40,7 +17,7 @@ const reducer = (state = initialState, action) => {
                 // but puch() function create array with changing the 
                 // original array
                 // concat() update array immutablly
-                results: state.results.concat({ id: new Date(), value: state.counter }),
+                results: state.results.concat({ id: new Date(), value: action.result }),
             }
         case actionTypes.DELETE_RESULT:
             // const id = 2;
