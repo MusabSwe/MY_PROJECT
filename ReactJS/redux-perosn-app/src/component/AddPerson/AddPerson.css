@@ -1,0 +1,17 @@
+.add-person {
+    text-align: center;
+    margin: 50px auto;
+}
+
+.add-person button {
+    color: white;
+    background-color:  rgb(255, 148, 9);
+    padding: 7px;
+    border: 1px solid;
+    border-radius: 7px;
+    cursor: pointer;
+}
+
+.add-person button:hover {
+    background-color: burlywood;
+}
