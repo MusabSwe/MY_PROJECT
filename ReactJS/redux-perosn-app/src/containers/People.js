@@ -1,6 +1,7 @@
 import Person from '../component/Person/Person';
 import AddPerson from '../component/AddPerson/AddPerson';
 import { connect } from 'react-redux';
+import * as actionTypes from '../store/actions';
 const People = (props) => {
     // will remove local state and listen handler
     // and we use Redux
@@ -36,7 +37,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        onAddPerson: () => dispatch({ type: 'ADD_PERSON' })
+        onAddPerson: () => dispatch({ type: actionTypes.ADD_PERSON })
     }
 }
 

@@ -1,3 +1,4 @@
+import * as actionTypes from './actions';
 const initialState = {
     // list of div (People)
     // to create dynmic people based on  
@@ -6,7 +7,7 @@ const initialState = {
 }
 
 const reducer = (state = initialState, action) => {
-    if (action.type === 'ADD_PERSON') {
+    if (action.type === actionTypes.ADD_PERSON) {
         // OnClick() instrctions of adding persons below
         const age = Math.floor(Math.random() * 51) + 10;
         const p = { id: state.pearsons.length, name: "Max", age: age };
