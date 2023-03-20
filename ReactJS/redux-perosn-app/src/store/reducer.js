@@ -21,6 +21,12 @@ const reducer = (state = initialState, action) => {
         return {
             ...state,
             // filter return new array so change is immutable
+            // action.personId passes from the people.js component 
+            // so when we want to receive anything from component we manage its state
+            // we pass it through dispatch as payload
+            // syntaxt
+            // onRemovePerson: (id) => dispatch({ type: actionTypes.REMOVE_PERSON, personId: id }),
+
             pearsons: state.pearsons.filter(person => person.id !== action.personId),
         };
     }
