@@ -32,9 +32,9 @@ class Counter extends Component {
             <div>
                 <CounterOutput value={this.props.ctr} />
                 <CounterControl label="Increment" clicked={this.props.onIncrementCounter} />
-                <CounterControl label="Decrement" clicked={() => this.counterChangedHandler('dec')} />
-                <CounterControl label="Add 5" clicked={() => this.counterChangedHandler('add', 5)} />
-                <CounterControl label="Subtract 5" clicked={() => this.counterChangedHandler('sub', 5)} />
+                <CounterControl label="Decrement" clicked={this.props.onDecrementCounter} />
+                <CounterControl label="Add 5" clicked={this.props.onAddFiveCounter} />
+                <CounterControl label="Subtract 5" clicked={this.props.onSubFiveCounter} />
             </div>
         );
     }
@@ -53,8 +53,10 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        onIncrementCounter: () => dispatch({type: 'INCREMENT'}),
-        
+        onIncrementCounter: () => dispatch({ type: 'INCREMENT' }),
+        onDecrementCounter: () => dispatch({ type: 'DECREMENT' }),
+        onAddFiveCounter: () => dispatch({ type: 'ADD_FIVE' }),
+        onSubFiveCounter: () => dispatch({ type: 'SUB_FIVE' }),
     };
 };
 
@@ -65,4 +67,4 @@ export default connect(mapStateToProps, mapDispatchToProps)(Counter);
 // IF you HAVE a component & only want to dispatch actions
 // make the first param as null, and 2nd the dispath actions
 
-// export default connect(mapStateToProps)(Counter);
+// export default connect(null,mapDispatchToProps)(Counter);
