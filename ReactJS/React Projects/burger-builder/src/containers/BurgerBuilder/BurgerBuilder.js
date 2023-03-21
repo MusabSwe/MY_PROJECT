@@ -13,12 +13,12 @@ import { useNavigate } from "react-router";
 import { connect } from "react-redux";
 import * as actionTypes from '../../store/actions';
 
-const INGREDIENT_PRICES = {
-    salad: 0.5,
-    cheese: 0.4,
-    meat: 1.3,
-    bacon: 0.7
-}
+// const INGREDIENT_PRICES = {
+//     salad: 0.5,
+//     cheese: 0.4,
+//     meat: 1.3,
+//     bacon: 0.7
+// }
 
 const BurgerBuilder = (props) => {
     // state = {
@@ -32,8 +32,8 @@ const BurgerBuilder = (props) => {
 
     // states 
     // We will add this in Redux to manage the state
-    const [ingredients, setIngredients] = useState(null);
-    const [totalPrice, setTotalPrice] = useState(4);
+    // const [ingredients, setIngredients] = useState(null);
+    // const [totalPrice, setTotalPrice] = useState(4);
 
     // state for UI affect so it is not important to add in the redux
     // use to toggle order button from active to disabled and vice versa 
@@ -74,44 +74,44 @@ const BurgerBuilder = (props) => {
     // 2. retrieve the exist (old) amount of the specified type of ingredient
     // 3. add one to the old amount of the specified type of ingredient (use spread operator)
     // 4. update the amount of the specified type of ingredient 
-    const addIngredientHandler = (type) => {
-        const oldCount = ingredients[type];
-        const updatedCount = oldCount + 1;
-        // Update of states should be done in immutable way
-        // so we use spread operator
-        const updateIngredients = {
-            ...ingredients
-        };
+    // const addIngredientHandler = (type) => {
+    //     const oldCount = ingredients[type];
+    //     const updatedCount = oldCount + 1;
+    //     // Update of states should be done in immutable way
+    //     // so we use spread operator
+    //     const updateIngredients = {
+    //         ...ingredients
+    //     };
 
-        updateIngredients[type] = updatedCount;
-        const priceAddition = INGREDIENT_PRICES[type];
-        const oldPrice = totalPrice;
-        const newPrice = oldPrice + priceAddition;
-        // this.setState({ totalPrice: newPrice, ingredients: updateIngredients });
-        setTotalPrice(newPrice);
-        setIngredients(updateIngredients);
-        updatePurchaseState(updateIngredients);
-    }
+    //     updateIngredients[type] = updatedCount;
+    //     const priceAddition = INGREDIENT_PRICES[type];
+    //     const oldPrice = totalPrice;
+    //     const newPrice = oldPrice + priceAddition;
+    //     // this.setState({ totalPrice: newPrice, ingredients: updateIngredients });
+    //     setTotalPrice(newPrice);
+    //     setIngredients(updateIngredients);
+    //     updatePurchaseState(updateIngredients);
+    // }
 
-    const removeIngredientHandler = (type) => {
-        const oldCount = ingredients[type];
-        let updatedCount;
-        if (oldCount <= 0) {
-            return;
-        }
-        updatedCount = oldCount - 1;
-        const updateIngredients = {
-            ...ingredients
-        };
-        updateIngredients[type] = updatedCount;
-        const priceSubtraction = INGREDIENT_PRICES[type];
-        const oldPrice = totalPrice;
-        const newPrice = oldPrice - priceSubtraction;
-        // this.setState({ totalPrice: newPrice, ingredients: updateIngredients });
-        setTotalPrice(newPrice);
-        setIngredients(updateIngredients);
-        updatePurchaseState(updateIngredients);
-    }
+    // const removeIngredientHandler = (type) => {
+    //     const oldCount = ingredients[type];
+    //     let updatedCount;
+    //     if (oldCount <= 0) {
+    //         return;
+    //     }
+    //     updatedCount = oldCount - 1;
+    //     const updateIngredients = {
+    //         ...ingredients
+    //     };
+    //     updateIngredients[type] = updatedCount;
+    //     const priceSubtraction = INGREDIENT_PRICES[type];
+    //     const oldPrice = totalPrice;
+    //     const newPrice = oldPrice - priceSubtraction;
+    //     // this.setState({ totalPrice: newPrice, ingredients: updateIngredients });
+    //     setTotalPrice(newPrice);
+    //     setIngredients(updateIngredients);
+    //     updatePurchaseState(updateIngredients);
+    // }
 
     const purchaseHandler = () => {
         setPurchasing(true);
@@ -126,13 +126,13 @@ const BurgerBuilder = (props) => {
 
         const queryParams = [];
 
-        for (let i in ingredients) {
+        for (let i in props.ings) {
             console.log(i);
             // used to get the ingredents from query
             // encodeURIComponent used to make params fits with the URL
-            queryParams.push(encodeURIComponent(i) + '=' + encodeURIComponent(ingredients[i]))
+            queryParams.push(encodeURIComponent(i) + '=' + encodeURIComponent(props.ings[i]))
         }
-        queryParams.push('price=' + totalPrice);
+        queryParams.push('price=' + props.price);
         const queryString = queryParams.join('&');
 
         navigate({
@@ -156,7 +156,7 @@ const BurgerBuilder = (props) => {
             <Auxiliry>
                 <Burger ingredients={props.ings} />
                 <BuildControls
-                    totalPrice={totalPrice.toFixed(2)}
+                    totalPrice={props.price.toFixed(2)}
                     ingredientAdded={props.onAddIngredient}
                     ingredientRemoved={props.onRemoveIngredient}
                     purchaseable={purchaseable}
@@ -167,7 +167,7 @@ const BurgerBuilder = (props) => {
         );
         orderSummary = <OrderSummary
             ingredients={props.ings}
-            price={totalPrice}
+            price={props.price}
             purchaceCanceled={purchaseCancelHandler}
             purchaceContinued={purchaseContinueHandler}
         />
@@ -189,7 +189,8 @@ const BurgerBuilder = (props) => {
 
 const mapStateToProps = state => {
     return {
-        ings: state.ingredients
+        ings: state.ingredients,
+        price: state.totalPrice,
     };
 }
 
