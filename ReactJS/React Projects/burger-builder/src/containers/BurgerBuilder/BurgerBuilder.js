@@ -57,6 +57,8 @@ const BurgerBuilder = (props) => {
     // }, []);
 
 
+    // used to disable & enable order button
+    // to check if the ingredienst is added or removed
     const updatePurchaseState = (ingredients) => {
         // create array of strings
         const sum = Object.keys(ingredients)
@@ -66,7 +68,7 @@ const BurgerBuilder = (props) => {
             .reduce((sum, el) => {
                 return sum + el
             }, 0);
-        setPurchaseable(sum > 0);
+        return sum > 0;
     }
 
     // flow of add ingrediens
@@ -159,7 +161,7 @@ const BurgerBuilder = (props) => {
                     totalPrice={props.price.toFixed(2)}
                     ingredientAdded={props.onAddIngredient}
                     ingredientRemoved={props.onRemoveIngredient}
-                    purchaseable={purchaseable}
+                    purchaseable={updatePurchaseState(props.ings)}
                     disabled={disabledInfo}
                     ordered={purchaseHandler}
                 />
