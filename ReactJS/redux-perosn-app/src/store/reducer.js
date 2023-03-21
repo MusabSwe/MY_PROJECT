@@ -9,8 +9,8 @@ const initialState = {
 const reducer = (state = initialState, action) => {
     if (action.type === actionTypes.ADD_PERSON) {
         // OnClick() instrctions of adding persons below
-        const age = Math.floor(Math.random() * 51) + 10;
-        const p = { id: state.pearsons.length, name: "Max", age: age };
+        // const age = Math.floor(Math.random() * 51) + 10;
+        const p = { id: state.pearsons.length, name: action.payload.name, age: action.payload.age };
         return {
             ...state,
             // to add in the array immutably (non in the original)
