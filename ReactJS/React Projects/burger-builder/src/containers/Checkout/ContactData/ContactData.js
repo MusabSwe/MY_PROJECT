@@ -6,6 +6,7 @@ import { useLocation } from "react-router";
 import axios from "../../../axios-orders";
 import Spinner from "../../../UI/spinner/spinner";
 import { useNavigate } from "react-router";
+import { connect } from "react-redux";
 const ContactData = (props) => {
 
     const [orderForm, setOrderForm] = useState({
@@ -130,8 +131,8 @@ const ContactData = (props) => {
         }
 
         const order = {
-            price: location.state.price,
-            ingredients: { ...location.state.ingredients },
+            price: props.price,
+            ingredients: { ...props.ings },
             // below is the Form input values
             // and will post in the FireBase
             orderData: formData
@@ -280,5 +281,11 @@ const ContactData = (props) => {
         </div>
     );
 }
+const mapStatetoProps = state => {
+    return {
+        ings: state.ingredients,
+        price: state.totalPrice,
+    };
+}
 
-export default ContactData;
+export default connect(mapStatetoProps)(ContactData);

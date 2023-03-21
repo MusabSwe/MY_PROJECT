@@ -126,21 +126,23 @@ const BurgerBuilder = (props) => {
     const purchaseContinueHandler = () => {
         // alert('you continue!');
 
-        const queryParams = [];
+        // const queryParams = [];
 
-        for (let i in props.ings) {
-            console.log(i);
-            // used to get the ingredents from query
-            // encodeURIComponent used to make params fits with the URL
-            queryParams.push(encodeURIComponent(i) + '=' + encodeURIComponent(props.ings[i]))
-        }
-        queryParams.push('price=' + props.price);
-        const queryString = queryParams.join('&');
+        // for (let i in props.ings) {
+        //     console.log(i);
+        //     // used to get the ingredents from query
+        //     // encodeURIComponent used to make params fits with the URL
+        //     queryParams.push(encodeURIComponent(i) + '=' + encodeURIComponent(props.ings[i]))
+        // }
+        // queryParams.push('price=' + props.price);
+        // const queryString = queryParams.join('&');
 
-        navigate({
-            pathname: '/checkout',
-            search: '?' + queryString,
-        })
+        // navigate({
+        //     pathname: '/checkout',
+        //     search: '?' + queryString,
+        // })
+        
+        navigate('/checkout')
     }
 
     const disabledInfo = {
