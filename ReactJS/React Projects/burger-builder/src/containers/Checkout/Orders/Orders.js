@@ -4,6 +4,9 @@ import axios from "../../../axios-orders";
 import withErrorHandler from "../../../withErrorHandler/withErrorHandler";
 
 const Orders = () => {
+    // orders is async state since it is used to fetch data
+    // so we do not inlude it in the sync redux
+    // and in advane redux in async redux we will use
     const [orders, setOrders] = useState([]);
     const [loading, setLoading] = useState(true);
 

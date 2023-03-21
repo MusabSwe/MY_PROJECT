@@ -15,6 +15,7 @@ const Checkout = (props) => {
     )
     const [price, setPrice] = useState(0);
 
+    
     const navigate = useNavigate();
     const location = useLocation();
     const [currentPath, setCurrentPath] = useState();

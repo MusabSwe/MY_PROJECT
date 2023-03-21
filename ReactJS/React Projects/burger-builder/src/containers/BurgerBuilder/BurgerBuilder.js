@@ -28,11 +28,17 @@ const BurgerBuilder = () => {
     //     error: false,
     // }
 
-    // states
+    // states 
+    // We will add this in Redux to manage the state
     const [ingredients, setIngredients] = useState(null);
     const [totalPrice, setTotalPrice] = useState(4);
+
+    // state for UI affect so it is not important to add in the redux
+    // use to toggle order button from active to disabled and vice versa 
     const [purchaseable, setPurchaseable] = useState(false);
+    // to hide & display Modal
     const [purchasing, setPurchasing] = useState(false);
+    // To hide & display spinner
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(false);
 
