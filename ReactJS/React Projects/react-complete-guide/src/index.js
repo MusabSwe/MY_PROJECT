@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import { createStore, combineReducers } from 'redux'
+import { createStore, combineReducers, applyMiddleware } from 'redux'
 import counterReducer from './store/reducers/counter';
 import resultReducer from './store/reducers/result';
 import { Provider } from 'react-redux';
@@ -18,10 +18,24 @@ const rootReducer = combineReducers({
     res: resultReducer
 })
 
+// Middleware
+const logger = store => {
+    return next => {
+        return action => {
+            // inner function to receive middleware
+            console.log('Middleware Dispatcing', action)
+            // let action continue to reducer
+            const result = next(action);
+            console.log('[Middleware] next state', store.getState());
+            return result;
+        }
+    }
+}
+
 // take the reducer as an input
 // so we create a folder called store and inside it a reducer file 
 // to initiate the store 
-const store = createStore(rootReducer);
+const store = createStore(rootReducer, applyMiddleware(logger));
 
 // Provider helper component used to inject or store into react components
 // has store prop
