@@ -43,15 +43,16 @@ const BurgerBuilder = () => {
     const [error, setError] = useState(false);
 
     const navigate = useNavigate();
-    useEffect(() => {
-        axios.get('https://burger-builder-fe664-default-rtdb.firebaseio.com/ingredients.json')
-            .then(res => {
-                setIngredients(res.data);
-            }).catch(error => {
-                console.log(error);
-                setError(true);
-            });
-    }, []);
+    // we will use it when we take async Redux
+    // useEffect(() => {
+    //     axios.get('https://burger-builder-fe664-default-rtdb.firebaseio.com/ingredients.json')
+    //         .then(res => {
+    //             setIngredients(res.data);
+    //         }).catch(error => {
+    //             console.log(error);
+    //             setError(true);
+    //         });
+    // }, []);
 
 
     const updatePurchaseState = (ingredients) => {
