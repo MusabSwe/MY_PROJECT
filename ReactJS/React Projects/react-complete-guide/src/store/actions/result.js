@@ -1,9 +1,12 @@
 import * as actionTypes from './actionsTypes';
 
 const saveResult = (result) => {
+    // change data here or reducer
+    // here better for async code 
+    const updatedResult = result * 2;
     return {
         type: actionTypes.STORE_RESULT,
-        result: result
+        result: updatedResult
     };
 }
 // we use thunk third party library to implement 

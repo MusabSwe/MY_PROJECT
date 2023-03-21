@@ -10,6 +10,8 @@ const reducer = (state = initialState, action) => {
     // Note Update state immutably
     switch (action.type) {
         case actionTypes.STORE_RESULT:
+            // change data here or action creator
+            const updateResult = action.result * 2;
             return {
                 ...state,
                 // we use concat() to create a new array 
