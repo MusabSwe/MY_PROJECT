@@ -35,11 +35,20 @@ export const subFive = (value) => {
     }
 };
 
-export const storeResult = (result) => {
+const saveResult = (result) => {
     return {
         type: STORE_RESULT,
         result: result
+    };
+}
 
+// we use thunk third party library to implement 
+// async code with action creators
+export const storeResult = (result) => {
+    return (dispatch) => {
+        setTimeout(() => {
+            dispatch(saveResult(result))
+        }, 2000);
     }
 };
 
