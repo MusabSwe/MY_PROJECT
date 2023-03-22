@@ -1,5 +1,5 @@
 import * as actionTypes from '../actions/actionsTypes';
-
+import { updateObject } from '../utility';
 const initialState = {
     counter: 0
 }
@@ -11,26 +11,37 @@ const reducer = (state = initialState, action) => {
     switch (action.type) {
         case actionTypes.INCREMENT:
             // Clone state in immutable way
-            const newState = Object.assign({}, state);
-            newState.counter = state.counter + 1;
-            return newState;
+            // longer approach it is same as ...state
+            // const newState = Object.assign({}, state);
+            // newState.counter = state.counter + 1;
+            // return newState;
+            // cleaner way to implement actions
+            return updateObject(state, { counter: state.counter + 1 })
+
         case actionTypes.DECREMENT:
-            return {
-                ...state,
-                counter: state.counter - 1,
-            }
+            // cleaner way to implement actions
+            return updateObject(state, { counter: state.counter - 1 });
+        // return {
+        //     ...state,
+        //     counter: state.counter - 1,
+        // }
+
         case actionTypes.ADD_FIVE:
-            return {
-                // we add spread operator to keep 
-                // state.result untouched
-                ...state,
-                counter: state.counter + action.val,
-            }
+            // cleaner way to implement actions
+            return updateObject(state, { counter: state.counter + action.val });
+        // return {
+        //     // we add spread operator to keep 
+        //     // state.result untouched
+        //     ...state,
+        //     counter: state.counter + action.val,
+        // }
         case actionTypes.SUB_FIVE:
-            return {
-                ...state,
-                counter: state.counter - action.val,
-            }
+            // cleaner way to implement actions
+            return updateObject(state, { counter: state.counter - action.val });
+        // return {
+        //     ...state,
+        //     counter: state.counter - action.val,
+        // }
     }
     return state;
 };
