@@ -5,8 +5,11 @@ import classes from './ContactData.module.css';
 import { useLocation } from "react-router";
 import axios from "../../../axios-orders";
 import Spinner from "../../../UI/spinner/spinner";
+import * as actions from '../../../store/actions/index';
 import { useNavigate } from "react-router";
 import { connect } from "react-redux";
+import withErrorHandler from "../../../withErrorHandler/withErrorHandler";
+
 const ContactData = (props) => {
 
     const [orderForm, setOrderForm] = useState({
@@ -121,7 +124,7 @@ const ContactData = (props) => {
         // To test the date come from Checkout by useNavigate
         // console.log(location.state.price);
         // console.log(location.state.ingredients)
-        setLoading(true);
+        // setLoading(true);
 
         // On submit handler 
         // will get input values from the form 
@@ -140,20 +143,22 @@ const ContactData = (props) => {
             orderData: formData
         }
 
+        props.onPostOrder(order);
+
         // in firebase you shoould add an extension of .json in the path
-        axios.post('/orders.json', order)
-            .then(res => {
-                // this.setState({ loading: false, purchasing: false });
-                setLoading(false);
-                // setPurchasing(false);
-                console.log(res);
-                navigate('/');
-            }).catch(err => {
-                // this.setState({ loading: false, purchasing: false });
-                setLoading(false);
-                // setPurchasing(false);
-                console.log(err);
-            });
+        // axios.post('/orders.json', order)
+        //     .then(res => {
+        //         // this.setState({ loading: false, purchasing: false });
+        //         setLoading(false);
+        //         // setPurchasing(false);
+        //         console.log(res);
+        //         navigate('/');
+        //     }).catch(err => {
+        //         // this.setState({ loading: false, purchasing: false });
+        //         setLoading(false);
+        //         // setPurchasing(false);
+        //         console.log(err);
+        //     });
     }
 
     // Implement validation for the form inpust such as not enter a value
@@ -285,9 +290,15 @@ const ContactData = (props) => {
 }
 const mapStatetoProps = state => {
     return {
-        ings: state.ingredients,
-        price: state.totalPrice,
+        ings: state.burger.ingredients,
+        price: state.burger.totalPrice,
     };
 }
 
-export default connect(mapStatetoProps)(ContactData);
+const mapDispatchToProps = dispatch => {
+    return {
+        onPostOrder: (order) => dispatch(actions.purchaseBurgerStartFetch(order))
+    };
+};
+
+export default connect(mapStatetoProps, mapDispatchToProps)(withErrorHandler(ContactData));
