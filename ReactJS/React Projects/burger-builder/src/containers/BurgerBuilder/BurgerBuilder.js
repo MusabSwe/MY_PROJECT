@@ -42,13 +42,12 @@ const BurgerBuilder = (props) => {
     const [purchasing, setPurchasing] = useState(false);
     // To hide & display spinner
     // const [loading, setLoading] = useState(false);
-    const [error, setError] = useState(false);
+    // const [error, setError] = useState(false);
 
     const navigate = useNavigate();
-
     // we will use it when we take async Redux
     useEffect(() => {
-        
+        props.onInitIngredients();
     }, []);
 
 
@@ -147,8 +146,9 @@ const BurgerBuilder = (props) => {
     for (let key in disabledInfo) {
         disabledInfo[key] = disabledInfo[key] <= 0 // less than or equal zero
     }
+
     let orderSummary = null;
-    let burger = error ? <p>Ingredients can't be loaded!</p> : <Spinner />
+    let burger = props.error ? <p>Ingredients can't be loaded!</p> : <Spinner />
 
     if (props.ings) {
         burger = (
@@ -186,13 +186,15 @@ const mapStateToProps = state => {
     return {
         ings: state.burger.ingredients,
         price: state.burger.totalPrice,
+        error: state.burger.error
     };
 }
 
 const mapDispatchToProps = dispatch => {
     return {
         onAddIngredient: (ingName) => dispatch(burgerBuilderActions.addIngredient(ingName)),
-        onRemoveIngredient: (ingName) => dispatch(burgerBuilderActions.RemoveIngredient(ingName))
+        onRemoveIngredient: (ingName) => dispatch(burgerBuilderActions.RemoveIngredient(ingName)),
+        onInitIngredients: () => dispatch(burgerBuilderActions.initIngredients()),
     };
 }
 
