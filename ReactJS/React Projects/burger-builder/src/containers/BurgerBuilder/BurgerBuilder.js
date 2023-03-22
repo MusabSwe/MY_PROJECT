@@ -32,7 +32,7 @@ const BurgerBuilder = (props) => {
 
     // states 
     // We will add this in Redux to manage the state
-    // const [ingredients, setIngredients] = useState(null);
+    const [ingredients, setIngredients] = useState(null);
     // const [totalPrice, setTotalPrice] = useState(4);
 
     // state for UI affect so it is not important to add in the redux
@@ -45,16 +45,17 @@ const BurgerBuilder = (props) => {
     const [error, setError] = useState(false);
 
     const navigate = useNavigate();
+
     // we will use it when we take async Redux
-    // useEffect(() => {
-    //     axios.get('https://burger-builder-fe664-default-rtdb.firebaseio.com/ingredients.json')
-    //         .then(res => {
-    //             setIngredients(res.data);
-    //         }).catch(error => {
-    //             console.log(error);
-    //             setError(true);
-    //         });
-    // }, []);
+    useEffect(() => {
+        axios.get('https://burger-builder-fe664-default-rtdb.firebaseio.com/ingredients.json')
+            .then(res => {
+                setIngredients(res.data);
+            }).catch(error => {
+                console.log(error);
+                setError(true);
+            });
+    }, []);
 
 
     // used to disable & enable order button
