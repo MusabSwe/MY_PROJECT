@@ -17,20 +17,29 @@ export const purchaseBurgerFail = (error) => {
     return {
         type: actionTypes.PURCHASE_BURGER_FAIL,
         error: error,
-        
+
     };
 };
+
+export const purchaseBurgerStart = () => {
+    return {
+        type: actionTypes.PURCHASE_BURGER_START,
+
+    };
+};
+
 
 // when the user clicks on order button to post Data to Firebase DB
 export const purchaseBurgerStartFetch = (orderData) => {
 
     return dispatch => {
+       
+        dispatch(purchaseBurgerStart())
         axios.post('/orders.json', orderData)
             .then(res => {
-                const navigate = useNavigate();
                 // setLoading(false);
                 dispatch(purchaseBurgerSuccess(res.data, orderData));
-                navigate('/');
+                // navigate('/');
             }).catch(err => {
                 // this.setState({ loading: false, purchasing: false });
                 // setLoading(false);

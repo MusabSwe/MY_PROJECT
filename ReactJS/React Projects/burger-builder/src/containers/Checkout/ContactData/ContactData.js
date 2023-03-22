@@ -103,7 +103,7 @@ const ContactData = (props) => {
 
     });
 
-    const [loading, setLoading] = useState(false);
+    // const [loading, setLoading] = useState(false);
     // to check entire form is valid or not
     const [formIsValid, setFormIsValid] = useState(false);
 
@@ -144,6 +144,7 @@ const ContactData = (props) => {
         }
 
         props.onPostOrder(order);
+        navigate('/');
 
         // in firebase you shoould add an extension of .json in the path
         // axios.post('/orders.json', order)
@@ -278,7 +279,7 @@ const ContactData = (props) => {
         </form >
     );
 
-    if (loading) {
+    if (props.loading) {
         form = <Spinner />;
     }
     return (
@@ -290,8 +291,11 @@ const ContactData = (props) => {
 }
 const mapStatetoProps = state => {
     return {
+        // instead of getting all state from one reducer file
+        // we get it from 2 different files and this is called slice file
         ings: state.burger.ingredients,
         price: state.burger.totalPrice,
+        loading: state.order.loading,
     };
 }
 
@@ -301,4 +305,4 @@ const mapDispatchToProps = dispatch => {
     };
 };
 
-export default connect(mapStatetoProps, mapDispatchToProps)(withErrorHandler(ContactData));
+export default connect(mapStatetoProps, mapDispatchToProps)(ContactData);

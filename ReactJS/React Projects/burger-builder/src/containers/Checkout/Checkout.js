@@ -56,7 +56,6 @@ const Checkout = (props) => {
     const checkOutContinued = () => {
         navigate('contact-data', { replace: true, state: { ingredients: props.ings, price: props.price } });
     }
-
     return (
         <div>
             <CheckOutSummary

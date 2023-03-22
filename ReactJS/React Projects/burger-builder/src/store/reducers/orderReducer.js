@@ -1,12 +1,20 @@
 import * as actionTypes from '../actions/actionTypes';
 const initialState = {
     orders: [],
-    error: false,
+    loading: false,
 
 }
 
 const orderReducer = (state = initialState, action) => {
     switch (action.type) {
+        // dispatched in the in the actionCreator of frthching data 
+        case actionTypes.PURCHASE_BURGER_START:
+            return {
+                ...state,
+                loading: true,
+            };
+        // dispatched in the in the actionCreator of frthching data
+        // if the data received  with 200 ok
         case actionTypes.PURCHASE_BURGER_SUCCESS:
             const newOrder = {
                 ...action.orderData,
@@ -17,6 +25,8 @@ const orderReducer = (state = initialState, action) => {
                 loading: false,
                 orders: state.orders.concat(newOrder),
             }
+        // dispatched in the in the actionCreator of frthching data
+        // if the data lost  with 404 not Found
         case actionTypes.PURCHASE_BURGER_FAIL:
             return {
                 ...state,
