@@ -41,20 +41,14 @@ const BurgerBuilder = (props) => {
     // to hide & display Modal
     const [purchasing, setPurchasing] = useState(false);
     // To hide & display spinner
-    const [loading, setLoading] = useState(false);
+    // const [loading, setLoading] = useState(false);
     const [error, setError] = useState(false);
 
     const navigate = useNavigate();
 
     // we will use it when we take async Redux
     useEffect(() => {
-        axios.get('https://burger-builder-fe664-default-rtdb.firebaseio.com/ingredients.json')
-            .then(res => {
-                setIngredients(res.data);
-            }).catch(error => {
-                console.log(error);
-                setError(true);
-            });
+        
     }, []);
 
 
@@ -176,10 +170,6 @@ const BurgerBuilder = (props) => {
             purchaceCanceled={purchaseCancelHandler}
             purchaceContinued={purchaseContinueHandler}
         />
-    }
-
-    if (loading) {
-        orderSummary = <Spinner />
     }
 
     return (
