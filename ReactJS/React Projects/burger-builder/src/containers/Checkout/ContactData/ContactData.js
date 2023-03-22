@@ -114,6 +114,8 @@ const ContactData = (props) => {
     // }
 
 
+    // add each submit handler that send HTTP request to the action creator
+    // to handle async code
     const orderHandler = (e) => {
         e.preventDefault();
         // To test the date come from Checkout by useNavigate

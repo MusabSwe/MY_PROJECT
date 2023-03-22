@@ -11,7 +11,7 @@ import withErrorHandler from "../../withErrorHandler/withErrorHandler";
 // import axios from "axios";
 import { useNavigate } from "react-router";
 import { connect } from "react-redux";
-import * as actionTypes from '../../store/actions';
+import * as actionTypes from '../../store/actions/actions';
 
 // const INGREDIENT_PRICES = {
 //     salad: 0.5,
