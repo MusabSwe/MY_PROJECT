@@ -11,7 +11,7 @@ import withErrorHandler from "../../withErrorHandler/withErrorHandler";
 // import axios from "axios";
 import { useNavigate } from "react-router";
 import { connect } from "react-redux";
-import * as actionTypes from '../../store/actions/actionTypes';
+import * as burgerBuilderActions from '../../store/actions/index';
 
 // const INGREDIENT_PRICES = {
 //     salad: 0.5,
@@ -141,7 +141,7 @@ const BurgerBuilder = (props) => {
         //     pathname: '/checkout',
         //     search: '?' + queryString,
         // })
-        
+
         navigate('/checkout')
     }
 
@@ -200,8 +200,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        onAddIngredient: (ingName) => dispatch({ type: actionTypes.ADD_INGREDIENT, ingredientName: ingName }),
-        onRemoveIngredient: (ingName) => dispatch({ type: actionTypes.REMOVE_INGREDIENT, ingredientName: ingName })
+        onAddIngredient: (ingName) => dispatch(burgerBuilderActions.addIngredient(ingName)),
+        onRemoveIngredient: (ingName) => dispatch(burgerBuilderActions.RemoveIngredient(ingName))
     };
 }
 
