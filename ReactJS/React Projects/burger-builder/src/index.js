@@ -5,10 +5,23 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter as Router } from 'react-router-dom'
 import { Provider } from 'react-redux';
-import { createStore, applyMiddleware } from 'redux';
-import reducer from './store/reducers/reducer';
+import { createStore, combineReducers } from 'redux';
+import burgerBuilderReducer from './store/reducers/burgerBuilderReducer';
+import orderReducer from './store/reducers/orderReducer';
 const root = ReactDOM.createRoot(document.getElementById('root'));
-const store = createStore(reducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+
+
+// we use combineReducers when we have multiple reducers to combine them
+// where each reducer manage differnt state
+const rootReducer = combineReducers({
+  // burger & order we use it to access states for each reducer
+  // and act as a global state 
+  // make sure the same name below when you calle it
+  burger: burgerBuilderReducer,
+  order: orderReducer,
+});
+
+const store = createStore(rootReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 root.render(
 
   <React.StrictMode>

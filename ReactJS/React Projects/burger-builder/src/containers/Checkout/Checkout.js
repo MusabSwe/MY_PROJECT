@@ -72,8 +72,12 @@ const Checkout = (props) => {
 
 const mapStateToProps = state => {
     return {
-        ings: state.ingredients,
-        price: state.totalPrice,
+        // we add state.burger.ing
+        // since we have multiple reducers
+        // so as a result we add file that 
+        // we are managing its state
+        ings: state.burger.ingredients,
+        price: state.burger.totalPrice,
     };
 }
 

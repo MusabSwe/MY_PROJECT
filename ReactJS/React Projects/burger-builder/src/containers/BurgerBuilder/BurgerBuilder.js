@@ -11,7 +11,7 @@ import withErrorHandler from "../../withErrorHandler/withErrorHandler";
 // import axios from "axios";
 import { useNavigate } from "react-router";
 import { connect } from "react-redux";
-import * as actionTypes from '../../store/actions/actions';
+import * as actionTypes from '../../store/actions/actionTypes';
 
 // const INGREDIENT_PRICES = {
 //     salad: 0.5,
@@ -193,8 +193,8 @@ const BurgerBuilder = (props) => {
 
 const mapStateToProps = state => {
     return {
-        ings: state.ingredients,
-        price: state.totalPrice,
+        ings: state.burger.ingredients,
+        price: state.burger.totalPrice,
     };
 }
 
