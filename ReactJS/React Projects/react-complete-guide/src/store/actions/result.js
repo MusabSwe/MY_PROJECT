@@ -3,18 +3,20 @@ import * as actionTypes from './actionsTypes';
 const saveResult = (result) => {
     // change data here or reducer
     // here better for async code 
-    const updatedResult = result * 2;
+    // const updatedResult = result * 2;
     return {
         type: actionTypes.STORE_RESULT,
-        result: updatedResult
+        result: result
     };
 }
 // we use thunk third party library to implement 
 // async code with action creators
 export const storeResult = (result) => {
-    return (dispatch) => {
+    return (dispatch, getState) => {
         setTimeout(() => {
-            dispatch(saveResult(result))
+            const oldCounter = getState().ctr.counter;
+            console.log(oldCounter);
+            dispatch(saveResult(result));
         }, 2000);
     }
 };
