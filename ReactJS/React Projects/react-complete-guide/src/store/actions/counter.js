@@ -2,6 +2,8 @@ import * as actionTypes from './actionsTypes';
 // First action creator
 export const increment = () => {
     return {
+        // receive from react component 
+        // & connect to reducer
         type: actionTypes.INCREMENT,
     }
 };

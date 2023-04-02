@@ -46,12 +46,13 @@ const burgerBuilderReducer = (state = initialState, action) => {
             return {
                 ...state,
                 ingredients: {
+                    // we specify them to be the same order 
                     salad: action.ingredients.salad,
                     bacon: action.ingredients.bacon,
                     cheese: action.ingredients.cheese,
                     meat: action.ingredients.meat,
                 },
-                    error: false
+                error: false
             };
         case actionTypes.FETCH_INGREDIENTS_FAILED:
             return {

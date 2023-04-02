@@ -24,7 +24,6 @@ export const purchaseBurgerFail = (error) => {
 export const purchaseBurgerStart = () => {
     return {
         type: actionTypes.PURCHASE_BURGER_START,
-
     };
 };
 
@@ -34,11 +33,11 @@ export const purchaseBurgerStartFetch = (orderData) => {
 
     return dispatch => {
        
-        dispatch(purchaseBurgerStart())
+        dispatch(purchaseBurgerStart());
         axios.post('/orders.json', orderData)
             .then(res => {
                 // setLoading(false);
-                dispatch(purchaseBurgerSuccess(res.data, orderData));
+                dispatch(purchaseBurgerSuccess(res.data.name, orderData));
                 // navigate('/');
             }).catch(err => {
                 // this.setState({ loading: false, purchasing: false });

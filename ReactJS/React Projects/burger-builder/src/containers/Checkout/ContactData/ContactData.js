@@ -146,6 +146,8 @@ const ContactData = (props) => {
         props.onPostOrder(order);
         navigate('/');
 
+        // move posting HTTP request to the Data  
+
         // in firebase you shoould add an extension of .json in the path
         // axios.post('/orders.json', order)
         //     .then(res => {
