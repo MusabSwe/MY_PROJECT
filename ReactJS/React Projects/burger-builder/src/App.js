@@ -5,6 +5,7 @@ import Checkout from './containers/Checkout/Checkout';
 import { Routes, Route, Navigate } from 'react-router-dom'
 import ContactData from './containers/Checkout/ContactData/ContactData';
 import Orders from './containers/Checkout/Orders/Orders';
+import Auth from './containers/Auth/Auth';
 class App extends Component {
   render() {
     return (
@@ -13,6 +14,7 @@ class App extends Component {
           <Routes>
             <Route path='/' element={<BurgerBuilder />} />
             <Route path='orders' element={<Orders />} />
+            <Route path='/auth' element={<Auth />} />
             {/* Nested Routes below */}
             <Route path='/checkout' element={<Checkout />}>
               <Route path='contact-data' element={<ContactData />} />
