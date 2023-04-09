@@ -36,6 +36,8 @@ const Auth = (props) => {
         },
     })
 
+    const [isSignup, setIsSignup] = useState(true);
+
     // Implement validation for the form inpust such as not enter a value
     const checkValidity = (value, rules) => {
         let isValid = true;
@@ -95,7 +97,11 @@ const Auth = (props) => {
 
     const submitHandller = (e) => {
         e.preventDefault();
-        props.onAuth(controls.email.value, controls.password.value);
+        props.onAuth(controls.email.value, controls.password.value, isSignup);
+    }
+
+    const switchAuthModeHandler = () => {
+        setIsSignup(!isSignup)
     }
 
     const formElementArray = [];
@@ -133,13 +139,14 @@ const Auth = (props) => {
                 {form}
                 <Button btnType={"Success"}>Submit</Button>
             </form>
+            <Button clicked={switchAuthModeHandler} btnType={"Danger"}>Switch to {isSignup ? 'sign in' : 'sign up'}</Button>
         </div>
     );
 }
 
 const mapDispatchToProps = dispatch => {
     return {
-        onAuth: (email, password) => dispatch(actions.auth(email, password)),
+        onAuth: (email, password, isSignup) => dispatch(actions.auth(email, password, isSignup)),
     }
 }
 
