@@ -3,6 +3,8 @@ export {
     RemoveIngredient,
     initIngredients,
 
-} from './burgerBuilderAction'
+} from './burgerBuilderAction';
 
-export { purchaseBurgerStartFetch } from './orderAction'
+export { purchaseBurgerStartFetch } from './orderAction';
+
+export { auth } from './authAction';

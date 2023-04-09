@@ -2,6 +2,8 @@ import { useState } from "react";
 import Input from "../../UI/Input/Input";
 import Button from "../../UI/Button/Button";
 import classes from './Auth.module.css';
+import * as actions from '../../store/actions/index';
+import { connect } from "react-redux";
 const Auth = (props) => {
     const [controls, setControls] = useState({
         email: {
@@ -75,6 +77,7 @@ const Auth = (props) => {
         return isValid;
     }
 
+
     // Implemnt OnChange Handler
     const inputChangedHandler = (e, controlName) => {
         const updatedControls = {
@@ -90,6 +93,10 @@ const Auth = (props) => {
         setControls(updatedControls);
     }
 
+    const submitHandller = (e) => {
+        e.preventDefault();
+        props.onAuth(controls.email.value, controls.password.value);
+    }
 
     const formElementArray = [];
     // key will be email and password
@@ -122,7 +129,7 @@ const Auth = (props) => {
 
     return (
         <div className={classes.Auth}>
-            <form>
+            <form onSubmit={submitHandller}>
                 {form}
                 <Button btnType={"Success"}>Submit</Button>
             </form>
@@ -130,4 +137,10 @@ const Auth = (props) => {
     );
 }
 
-export default Auth;
+const mapDispatchToProps = dispatch => {
+    return {
+        onAuth: (email, password) => dispatch(actions.auth(email, password)),
+    }
+}
+
+export default connect(null, mapDispatchToProps)(Auth);
