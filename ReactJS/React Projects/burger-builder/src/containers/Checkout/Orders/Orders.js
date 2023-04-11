@@ -2,51 +2,45 @@ import { useEffect, useState } from "react";
 import Order from "../../../components/Order/Order";
 import axios from "../../../axios-orders";
 import withErrorHandler from "../../../withErrorHandler/withErrorHandler";
-
-const Orders = () => {
-    // orders is async state since it is used to fetch data
-    // so we do not inlude it in the sync redux
-    // and in advane redux in async redux we will use
-    const [orders, setOrders] = useState([]);
-    const [loading, setLoading] = useState(true);
+import { connect } from "react-redux";
+import Spinner from "../../../UI/spinner/spinner";
+import * as actions from '../../../store/actions/index';
+const Orders = (props) => {
 
     useEffect(() => {
-        axios.get('/orders.json')
-            .then(res => {
-                const fetchedOrders = [];
-                for (let key in res.data) {
-                    fetchedOrders.push({
-                        ...res.data[key],
-                        id: key
-                    })
-                }
-                // console.log(res.data);
-                setLoading(false);
-                console.log(fetchedOrders);
-                setOrders(fetchedOrders)
-            }).catch(err => {
-                // console.log(err);
-                // console.log(err);
-                setLoading(false);
-            });
-
+        props.onFetchOrders();
     }, []);
 
-    return (
-        <div>
-            {orders.map((order) => {
-                console.log(order);
-                return <Order 
+    let orders = <Spinner />;
+    if (!props.loading) {
+        orders = props.orders.map((order) => (
+            <Order
                 key={order.id}
                 price={order.price}
                 ingredients={order.ingredients}
-                />;
-            })
-            }
+            />
+        ))
+    }
 
+    return (
+        <div>
+            {orders}
         </div>
     );
 }
 
+const mapStateToProps = state => {
+    return {
+        orders: state.order.orders,
+        loading: state.order.loading
+    };
+};
+
+const mapDispatchToProps = dispatch => {
+    return {
+        onFetchOrders: () => dispatch(actions.fetchOrders())
+    };
+};
+
 // to display any netwok error in the screen
-export default withErrorHandler(Orders, axios);
+export default connect(mapStateToProps, mapDispatchToProps)(withErrorHandler(Orders, axios));
