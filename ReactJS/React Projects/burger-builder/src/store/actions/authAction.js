@@ -9,10 +9,12 @@ export const authStart = (authData) => {
 };
 
 
-export const authSuccess = (authData) => {
+export const authSuccess = (token, userId) => {
     return {
+        // [same as auth state in the reducer]:[res.data.anyNAme]
         type: actionTypes.AUTH_SUCCESS,
-        authData: authData,
+        idToken: token,
+        userId: userId,
     };
 };
 
@@ -41,7 +43,7 @@ export const auth = (email, password, isSignup) => {
         axios.post(url, authData)
             .then(res => {
                 console.log(res);
-                dispatch(authSuccess(res.data));
+                dispatch(authSuccess(res.data.idToken, res.data.localId));
             })
             .catch(err => {
                 console.log(err);
