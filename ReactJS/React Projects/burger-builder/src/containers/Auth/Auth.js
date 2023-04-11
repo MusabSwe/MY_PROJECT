@@ -2,6 +2,7 @@ import { useState } from "react";
 import Input from "../../UI/Input/Input";
 import Button from "../../UI/Button/Button";
 import classes from './Auth.module.css';
+import Spinner from '../../UI/spinner/spinner';
 import * as actions from '../../store/actions/index';
 import { connect } from "react-redux";
 const Auth = (props) => {
@@ -116,7 +117,7 @@ const Auth = (props) => {
     }
 
     // create form inputs dynimacally
-    const form = formElementArray.map((formElement) => (
+    let form = formElementArray.map((formElement) => (
         <Input
             key={formElement.id}
             elementType={formElement.config.elementType}
@@ -133,8 +134,20 @@ const Auth = (props) => {
         />
     ));
 
+    if (props.loading) {
+        form = <Spinner />
+    }
+    let errorMessage = null;
+
+    if (props.error) {
+        errorMessage = (
+            <p style={{color:"red"}}>{props.error.message}</p>
+        )
+    }
+
     return (
         <div className={classes.Auth}>
+            {errorMessage}
             <form onSubmit={submitHandller}>
                 {form}
                 <Button btnType={"Success"}>Submit</Button>
@@ -144,10 +157,17 @@ const Auth = (props) => {
     );
 }
 
+const mapStateToProps = state => {
+    return {
+        loading: state.auth.loading,
+        error: state.auth.error,
+    };
+};
+
 const mapDispatchToProps = dispatch => {
     return {
         onAuth: (email, password, isSignup) => dispatch(actions.auth(email, password, isSignup)),
     }
 }
 
-export default connect(null, mapDispatchToProps)(Auth);
+export default connect(mapStateToProps, mapDispatchToProps)(Auth);
