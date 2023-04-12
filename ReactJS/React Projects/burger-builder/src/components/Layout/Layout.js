@@ -3,6 +3,7 @@ import Auxiliry from '../../hoc/Auxiliry';
 import classes from './Layout.module.css';
 import Toolbar from "../Navigation/Toolbar/Toolbar";
 import SideDrawer from "../Navigation/SideDrawer/SideDrawer";
+import { connect } from "react-redux";
 const Layout = (props) => {
 
     const [showSiderDrawer, setShowSiderDrawer] = useState(false);
@@ -16,13 +17,25 @@ const Layout = (props) => {
 
     return (
         <Auxiliry>
-            <Toolbar drawerToggleClicked={sideDrawerToggleHandler} />
-            <SideDrawer open={showSiderDrawer} closed={sideDrawerCloseHandler} />
+            <Toolbar
+                isAuth={props.isAuthenticated}
+                drawerToggleClicked={sideDrawerToggleHandler}
+            />
+            <SideDrawer
+                isAuth={props.isAuthenticated}
+                open={showSiderDrawer}
+                closed={sideDrawerCloseHandler}
+            />
             <main className={classes.Content}>
                 {props.children}
             </main>
         </Auxiliry>
     )
 };
+const mapStateToProps = state => {
+    return {
+        isAuthenticated: state.auth.token !== null,
+    }
+}
 
-export default Layout;
+export default connect(mapStateToProps)(Layout);
