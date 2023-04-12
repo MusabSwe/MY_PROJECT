@@ -49,6 +49,12 @@ export const purchaseBurgerStartFetch = (orderData, token) => {
     };
 };
 
+export const purchaseInit = () => {
+    return {
+        type: actionTypes.PURCHASE_INIT
+    };
+};
+
 export const fetchOrdersSuccess = (orders) => {
     return {
         type: actionTypes.FETCH_ORDERS_SUCCESS,

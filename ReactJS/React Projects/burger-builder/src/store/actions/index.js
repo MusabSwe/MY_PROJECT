@@ -6,6 +6,10 @@ export {
 
 } from './burgerBuilderAction';
 
-export { purchaseBurgerStartFetch, fetchOrders } from './orderAction';
+export {
+    purchaseBurgerStartFetch,
+    fetchOrders,
+    purchaseInit
+} from './orderAction';
 
 export { auth } from './authAction';

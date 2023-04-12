@@ -2,7 +2,7 @@ import * as actionTypes from '../actions/actionTypes';
 const initialState = {
     orders: [],
     loading: false,
-
+    purchased: false
 }
 
 const orderReducer = (state = initialState, action) => {
@@ -47,6 +47,11 @@ const orderReducer = (state = initialState, action) => {
             return {
                 ...state,
                 loading: false,
+            }
+        case actionTypes.PURCHASE_INIT:
+            return {
+                ...state,
+                purchased: false,
             }
         default:
             return state;

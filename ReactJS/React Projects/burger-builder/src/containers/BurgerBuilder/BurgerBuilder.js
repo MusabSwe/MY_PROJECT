@@ -135,7 +135,7 @@ const BurgerBuilder = (props) => {
         //     pathname: '/checkout',
         //     search: '?' + queryString,
         // })
-
+        props.onInitPurchase();
         navigate('/checkout')
     }
 
@@ -195,6 +195,7 @@ const mapDispatchToProps = dispatch => {
         onAddIngredient: (ingName) => dispatch(burgerBuilderActions.addIngredient(ingName)),
         onRemoveIngredient: (ingName) => dispatch(burgerBuilderActions.RemoveIngredient(ingName)),
         onInitIngredients: () => dispatch(burgerBuilderActions.initIngredients()),
+        onInitPurchase: () => dispatch(burgerBuilderActions.purchaseInit())
     };
 }
 
