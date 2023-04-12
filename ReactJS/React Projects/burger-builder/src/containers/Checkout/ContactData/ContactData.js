@@ -143,7 +143,7 @@ const ContactData = (props) => {
             orderData: formData
         }
 
-        props.onPostOrder(order);
+        props.onPostOrder(order, props.token);
         navigate('/');
 
         // move posting HTTP request to the Data  
@@ -298,12 +298,13 @@ const mapStatetoProps = state => {
         ings: state.burger.ingredients,
         price: state.burger.totalPrice,
         loading: state.order.loading,
+        token: state.auth.token
     };
 }
 
 const mapDispatchToProps = dispatch => {
     return {
-        onPostOrder: (order) => dispatch(actions.purchaseBurgerStartFetch(order))
+        onPostOrder: (order, token) => dispatch(actions.purchaseBurgerStartFetch(order, token))
     };
 };
 
